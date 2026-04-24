@@ -43,6 +43,10 @@ public class ChaseMusicDynamism : MonoBehaviour
     [SerializeField] private float _volumeNear = 1.2f;
     [Tooltip("Volume quand VERY CLOSE")]
     [SerializeField] private float _volumeVeryClose = 1.4f;
+
+    [Header("Fade Time")]
+    [Tooltip("Durée de la transition linéaire en secondes")]
+    [SerializeField] private float _fadeTime = 3f;
     #endregion
 
     #region Private Fields
@@ -61,30 +65,39 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// <summary>
     /// Actual pitch for music
     /// </summary>
-    float _currentPitch = 1f;
+    private float _currentPitch = 1f;
+    private float _defaultPitch;
     #endregion
 
 
-    #region Update
+    #region Unity Methods
     /// <summary>
     /// Start Method
     /// </summary>
     private void Start()
     {
+        _defaultPitch = _pitchFar - 0.1f;
+        _currentPitch = _defaultPitch;
+
         _heartbeat.volume = 0;
         _heartbeat.loop = true;
+        _heartbeat.pitch = _defaultPitch;
 
         _percussion.volume = 0;
         _percussion.loop = true;
+        _percussion.pitch = _defaultPitch;
 
         _stringAccent.volume = 0;
         _stringAccent.loop = true;
+        _stringAccent.pitch = _defaultPitch;
 
         _stringMelody.volume = 0;
         _stringMelody.loop = true;
+        _stringMelody.pitch = _defaultPitch;
 
         _tuba.volume = 0;
         _tuba.loop = true;
+        _tuba.pitch = _defaultPitch;
 
         _heartbeat.Play();
         _percussion.Play();
@@ -110,7 +123,6 @@ public class ChaseMusicDynamism : MonoBehaviour
         }
 
         UpdateCurrentState();
-
     }
     #endregion
 
@@ -149,69 +161,71 @@ public class ChaseMusicDynamism : MonoBehaviour
     private void UpdateCurrentState()
     {
         float targetPitch = 1f;
-        float targetVolume = 0f;
+        
+        float volumeSpeed = 1.4f / _fadeTime; 
+        float pitchSpeed = 0.3f / _fadeTime;  
 
         switch (_currentState)
         {
             case ChaseState.NO_CHASE:
-                targetPitch = 1f;
-                targetVolume = 0f;
+                targetPitch = _defaultPitch;
                 
-                _heartbeat.volume = Mathf.Lerp(_heartbeat.volume, targetVolume, Time.deltaTime * 2f);
-                _percussion.volume = Mathf.Lerp(_percussion.volume, targetVolume, Time.deltaTime * 2f);
-                _stringAccent.volume = Mathf.Lerp(_stringAccent.volume, targetVolume, Time.deltaTime * 2f);
-                _stringMelody.volume = Mathf.Lerp(_stringMelody.volume, targetVolume, Time.deltaTime * 2f);
-                _tuba.volume = Mathf.Lerp(_tuba.volume, targetVolume, Time.deltaTime * 2f);
+                _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, 0f, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, 0f, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, 0f, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.FAR:
                 targetPitch = _pitchFar;
                 
-                _heartbeat.volume = Mathf.Lerp(_heartbeat.volume, _volumeFar, Time.deltaTime * 2f);
-                _percussion.volume = Mathf.Lerp(_percussion.volume, 0, Time.deltaTime * 2f);
-                _stringAccent.volume = Mathf.Lerp(_stringAccent.volume, _volumeFar, Time.deltaTime * 2f);
-                _stringMelody.volume = Mathf.Lerp(_stringMelody.volume, _volumeFar, Time.deltaTime * 2f);
-                _tuba.volume = Mathf.Lerp(_tuba.volume, _volumeFar, Time.deltaTime * 2f);
+                _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeFar, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeFar, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeFar, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeFar, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.MID:
                 targetPitch = _pitchMid;
                 
-                _heartbeat.volume = Mathf.Lerp(_heartbeat.volume, _volumeMid, Time.deltaTime * 2f);
-                _percussion.volume = Mathf.Lerp(_percussion.volume, 0, Time.deltaTime * 2f);
-                _stringAccent.volume = Mathf.Lerp(_stringAccent.volume, _volumeMid, Time.deltaTime * 2f);
-                _stringMelody.volume = Mathf.Lerp(_stringMelody.volume, _volumeMid, Time.deltaTime * 2f);
-                _tuba.volume = Mathf.Lerp(_tuba.volume, _volumeMid, Time.deltaTime * 2f);
+                _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeMid, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.NEAR:
                 targetPitch = _pitchNear;
                 
-                _heartbeat.volume = Mathf.Lerp(_heartbeat.volume, _volumeNear, Time.deltaTime * 2f);
-                _percussion.volume = Mathf.Lerp(_percussion.volume, _volumeNear / 2, Time.deltaTime * 2f);
-                _stringAccent.volume = Mathf.Lerp(_stringAccent.volume, _volumeNear, Time.deltaTime * 2f);
-                _stringMelody.volume = Mathf.Lerp(_stringMelody.volume, _volumeNear, Time.deltaTime * 2f);
-                _tuba.volume = Mathf.Lerp(_tuba.volume, _volumeNear, Time.deltaTime * 2f);
+                _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeNear, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeNear / 2, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeNear, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeNear, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.VERY_CLOSE:
                 targetPitch = _pitchVeryClose;
                 
-                _heartbeat.volume = Mathf.Lerp(_heartbeat.volume, _volumeVeryClose, Time.deltaTime * 2f);
-                _percussion.volume = Mathf.Lerp(_percussion.volume, _volumeVeryClose, Time.deltaTime * 2f);
-                _stringAccent.volume = Mathf.Lerp(_stringAccent.volume, _volumeVeryClose, Time.deltaTime * 2f);
-                _stringMelody.volume = Mathf.Lerp(_stringMelody.volume, _volumeVeryClose, Time.deltaTime * 2f);
-                _tuba.volume = Mathf.Lerp(_tuba.volume, _volumeVeryClose, Time.deltaTime * 2f);
+                _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 break;
         }
 
-        _currentPitch = Mathf.Lerp(_currentPitch, targetPitch, Time.deltaTime * 2f);
 
-        _heartbeat.pitch = targetPitch;
-        _percussion.pitch = targetPitch;
-        _stringAccent.pitch = targetPitch;
-        _stringMelody.pitch = targetPitch;
-        _tuba.pitch = targetPitch;
+        _currentPitch = Mathf.MoveTowards(_currentPitch, targetPitch, pitchSpeed * Time.deltaTime);
+
+        _heartbeat.pitch = _currentPitch;
+        _percussion.pitch = _currentPitch;
+        _stringAccent.pitch = _currentPitch;
+        _stringMelody.pitch = _currentPitch;
+        _tuba.pitch = _currentPitch;
     }
     #endregion
 }
