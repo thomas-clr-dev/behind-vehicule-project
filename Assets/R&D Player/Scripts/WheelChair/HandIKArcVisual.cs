@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WheelPushController : MonoBehaviour
+public class HandIKArcVisual : MonoBehaviour
 {
     public enum Axis { X, Y, Z, Forward, Right, Up }
 
@@ -27,14 +27,13 @@ public class WheelPushController : MonoBehaviour
     {
         if (pivot == null || ikTarget == null) return;
 
-        // On calcule l'angle dans l'éventail défini
         float currentAngle = Mathf.Lerp(angleMin, angleMax, pushProgress);
 
         Vector3 axisVector = GetAxisVector(rotationAxis);
-        // On utilise localRotation pour rester relatif au fauteuil, PAS à la roue
+
         pivot.localRotation = Quaternion.AngleAxis(currentAngle, axisVector);
 
-        ikTarget.localPosition = GetAxisVector(radiusDirection) * radius;
+        ikTarget.position = pivot.position + pivot.up * radius * 0.8f;
     }
 
     Vector3 GetAxisVector(Axis axis)

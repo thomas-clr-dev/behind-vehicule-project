@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; // Obligatoire pour le nouveau système
 
+[RequireComponent(typeof(Rigidbody))]
 public class WheelChairController : MonoBehaviour
 {
     [Header("Control Scheme")]
@@ -13,50 +14,29 @@ public class WheelChairController : MonoBehaviour
     [Header("Wheel Colliders")]
     [SerializeField] public WheelCollider RightWheelCollider;
     [SerializeField] public WheelCollider LeftWheelCollider;
-    [SerializeField] private WheelCollider rightFrontWheelCollider;
-    [SerializeField] private WheelCollider leftFrontWheelCollider;
-
-    [Space(10)]
-    [Header("Wheel Visuals")]
-    [SerializeField] private Transform rightWheel;
-    [SerializeField] private Transform leftWheel;
-    [SerializeField] private Transform rightFrontWheel;
-    [SerializeField] private Transform leftFrontWheel;
+    [SerializeField] public WheelCollider RightFrontWheelCollider;
+    [SerializeField] public WheelCollider LeftFrontWheelCollider;
 
     [Space(10)]
     [Header("Physics")]
-    [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform centerOfMass;
 
-    [Space(10)]
-    [Header("Motor Settings")]
-    [SerializeField] public float MotorTorque = 150f;
-    [SerializeField] private AnimationCurve torqueCurve;
+    private Rigidbody rb;
 
-    [Space(10)]
-    [Header("Sync Settings")]
-    [SerializeField] private float syncWindow = 0.1f; // Temps max entre deux poussées (100ms)
-    private float lastPushTime;
-    private HandType lastHandToPush;
+    //LOCAl EVENTS
+    public Action<HandType, float> OnHandProgressChanged;
 
-    [Space(10)]
-    [Header("Animation Rigging")]
-    [SerializeField] private WheelPushController leftVisual;
-    [SerializeField] private WheelPushController rightVisual;
-    public AnimationCurve TorqueCurve => torqueCurve;
-
-    private Vector3 position;
-    private Quaternion rotation;
-
+    //INPUT SYSTEM  
     private RDPlayerActions controls;
 
-    private StateMachine leftHandMachine;
-    private StateMachine rightHandMachine;
-
-
+    //STATE MACHINES    
+    private StateMachine leftHandMachine; //Left Wheel
+    private StateMachine rightHandMachine; // Right Wheel
 
     private void Awake()
     {
+
+        rb = GetComponent<Rigidbody>();
         controls = new RDPlayerActions();
 
         leftHandMachine = new StateMachine();
@@ -92,8 +72,6 @@ public class WheelChairController : MonoBehaviour
 
     private void Update()
     {
-        UpdateWheelVisuals();
-
         leftHandMachine?.UpdateState();
         rightHandMachine?.UpdateState();
     }
@@ -104,26 +82,9 @@ public class WheelChairController : MonoBehaviour
         rightHandMachine?.PhysicsUpdateState();
     }
 
-    private void UpdateWheelVisuals()
-    {
-        UpdateSingleWheel(LeftWheelCollider, leftWheel);
-        UpdateSingleWheel(RightWheelCollider, rightWheel);
-        UpdateSingleWheel(leftFrontWheelCollider, leftFrontWheel);
-        UpdateSingleWheel(rightFrontWheelCollider, rightFrontWheel);
-    }
-
-    private void UpdateSingleWheel(WheelCollider collider, Transform visualTransform)
-    {
-        if (collider == null || visualTransform == null) return;
-        collider.GetWorldPose(out position, out rotation);
-        visualTransform.position = position;
-        visualTransform.rotation = rotation;
-    }
-
     public void UpdateHandVisual(HandType hand, float progress)
     {
-        if (hand == HandType.LeftHand && leftVisual != null) leftVisual.SetVisualProgress(progress);
-        if (hand == HandType.RightHand && rightVisual != null) rightVisual.SetVisualProgress(progress);
+        OnHandProgressChanged?.Invoke(hand, progress);
     }
 
 }

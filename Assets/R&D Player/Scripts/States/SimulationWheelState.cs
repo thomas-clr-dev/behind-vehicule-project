@@ -33,25 +33,19 @@ public class SimulationWheelState : WheelStateBase
     public override void Update()
     {
         HandleState();
-        UpdateVisuals();
+        HandleEvents();   
     }
 
-    private void UpdateVisuals()
+    private void HandleEvents()
     {
-        float visualProg = 0f;
-
-        if (currentStep == GestureStep.Pushing || currentStep == GestureStep.Cooldown)
-        {
-            visualProg = Mathf.InverseLerp(0.3f * -pushDirection, 0.8f * pushDirection, stickY);
-        }
-        else
-        {
-            visualProg = 0.5f;
-        }
-
-        hub.UpdateHandVisual(handType, visualProg);
+        EventBus<WheelStateDataEvent>.Raise(new WheelStateDataEvent
+        (
+            hand,
+            currentStep,
+            stickY,
+            pushDirection
+        ));
     }
-
 
     private void SwitchState(GestureStep newState)
     {
