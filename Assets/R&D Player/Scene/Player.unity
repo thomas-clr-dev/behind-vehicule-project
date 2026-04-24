@@ -2927,6 +2927,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1141498699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!146 &1636849181 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 9154293957722794505, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
+  m_PrefabInstance: {fileID: 6783038735797585267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1698275071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 348213238770085695, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
@@ -2984,6 +2989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8975989370040704265, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
+      propertyPath: RightFrontWheelCollider
+      value: 
+      objectReference: {fileID: 1636849181}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

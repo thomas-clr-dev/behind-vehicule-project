@@ -51,7 +51,7 @@ public class SimulationWheelState : WheelStateBase
     {
         var lastState = currentStep;
         currentStep = newState;
-        EventBus<SWheelStateChangedEvent>.Raise(new SWheelStateChangedEvent(newState, lastState));
+        EventBus<WheelStateChangedEvent>.Raise(new WheelStateChangedEvent(newState, lastState));
     }
 
     private void HandleState()

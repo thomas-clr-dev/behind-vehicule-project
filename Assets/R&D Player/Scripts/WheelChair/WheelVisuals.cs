@@ -6,6 +6,9 @@ public class WheelVisuals : MonoBehaviour
     private WheelChairController controller;
 
     [Header("Visual Transforms")]
+    [SerializeField] private Transform rightParentWheel;
+    [SerializeField] private Transform leftParentWheel;
+
     [SerializeField] private Transform rightWheel;
     [SerializeField] private Transform leftWheel;
     [SerializeField] private Transform rightFrontWheel;
@@ -13,26 +16,41 @@ public class WheelVisuals : MonoBehaviour
 
     private void Awake()
     {
-         controller = GetComponent<WheelChairController>();
+        controller = GetComponent<WheelChairController>();
     }
 
     private void Update()
     {
         if (controller == null) return;
 
-        Sync(controller.RightWheelCollider, rightWheel);
-        Sync(controller.LeftWheelCollider, leftWheel);
-        Sync(controller.RightFrontWheelCollider, rightFrontWheel);
-        Sync(controller.LeftFrontWheelCollider, leftFrontWheel);
+        SyncPosition(controller.RightWheelCollider, rightParentWheel);
+        SyncPosition(controller.LeftWheelCollider, leftParentWheel);
+
+        SyncRotation(controller.RightWheelCollider, rightWheel);
+        SyncRotation(controller.LeftWheelCollider, leftWheel);
+
+        SyncPosition(controller.RightFrontWheelCollider, rightFrontWheel);
+        SyncPosition(controller.LeftFrontWheelCollider, leftFrontWheel);
+        SyncRotation(controller.RightFrontWheelCollider, rightFrontWheel);
+        SyncRotation(controller.LeftFrontWheelCollider, leftFrontWheel);
+
     }
 
-    private void Sync(WheelCollider col, Transform vis)
+    private void SyncPosition(WheelCollider col, Transform vis)
     {
         if (col == null || vis == null) return;
         Vector3 pos;
         Quaternion rot;
         col.GetWorldPose(out pos, out rot);
         vis.position = pos;
+    }
+
+    private void SyncRotation(WheelCollider col, Transform vis)
+    {
+        if (col == null || vis == null) return;
+        Quaternion rot;
+        Vector3 pos;
+        col.GetWorldPose(out pos, out rot);
         vis.rotation = rot;
     }
 }

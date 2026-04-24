@@ -33,7 +33,7 @@ public class HandIKArcVisual : MonoBehaviour
 
         pivot.localRotation = Quaternion.AngleAxis(currentAngle, axisVector);
 
-        ikTarget.position = pivot.position + pivot.up * radius * 0.8f;
+        ikTarget.position = pivot.position + pivot.up * radius;
     }
 
     Vector3 GetAxisVector(Axis axis)

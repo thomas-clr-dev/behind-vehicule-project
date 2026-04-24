@@ -19,16 +19,18 @@ public class CharacterIKHandler : MonoBehaviour
 
     private void HandleDataUpdate(WheelStateDataEvent e)
     {
-        float visualProg = 0.5f;
+        var visual = (e.Hand == HandType.LeftHand) ? leftHandVisual : rightHandVisual;
+        if (visual == null) return;
 
         if (e.Step == GestureStep.Pushing || e.Step == GestureStep.Cooldown)
         {
-            visualProg = Mathf.InverseLerp(0.3f * -e.PushDirection, 0.8f * e.PushDirection, e.StickY);
+            float visualProg = Mathf.InverseLerp(-1f, 1f, e.StickY);
+            visual.SetVisualProgress(visualProg);
         }
-
-        // Application au composant visuel
-        var visual = (e.Hand == HandType.LeftHand) ? leftHandVisual : rightHandVisual;
-        if (visual != null) visual.SetVisualProgress(visualProg);
+        else
+        {
+            visual.SetVisualProgress(0.5f);
+        }
     }
 
     private void OnDisable()
