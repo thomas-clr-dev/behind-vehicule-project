@@ -26,7 +26,7 @@ public class HandIKArcVisual : MonoBehaviour
     private float currentOffset = 1f;
     private float targetOffset = 1f;
 
-    void OnValidate() { UpdateHandPosition(); }
+    //void OnValidate() { UpdateHandPosition(); }
     void Update() { UpdateHandPosition(); }
 
     private void UpdateHandPosition()
