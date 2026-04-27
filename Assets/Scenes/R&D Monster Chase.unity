@@ -909,6 +909,7 @@ MonoBehaviour:
   angleMax: 68
   pushProgress: 0
   radius: 0.4
+  smoothSpeed: 10
 --- !u!1 &225697338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DistanceFromMonsterToPlayer
   _player: {fileID: 1446852941}
-  _useManualDistance: 0
+  _useManualDistance: 1
   _manualDistance: 25
 --- !u!1 &561553577
 GameObject:
@@ -2575,7 +2576,7 @@ Transform:
   m_GameObject: {fileID: 842219627}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: -0.0000005364418, y: 0.4000001, z: -0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3475,7 +3476,7 @@ Transform:
   m_GameObject: {fileID: 1150569549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: -0.0000004172325, y: 0.4000001, z: -0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3538,10 +3539,10 @@ MonoBehaviour:
   _stringAccent: {fileID: 1068440819}
   _stringMelody: {fileID: 2111159327}
   _tuba: {fileID: 500524045}
-  _pitchFar: 0.8
-  _pitchMid: 0.9
+  _pitchFar: 1
+  _pitchMid: 1
   _pitchNear: 1
-  _pitchVeryClose: 1.1
+  _pitchVeryClose: 1
   _volumeFar: 0.8
   _volumeMid: 0.9
   _volumeNear: 1
@@ -4078,6 +4079,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce4e4fe73e51ac4a8e29b5beb0d581f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelChairVisual
+  rightParentWheel: {fileID: 0}
+  leftParentWheel: {fileID: 0}
+  rightWheel: {fileID: 0}
+  leftWheel: {fileID: 0}
+  rightFrontWheel: {fileID: 0}
+  leftFrontWheel: {fileID: 0}
 --- !u!114 &1446852944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4093,24 +4100,9 @@ MonoBehaviour:
   wheelMode: {fileID: 11400000, guid: 657e032855ad3774787e19207415fadf, type: 2}
   RightWheelCollider: {fileID: 91039257}
   LeftWheelCollider: {fileID: 730494170}
-  rightFrontWheelCollider: {fileID: 2119256020}
-  leftFrontWheelCollider: {fileID: 471390164}
-  rightWheel: {fileID: 1997473619}
-  leftWheel: {fileID: 688227907}
-  rightFrontWheel: {fileID: 794475439}
-  leftFrontWheel: {fileID: 12878578}
-  rb: {fileID: 1446852946}
+  RightFrontWheelCollider: {fileID: 0}
+  LeftFrontWheelCollider: {fileID: 0}
   centerOfMass: {fileID: 1963030964}
-  MotorTorque: 150
-  torqueCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  syncWindow: 0.1
-  leftVisual: {fileID: 1648047922}
-  rightVisual: {fileID: 225594011}
 --- !u!95 &1446852945
 Animator:
   serializedVersion: 7
@@ -4715,6 +4707,7 @@ MonoBehaviour:
   angleMax: 68
   pushProgress: 0
   radius: 0.4
+  smoothSpeed: 10
 --- !u!1 &1655262814
 GameObject:
   m_ObjectHideFlags: 0
@@ -6055,6 +6048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6707eff03470939429225e7d4b957450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterVisual
+  leftHandVisual: {fileID: 0}
+  rightHandVisual: {fileID: 0}
+  handOffset: 0
 --- !u!4 &2114184809
 Transform:
   m_ObjectHideFlags: 0
