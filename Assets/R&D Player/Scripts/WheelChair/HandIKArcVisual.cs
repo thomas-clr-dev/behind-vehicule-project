@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HandIKArcVisual : MonoBehaviour
@@ -20,6 +21,11 @@ public class HandIKArcVisual : MonoBehaviour
     [Range(0f, 1f)] public float pushProgress = 0f;
     public float radius = 0.35f;
 
+    [Header("Smoothing")]
+    public float smoothSpeed = 10f; // Vitesse de lissage
+    private float currentOffset = 1f;
+    private float targetOffset = 1f;
+
     void OnValidate() { UpdateHandPosition(); }
     void Update() { UpdateHandPosition(); }
 
@@ -27,13 +33,15 @@ public class HandIKArcVisual : MonoBehaviour
     {
         if (pivot == null || ikTarget == null) return;
 
+        currentOffset = Mathf.Lerp(currentOffset, targetOffset, Time.deltaTime * smoothSpeed);
+
         float currentAngle = Mathf.Lerp(angleMin, angleMax, pushProgress);
 
         Vector3 axisVector = GetAxisVector(rotationAxis);
 
         pivot.localRotation = Quaternion.AngleAxis(currentAngle, axisVector);
 
-        ikTarget.position = pivot.position + pivot.up * radius;
+        ikTarget.position = pivot.position + (pivot.up * currentOffset) * radius;
     }
 
     Vector3 GetAxisVector(Axis axis)
@@ -56,6 +64,11 @@ public class HandIKArcVisual : MonoBehaviour
         UpdateHandPosition();
     }
 
+    public void SetVisualOffset(float offset)
+    {
+       targetOffset = offset;
+    }
+
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
@@ -70,5 +83,7 @@ public class HandIKArcVisual : MonoBehaviour
         Vector3 startDirection = Quaternion.AngleAxis(angleMin, rotAxis) * radDir;
         UnityEditor.Handles.DrawSolidArc(center, rotAxis, startDirection, angleMax - angleMin, radius);
     }
+
+
 #endif
 }

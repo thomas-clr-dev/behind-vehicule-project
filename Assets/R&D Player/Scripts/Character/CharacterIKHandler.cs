@@ -7,9 +7,10 @@ public class CharacterIKHandler : MonoBehaviour
     [Header("IK References")]
     [SerializeField] private HandIKArcVisual leftHandVisual;
     [SerializeField] private HandIKArcVisual rightHandVisual;
-
+    [Min(1f)][SerializeField] private float handOffset;
 
     private EventBinding<WheelStateDataEvent> dataBinding;
+
 
     private void OnEnable()
     {
@@ -22,14 +23,17 @@ public class CharacterIKHandler : MonoBehaviour
         var visual = (e.Hand == HandType.LeftHand) ? leftHandVisual : rightHandVisual;
         if (visual == null) return;
 
+
+        float visualProg = Mathf.InverseLerp(-1f, 1f, e.StickY);
+        visual.SetVisualProgress(visualProg);
+
         if (e.Step == GestureStep.Pushing || e.Step == GestureStep.Cooldown)
-        {
-            float visualProg = Mathf.InverseLerp(-1f, 1f, e.StickY);
-            visual.SetVisualProgress(visualProg);
+        {        
+            visual.SetVisualOffset(1f);
         }
         else
         {
-            visual.SetVisualProgress(0.5f);
+            visual.SetVisualOffset(handOffset);
         }
     }
 
