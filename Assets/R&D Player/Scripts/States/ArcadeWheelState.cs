@@ -27,7 +27,7 @@ public class ArcadeWheelState : WheelStateBase
             float direction = input > 0 ? 1f : -1f;
 
             // On applique le couple en utilisant la courbe du hub
-            wheel.motorTorque = hub.MotorTorque * direction * data.TorqueCurve.Evaluate(chrono);
+            wheel.motorTorque = data.MotorTorque * direction * data.TorqueCurve.Evaluate(chrono);
             wheel.brakeTorque = 0;
         }
         else

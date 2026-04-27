@@ -57,8 +57,30 @@
                 },
                 {
                     "name": "",
+                    "id": "dcc16bdc-1858-42cd-a9a7-03b6f4af5453",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3f4e4124-215e-4278-98ba-7db5380a43f8",
                     "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2507cda7-6d4c-4234-988d-c4ae765d289b",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -167,8 +189,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7cdce010-b6c5-46c7-81f7-1e590819b08a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PushLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6d7bafdd-c980-4f07-b43d-f6cfccbeb2f8",
                     "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PushRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3816e7c-a5df-4ae4-9f50-f30b1868b69a",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
