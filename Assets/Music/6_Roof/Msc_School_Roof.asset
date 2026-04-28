@@ -1,43 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1233149941 &-8288280265835228533
+--- !u!1233149941 &-4260467858137353333
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Msc_School_Roof_Rythm_3_{-8288280265835228533}
-  m_AudioClip: {fileID: 8300000, guid: 89fb8c3bb23aafd44bf519ca73f76564, type: 3}
+  m_Name: Msc_School_Roof_Rythm_1_{-4260467858137353333}
+  m_AudioClip: {fileID: 8300000, guid: 8dc99bfc2aff3ce4cac6d94123471512, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &-5731417678959811954
+--- !u!1233149941 &3193230942933073453
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Msc_School_Roof_Rythm_2_{-5731417678959811954}
+  m_Name: Msc_School_Roof_Rythm_2_{3193230942933073453}
   m_AudioClip: {fileID: 8300000, guid: 39df42beedf045d49af33e818453cd63, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &-4515892094417306626
+--- !u!1233149941 &3523107282682705662
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Msc_School_Roof_Rythm_4_{-4515892094417306626}
+  m_Name: Msc_School_Roof_Rythm_4_{3523107282682705662}
   m_AudioClip: {fileID: 8300000, guid: 74292d27366451742a7cf70114569f74, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &5442080162041819454
+--- !u!1233149941 &4357684774120377294
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Msc_School_Roof_Rythm_1_{5442080162041819454}
-  m_AudioClip: {fileID: 8300000, guid: 8dc99bfc2aff3ce4cac6d94123471512, type: 3}
+  m_Name: Msc_School_Roof_Rythm_3_{4357684774120377294}
+  m_AudioClip: {fileID: 8300000, guid: 89fb8c3bb23aafd44bf519ca73f76564, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -56,12 +56,11 @@ AudioRandomContainer:
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
-  - {fileID: 5442080162041819454}
-  - {fileID: -5731417678959811954}
-  - {fileID: -8288280265835228533}
-  - {fileID: -4515892094417306626}
-  - {fileID: 7148052493027608975}
-  m_AvoidRepeatingLast: 2
+  - {fileID: -4260467858137353333}
+  - {fileID: 3193230942933073453}
+  - {fileID: 4357684774120377294}
+  - {fileID: 3523107282682705662}
+  m_AvoidRepeatingLast: 0
   m_PlaybackMode: 2
   m_TriggerMode: 1
   m_AutomaticTriggerMode: 1
@@ -70,13 +69,3 @@ AudioRandomContainer:
   m_PitchRandomizationEnabled: 0
   m_AutomaticTriggerTimeRandomizationEnabled: 0
   m_LoopCountRandomizationEnabled: 0
---- !u!1233149941 &7148052493027608975
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Msc_School_Roof_Rythm_5_{7148052493027608975}
-  m_AudioClip: {fileID: 8300000, guid: fb25ce3c5b7cae346a36491677a71a69, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
