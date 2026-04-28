@@ -23,9 +23,6 @@ public class WheelChairController : MonoBehaviour
 
     private Rigidbody rb;
 
-    //LOCAl EVENTS
-    public Action<HandType, float> OnHandProgressChanged;
-
     //INPUT SYSTEM  
     private RDPlayerActions controls;
 
@@ -49,7 +46,7 @@ public class WheelChairController : MonoBehaviour
         rightHandMachine.Initialize(wheelMode.CreateState(rightHandContext));
     }
 
-    // Activer/Désactiver les actions
+    // Activer/Désactiver les actions(inputs)
     private void OnEnable()
     {
         controls.Enable();
@@ -82,9 +79,10 @@ public class WheelChairController : MonoBehaviour
         rightHandMachine?.PhysicsUpdateState();
     }
 
-    public void UpdateHandVisual(HandType hand, float progress)
+    public void SyncPushTimers(float duration)
     {
-        OnHandProgressChanged?.Invoke(hand, progress);
+        // Il faudrait que tes machines d'états exposent leur état actuel
+        // ou envoyer un message via l'EventBus que les deux roues écoutent.
     }
 
     void OnDrawGizmos()
