@@ -24,15 +24,15 @@ public class ChaseMusicDynamism : MonoBehaviour
     #endregion
 
     #region SerializeField - Audio Settings
-    [Header("Audio Settings - Pitch")]
-    [Tooltip("Pitch quand FAR")]
-    [SerializeField] private float _pitchFar = 0.8f;
-    [Tooltip("Pitch quand MID")]
-    [SerializeField] private float _pitchMid = 0.9f;
-    [Tooltip("Pitch quand NEAR")]
-    [SerializeField] private float _pitchNear = 1f;
-    [Tooltip("Pitch quand VERY CLOSE")]
-    [SerializeField] private float _pitchVeryClose = 1.1f;
+    //[Header("Audio Settings - Pitch")]
+    //[Tooltip("Pitch quand FAR")]
+    //[SerializeField] private float _pitchFar = 0.8f;
+    //[Tooltip("Pitch quand MID")]
+    //[SerializeField] private float _pitchMid = 0.9f;
+    //[Tooltip("Pitch quand NEAR")]
+    //[SerializeField] private float _pitchNear = 1f;
+    //[Tooltip("Pitch quand VERY CLOSE")]
+    //[SerializeField] private float _pitchVeryClose = 1.1f;
 
     [Header("Audio Settings - Volume")]
     [Tooltip("Volume quand FAR")]
@@ -65,8 +65,8 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// <summary>
     /// Actual pitch for music
     /// </summary>
-    private float _currentPitch = 1f;
-    private float _defaultPitch;
+    //private float _currentPitch = 1f;
+    //private float _defaultPitch;
     #endregion
 
 
@@ -76,28 +76,28 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        _defaultPitch = _pitchFar - 0.1f;
-        _currentPitch = _defaultPitch;
+        //_defaultPitch = _pitchFar - 0.1f;
+        //_currentPitch = _defaultPitch;
 
         _heartbeat.volume = 0;
         _heartbeat.loop = true;
-        _heartbeat.pitch = _defaultPitch;
+        //_heartbeat.pitch = _defaultPitch;
 
         _percussion.volume = 0;
         _percussion.loop = true;
-        _percussion.pitch = _defaultPitch;
+        //_percussion.pitch = _defaultPitch;
 
         _stringAccent.volume = 0;
         _stringAccent.loop = true;
-        _stringAccent.pitch = _defaultPitch;
+        //_stringAccent.pitch = _defaultPitch;
 
         _stringMelody.volume = 0;
         _stringMelody.loop = true;
-        _stringMelody.pitch = _defaultPitch;
+        //_stringMelody.pitch = _defaultPitch;
 
         _tuba.volume = 0;
         _tuba.loop = true;
-        _tuba.pitch = _defaultPitch;
+        //_tuba.pitch = _defaultPitch;
 
         _heartbeat.Play();
         _percussion.Play();
@@ -129,11 +129,11 @@ public class ChaseMusicDynamism : MonoBehaviour
     #region Private Methods
     private ChaseState EvaluateStateFromDistance(float distance)
     {
-        if (distance >= _distanceForNoChase) return ChaseState.NO_CHASE;
-        if (distance >= _distanceForFar) return ChaseState.FAR;
-        if (distance >= _distanceForMid) return ChaseState.MID;
-        if (distance >= _distanceForNear) return ChaseState.NEAR;
-        if (distance >= _distanceForVeryClose) return ChaseState.VERY_CLOSE;
+        if (distance - 2 >= _distanceForNoChase) return ChaseState.NO_CHASE;
+        if (distance - 2 >= _distanceForFar) return ChaseState.FAR;
+        if (distance - 2 >= _distanceForMid) return ChaseState.MID;
+        if (distance - 2 >= _distanceForNear) return ChaseState.NEAR;
+        if (distance - 2 >= _distanceForVeryClose) return ChaseState.VERY_CLOSE;
         return ChaseState.VERY_CLOSE;
     }
 
@@ -160,15 +160,15 @@ public class ChaseMusicDynamism : MonoBehaviour
 
     private void UpdateCurrentState()
     {
-        float targetPitch = 1f;
+        //float targetPitch = 1f;
         
         float volumeSpeed = 1.4f / _fadeTime; 
-        float pitchSpeed = 0.3f / _fadeTime;  
+        //float pitchSpeed = 0.3f / _fadeTime;  
 
         switch (_currentState)
         {
             case ChaseState.NO_CHASE:
-                targetPitch = _defaultPitch;
+                //targetPitch = _defaultPitch;
                 
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, 0f, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
@@ -178,40 +178,40 @@ public class ChaseMusicDynamism : MonoBehaviour
                 break;
 
             case ChaseState.FAR:
-                targetPitch = _pitchFar;
+                //targetPitch = _pitchFar;
                 
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeFar, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
-                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeFar, volumeSpeed * Time.deltaTime);
-                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeFar, volumeSpeed * Time.deltaTime);
-                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeFar, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, 0f, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, 0f, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.MID:
-                targetPitch = _pitchMid;
+                //targetPitch = _pitchMid;
                 
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeMid, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
-                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeMid, volumeSpeed * Time.deltaTime);
-                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, 0f, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.NEAR:
-                targetPitch = _pitchNear;
+                //targetPitch = _pitchNear;
                 
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeNear, volumeSpeed * Time.deltaTime);
-                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeNear / 2, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.VERY_CLOSE:
-                targetPitch = _pitchVeryClose;
+                //targetPitch = _pitchVeryClose;
                 
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
-                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeVeryClose * 2/3, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
@@ -219,13 +219,13 @@ public class ChaseMusicDynamism : MonoBehaviour
         }
 
 
-        _currentPitch = Mathf.MoveTowards(_currentPitch, targetPitch, pitchSpeed * Time.deltaTime);
+        //_currentPitch = Mathf.MoveTowards(_currentPitch, targetPitch, pitchSpeed * Time.deltaTime);
 
-        _heartbeat.pitch = _currentPitch;
-        _percussion.pitch = _currentPitch;
-        _stringAccent.pitch = _currentPitch;
-        _stringMelody.pitch = _currentPitch;
-        _tuba.pitch = _currentPitch;
+        //_heartbeat.pitch = _currentPitch;
+        //_percussion.pitch = _currentPitch;
+        //_stringAccent.pitch = _currentPitch;
+        //_stringMelody.pitch = _currentPitch;
+        //_tuba.pitch = _currentPitch;
     }
     #endregion
 }

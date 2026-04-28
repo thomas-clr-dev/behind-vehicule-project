@@ -275,9 +275,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: cd7f841c5ce7aba43afbcf20ac09a897, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1528,9 +1528,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a9207049d4a6ebf45b785e3e03fc566f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DistanceFromMonsterToPlayer
   _player: {fileID: 1446852941}
-  _useManualDistance: 1
+  _useManualDistance: 0
   _manualDistance: 25
 --- !u!1 &561553577
 GameObject:
@@ -2876,9 +2876,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e5c80728961cc154ba73d60655cec762, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -3187,9 +3187,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e3a07decdcaf92c45b2fc86b6f067b96, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -3539,10 +3539,6 @@ MonoBehaviour:
   _stringAccent: {fileID: 1068440819}
   _stringMelody: {fileID: 2111159327}
   _tuba: {fileID: 500524045}
-  _pitchFar: 1
-  _pitchMid: 1
-  _pitchNear: 1
-  _pitchVeryClose: 1
   _volumeFar: 0.8
   _volumeMid: 0.9
   _volumeNear: 1
@@ -4097,7 +4093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1711bedea54f1d4cb32c981a416273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelChairController
-  wheelMode: {fileID: 11400000, guid: 657e032855ad3774787e19207415fadf, type: 2}
+  wheelMode: {fileID: 11400000, guid: 5a032de34d2712a4eb8c4fafef2619fd, type: 2}
   RightWheelCollider: {fileID: 91039257}
   LeftWheelCollider: {fileID: 730494170}
   RightFrontWheelCollider: {fileID: 0}
@@ -5934,9 +5930,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: c5a92c4a4e3e9864fb61991077f6c861, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
