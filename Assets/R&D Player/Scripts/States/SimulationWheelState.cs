@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum GestureStep { WaitGrip, Pushing, Cooldown }
 public class SimulationWheelState : WheelStateBase
@@ -17,11 +18,33 @@ public class SimulationWheelState : WheelStateBase
     private bool isPushing => GetPushInput() > 0.5f;
     private float stickY => GetMoveInput();
 
+    private EventBinding<WheelSyncPushEvent> dataBinding;
+
     public SimulationWheelState(WheelStateContext context) : base(context)
     {
         if (context.data is SimulationMode simData) data = simData;
         hand = context.handType;
         wheel = GetWheel();
+
+        dataBinding = new EventBinding<WheelSyncPushEvent>(OnPushSynchronized);
+        EventBus<WheelSyncPushEvent>.Register(dataBinding);
+    }
+
+    private void OnPushSynchronized(WheelSyncPushEvent e)
+    {
+        // Si c'est l'autre main qui a envoyé l'événement
+        if (e.Initiator != hand)
+        {
+            // Si on est déjà en Cooldown ou en train de pousser
+            if (currentStep == GestureStep.Cooldown || currentStep == GestureStep.Pushing)
+            {
+                // On s'aligne sur sa direction et on reset notre timer
+                // pour que les deux roues finissent la poussée EN MÊME TEMPS
+                pushDurationTimer = e.Duration;
+                pushDirection = e.Direction;
+                if (currentStep != GestureStep.Cooldown) SwitchState(GestureStep.Cooldown);
+            }
+        }
     }
 
     public override void Update()
@@ -60,6 +83,8 @@ public class SimulationWheelState : WheelStateBase
                 if (isMovingFast && hasCrossedThreshold)
                 {
                     pushDurationTimer = data.pushDuration;
+
+                    EventBus<WheelSyncPushEvent>.Raise(new WheelSyncPushEvent(data.pushDuration, pushDirection, hand));
                     SwitchState(GestureStep.Cooldown);
                 }
                 break;
