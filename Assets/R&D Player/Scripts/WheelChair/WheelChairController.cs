@@ -87,4 +87,13 @@ public class WheelChairController : MonoBehaviour
         OnHandProgressChanged?.Invoke(hand, progress);
     }
 
+    void OnDrawGizmos()
+    {
+        if (GetComponent<Rigidbody>())
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.TransformPoint(GetComponent<Rigidbody>().centerOfMass), 0.1f);
+        }
+    }
+
 }

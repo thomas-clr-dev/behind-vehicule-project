@@ -5,8 +5,6 @@ using UnityEngine.Animations.Rigging;
 public class CharacterIKHandler : MonoBehaviour
 {
 
-    [SerializeField] private RigBuilder rigBuilder;
-
 
     [Header("IK References")]
     [SerializeField] private HandIKArcVisual leftHandVisual;
@@ -57,11 +55,9 @@ public class CharacterIKHandler : MonoBehaviour
         leftWeight = Mathf.MoveTowards(leftWeight, leftTargetWeight, Time.deltaTime * transitionSpeed);
         rightWeight = Mathf.MoveTowards(rightWeight, rightTargetWeight, Time.deltaTime * transitionSpeed);
 
-        // On ajoute un booléen "isLeft" à la fin pour identifier la main
         UpdateEffector(leftArmEffector, leftHandVisual.ikTarget, leftFreeHandTarget, leftWeight, leftPushDir, true);
         UpdateEffector(rightArmEffector, rightHandVisual.ikTarget, rightFreeHandTarget, rightWeight, rightPushDir, false);
 
-        if (rigBuilder != null) rigBuilder.Build();
     }
 
     private void UpdateEffector(Transform effector, Transform wheelPoint, Transform freePoint, float weight, float direction, bool isLeft)
