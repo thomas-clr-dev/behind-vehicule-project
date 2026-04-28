@@ -26,7 +26,10 @@ public class HandIKArcVisual : MonoBehaviour
     private float currentOffset = 1f;
     private float targetOffset = 1f;
 
-    void OnValidate() { UpdateHandPosition(); }
+    [Header("Debug")]
+    public bool debug = true;
+
+    //void OnValidate() { UpdateHandPosition(); }
     void Update() { UpdateHandPosition(); }
 
     private void UpdateHandPosition()
@@ -72,7 +75,7 @@ public class HandIKArcVisual : MonoBehaviour
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        if (pivot == null) return;
+        if (pivot == null || debug ==  false) return;
         UnityEditor.Handles.matrix = pivot.parent != null ? pivot.parent.localToWorldMatrix : Matrix4x4.identity;
 
         Vector3 center = pivot.localPosition;

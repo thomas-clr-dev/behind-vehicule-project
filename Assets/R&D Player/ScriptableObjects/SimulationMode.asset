@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908e6c50415712b47997c326c89528ee, type: 3}
   m_Name: SimulationMode
   m_EditorClassIdentifier: Assembly-CSharp::SimulationMode
-  MotorTorque: 130
+  MotorTorque: 100
   pushDuration: 0.15
   GripBrakeForce: 50
   MoveCutoffSpeed: 3

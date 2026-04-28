@@ -26,20 +26,16 @@ public class SimulationWheelState : WheelStateBase
 
     public override void Update()
     {
-        // 1. Calcul de la vélocité du stick
         stickVelocity = (stickY - lastStickY) / Time.deltaTime;
         lastStickY = stickY;
 
-        // 2. Gestion des transitions (Logique pure)
         HandleStateTransitions();
 
-        // 3. Envoi des données aux bras (IK)
         HandleEvents();
     }
 
     public override void PhysicsUpdate()
     {
-        // 4. Application physique (Torque)
         ApplyWheelPhysics();
     }
 
@@ -101,7 +97,8 @@ public class SimulationWheelState : WheelStateBase
             case GestureStep.Cooldown:
                 if (pushDurationTimer > 0)
                 {
-                    wheel.motorTorque = data.MotorTorque * pushDirection;
+                    float targetTorque = data.MotorTorque * pushDirection;
+                    wheel.motorTorque = Mathf.MoveTowards(wheel.motorTorque, targetTorque, data.MotorTorque * Time.fixedDeltaTime * 10f);
                     wheel.brakeTorque = 0;
                 }
                 else
