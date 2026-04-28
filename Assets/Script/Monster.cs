@@ -16,27 +16,20 @@ public class Monster : MonoBehaviour
     #region Initialization
     private void Start()
     {
-        Debug.Log("🔵 Monster.Start() - Recherche de ChaseTriggerZone...");
-
         // Essayer GetComponentInChildren
         //_chaseTriggerZone = GetComponentInChildren<ChaseTriggerZone>();
 
         if (_chaseTriggerZone != null)
         {
-            Debug.Log($"✅ ChaseTriggerZone trouvée sur: {_chaseTriggerZone.gameObject.name}");
             _chaseTriggerZone.OnChaseBegin += StartChasing;
-            Debug.Log("✅ Abonnement à l'event OnChaseBegin réussi!");
         }
         else
         {
-            Debug.LogError("❌ ERREUR: ChaseTriggerZone NON TROUVÉE!");
-            Debug.LogError("Vérifiez que ChaseTriggerZone est un enfant de " + gameObject.name);
 
             // Essayer de la trouver dans toute la scène
             _chaseTriggerZone = FindObjectOfType<ChaseTriggerZone>();
             if (_chaseTriggerZone != null)
             {
-                Debug.LogWarning($"⚠️ ChaseTriggerZone trouvée AILLEURS dans la scène sur: {_chaseTriggerZone.gameObject.name}");
                 _chaseTriggerZone.OnChaseBegin += StartChasing;
             }
         }
@@ -56,13 +49,11 @@ public class Monster : MonoBehaviour
     #region Chase Logic
     private void StartChasing()
     {
-        Debug.Log("🏃 StartChasing() APPELÉE! _isChasing passe à TRUE");
         _isChasing = true;
     }
 
     public void StopChasing()
     {
-        Debug.Log("🛑 Monster stopped chasing!");
         _isChasing = false;
     }
     #endregion
@@ -73,7 +64,6 @@ public class Monster : MonoBehaviour
         if (_chaseTriggerZone != null)
         {
             _chaseTriggerZone.OnChaseBegin -= StartChasing;
-            Debug.Log("Désabonnement de l'event OnChaseBegin");
         }
     }
     #endregion

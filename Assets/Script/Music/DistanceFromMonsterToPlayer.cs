@@ -35,8 +35,6 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
             if (_player == null) return;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
         }
-
-        Debug.Log($"Distance: {_distance} {(_useManualDistance ? "(MANUAL)" : "(AUTO)")}");
     }
     #endregion
 
