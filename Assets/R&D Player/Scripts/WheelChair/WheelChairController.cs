@@ -77,12 +77,19 @@ public class WheelChairController : MonoBehaviour
     {
         leftHandMachine?.PhysicsUpdateState();
         rightHandMachine?.PhysicsUpdateState();
-    }
 
-    public void SyncPushTimers(float duration)
-    {
-        // Il faudrait que tes machines d'états exposent leur état actuel
-        // ou envoyer un message via l'EventBus que les deux roues écoutent.
+
+        if (Mathf.Abs(LeftWheelCollider.motorTorque) > 0.1f && Mathf.Abs(RightWheelCollider.motorTorque) > 0.1f)
+        {
+            // On vérifie qu'elles vont dans la même direction (poussée vers l'avant ou l'arrière)
+            if (Mathf.Sign(LeftWheelCollider.motorTorque) == Mathf.Sign(RightWheelCollider.motorTorque))
+            {
+                // On fait la moyenne pour qu'aucune roue ne pousse plus fort que l'autre
+                float averageTorque = (LeftWheelCollider.motorTorque + RightWheelCollider.motorTorque) / 2f;
+                LeftWheelCollider.motorTorque = averageTorque;
+                RightWheelCollider.motorTorque = averageTorque;
+            }
+        }
     }
 
     void OnDrawGizmos()
