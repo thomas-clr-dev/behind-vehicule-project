@@ -4,9 +4,9 @@ public class ChaseMusicDynamism : MonoBehaviour
 {
     #region SerializeField - Distance 
     /// <summary> 
-    /// Reference to the distance calculator of the monster 
+    /// References to the distance calculators of the monsters 
     /// </summary> 
-    [SerializeField] private DistanceFromMonsterToPlayer _distanceCalculator;
+    [SerializeField] private DistanceFromMonsterToPlayer[] _distanceCalculators;
     [SerializeField] private int _distanceForNoChase = 20;
     [SerializeField] private int _distanceForFar = 15;
     [SerializeField] private int _distanceForMid = 10;
@@ -156,9 +156,10 @@ public class ChaseMusicDynamism : MonoBehaviour
         // Si la chase n'est pas active, ne rien faire
         if (!_isChaseActive) return;
 
-        if (_distanceCalculator == null) return;
+        if (_distanceCalculators == null || _distanceCalculators.Length == 0) return;
 
-        _monsterDistance = _distanceCalculator.Distance;
+        // Trouver la distance du monstre le plus proche
+        _monsterDistance = GetClosestMonsterDistance();
 
         ChaseState newState = EvaluateStateFromDistance(_monsterDistance);
 
@@ -270,6 +271,31 @@ public class ChaseMusicDynamism : MonoBehaviour
         _tuba.time = 0;
 
         Debug.Log("🔇 Toutes les AudioSources arrêtées et réinitialisées");
+    }
+    #endregion
+
+    #region Private Methods - Distance Calculation
+    /// <summary>
+    /// Retourne la distance du monstre le plus proche
+    /// </summary>
+    private float GetClosestMonsterDistance()
+    {
+        float minDistance = float.MaxValue;
+
+        foreach (var calculator in _distanceCalculators)
+        {
+            if (calculator != null)
+            {
+                float distance = calculator.Distance;
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                }
+            }
+        }
+
+        // Si aucun monstre n'est trouvé, retourner une distance très grande
+        return minDistance == float.MaxValue ? _distanceForNoChase + 1 : minDistance;
     }
     #endregion
 
