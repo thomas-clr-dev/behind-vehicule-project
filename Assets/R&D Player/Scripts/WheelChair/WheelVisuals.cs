@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(WheelChairController))]
 public class WheelVisuals : MonoBehaviour
 {
     private WheelChairController controller;
@@ -16,7 +15,7 @@ public class WheelVisuals : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponent<WheelChairController>();
+        controller = GetComponentInParent<WheelChairController>();
     }
 
     private void Update()

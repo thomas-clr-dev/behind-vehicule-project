@@ -7,27 +7,63 @@ public class CharacterIKHandler : MonoBehaviour
 
 
     [Header("IK References")]
+    [Tooltip("Visuals pour les arcs de mouvement des mains")]
     [SerializeField] private HandIKArcVisual leftHandVisual;
+    [Tooltip("Visuals pour les arcs de mouvement des mains")]
     [SerializeField] private HandIKArcVisual rightHandVisual;
-    [Min(1f)][SerializeField] private float handOffset;
 
+    [Space(10)]
     [Header("Final IK Rig Targets")]
+
+    [Tooltip("Effector final pour les bras, cible finale de l'IK")]
     [SerializeField] private Transform leftArmEffector;
+    [Tooltip("Effector final pour les bras, cible finale de l'IK")]
     [SerializeField] private Transform rightArmEffector;
 
+    [Space(10)]
     [Header("Free Hand Targets (Points dans le vide)")]
+
+    [Tooltip("Points de référence pour les mains quand elles ne sont pas sur la roue")]
     [SerializeField] private Transform leftFreeHandTarget;
+    [Tooltip("Points de référence pour les mains quand elles ne sont pas sur la roue")]
     [SerializeField] private Transform rightFreeHandTarget;
 
+    [Space(10)]
+    [Header("Free Hand Rotation Targets (Points dans le vide pour la rotation)(Arrière)")]
+
+    [Tooltip("Rotation de référence pour la rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 backLeftFreeHandRotationTarget;
+    [Tooltip("Rotation de référence pour la rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 backRightFreeHandRotationTarget;
+
+    [Space(10)]
+    [Header("Free Hand Rotation Targets (Points dans le vide pour la rotation)(Arrière)")]
+
+    [Tooltip("Rotation de référence pour la rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 forwardLeftFreeHandRotationTarget;
+    [Tooltip("Rotation de référence pour la rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 forwardRightFreeHandRotationTarget;
+
+
+
+    [Space(10)]
     [Header("Grip Tuning (Ajustements)")]
-    [Tooltip("Décalage de la main par rapport à la cible (Local)")]
+
+    [Tooltip("Distance de la main par rapport à la cible (Local)")]
     [SerializeField] private Vector3 gripOffset;
     [Tooltip("Rotation supplémentaire pour bien aligner la paume")]
     [SerializeField] private Vector3 gripRotationOffset;
 
+    [Space(10)]
     [Header("Base Rotations")]
+
+    [Tooltip("Rotation de base pour les bras quand ils sont sur la roue (Local)")]
     [SerializeField] private Vector3 leftBaseRotation;
+    [Tooltip("Rotation de base pour les bras quand ils sont sur la roue (Local)")]
     [SerializeField] private Vector3 rightBaseRotation;
+
+    [Space(10)]
+    [Header("Transition Settings")]
 
     [SerializeField] private float transitionSpeed = 5f;
 
@@ -72,8 +108,22 @@ public class CharacterIKHandler : MonoBehaviour
         }
         effector.position = Vector3.Lerp(finalFreePos, wheelPoint.position, weight);
 
-        Vector3 rotation = isLeft ? leftBaseRotation : rightBaseRotation;
-        effector.localRotation = Quaternion.Euler(rotation);
+        Vector3 targetFreeRotationEuler;
+        if (direction >= 0)
+        {
+            targetFreeRotationEuler = isLeft ? forwardLeftFreeHandRotationTarget : forwardRightFreeHandRotationTarget;
+        }
+        else
+        {
+            targetFreeRotationEuler = isLeft ? backLeftFreeHandRotationTarget : backRightFreeHandRotationTarget;
+        }
+
+        Vector3 baseRotationEuler = isLeft ? leftBaseRotation : rightBaseRotation;
+
+        Quaternion freeRot = Quaternion.Euler(targetFreeRotationEuler);
+        Quaternion wheelRot = Quaternion.Euler(baseRotationEuler);
+
+        effector.localRotation = Quaternion.Slerp(freeRot, wheelRot, weight);
 
         if (weight > 0.01f)
         {

@@ -3625,11 +3625,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterIKHandler
   leftHandVisual: {fileID: 7133206713674568778}
   rightHandVisual: {fileID: 8263129171506486888}
-  handOffset: 1.1
   leftArmEffector: {fileID: 2805091841308665770}
   rightArmEffector: {fileID: 3344817556088979085}
   leftFreeHandTarget: {fileID: 1944615944058995016}
   rightFreeHandTarget: {fileID: 5162463342393376119}
+  backLeftFreeHandRotationTarget: {x: 22, y: -85, z: 9}
+  backRightFreeHandRotationTarget: {x: 202, y: 85, z: 9}
+  forwardLeftFreeHandRotationTarget: {x: -25, y: 38, z: 44}
+  forwardRightFreeHandRotationTarget: {x: 155, y: -38, z: 44}
   gripOffset: {x: -0.03, y: -0.01, z: 0}
   gripRotationOffset: {x: 0, y: 0, z: 0}
   leftBaseRotation: {x: 0, y: 47, z: 40}
