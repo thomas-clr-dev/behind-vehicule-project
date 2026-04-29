@@ -1970,7 +1970,7 @@ GameObject:
   - component: {fileID: 1295387523}
   - component: {fileID: 1295387522}
   - component: {fileID: 1295387521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2940,22 +2940,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1555731959267544116, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1555731959267544116, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 3706261180903838848, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3706261180903838848, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 320
-      objectReference: {fileID: 0}
     - target: {fileID: 6901660746572811511, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
