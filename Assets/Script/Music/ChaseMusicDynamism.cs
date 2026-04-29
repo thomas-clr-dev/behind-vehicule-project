@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class ChaseMusicDynamism : MonoBehaviour
 {
     #region SerializeField - Distance 
@@ -11,6 +12,15 @@ public class ChaseMusicDynamism : MonoBehaviour
     [SerializeField] private int _distanceForMid = 10;
     [SerializeField] private int _distanceForNear = 5;
     [SerializeField] private int _distanceForVeryClose = 0;
+    #endregion
+
+    #region SerializeField - Chase Triggers
+    [Header("Chase Triggers")]
+    [Tooltip("Zone(s) de déclenchement de la chase")]
+    [SerializeField] private ChaseTriggerZone[] _startZones;
+
+    [Tooltip("Zone(s) de fin de la chase")]
+    [SerializeField] private ChaseEndZone[] _endZones;
     #endregion
 
     #region SerializeField - Audio Layers
@@ -52,16 +62,155 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private ChaseState _previousState;
     /// <summary>
-    /// Actual pitch for music
+    /// Indique si la chase est active
     /// </summary>
+    private bool _isChaseActive = false;
+    /// <summary>
+    /// Indique si on est en train de faire un fade out
+    /// </summary>
+    private bool _isFadingOut = false;
     #endregion
-
 
     #region Unity Methods
     /// <summary>
     /// Start Method
     /// </summary>
     private void Start()
+    {
+        // Configuration initiale
+        SetupAudioSources();
+
+        // S'abonner aux zones de START
+        if (_startZones != null && _startZones.Length > 0)
+        {
+            foreach (var zone in _startZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseBegin += OnChaseStarted;
+                }
+            }
+            Debug.Log($"✅ Abonné à {_startZones.Length} zone(s) de START");
+        }
+
+        // S'abonner aux zones de END
+        if (_endZones != null && _endZones.Length > 0)
+        {
+            foreach (var zone in _endZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseEnd += OnChaseEnded;
+                }
+            }
+            Debug.Log($"✅ Abonné à {_endZones.Length} zone(s) de END");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Désabonnement propre
+        if (_startZones != null)
+        {
+            foreach (var zone in _startZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseBegin -= OnChaseStarted;
+                }
+            }
+        }
+
+        if (_endZones != null)
+        {
+            foreach (var zone in _endZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseEnd -= OnChaseEnded;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Update method
+    /// </summary>
+    private void Update()
+    {
+        // Si on est en train de faire un fade out, on continue de mettre à jour
+        if (_isFadingOut)
+        {
+            UpdateCurrentState();
+
+            // Vérifier si tous les volumes sont à 0
+            if (AreAllVolumesZero())
+            {
+                Debug.Log("✅ Fade out terminé, arrêt des AudioSources");
+                _isFadingOut = false;
+                StopAllAudioSources();
+            }
+            return;
+        }
+
+        // Si la chase n'est pas active, ne rien faire
+        if (!_isChaseActive) return;
+
+        if (_distanceCalculator == null) return;
+
+        _monsterDistance = _distanceCalculator.Distance;
+
+        ChaseState newState = EvaluateStateFromDistance(_monsterDistance);
+
+        if (newState != _currentState)
+        {
+            TransitionToState(newState);
+        }
+
+        UpdateCurrentState();
+    }
+    #endregion
+
+    #region Event Handlers
+    /// <summary>
+    /// Appelé quand le joueur entre dans une zone de START
+    /// </summary>
+    private void OnChaseStarted()
+    {
+        Debug.Log("🏃 CHASE DÉMARRÉE!");
+
+        _isChaseActive = true;
+        _isFadingOut = false;
+
+        // Démarrer la musique
+        _heartbeat.Play();
+        _percussion.Play();
+        _stringAccent.Play();
+        _stringMelody.Play();
+        _tuba.Play();
+    }
+
+    /// <summary>
+    /// Appelé quand le joueur entre dans une zone de END
+    /// </summary>
+    private void OnChaseEnded()
+    {
+        Debug.Log("🛑 CHASE TERMINÉE! Début du fade out...");
+
+        _isChaseActive = false;
+        _isFadingOut = true; // Activer le fade out
+
+        // Forcer l'état NO_CHASE pour déclencher le fade out
+        _previousState = _currentState;
+        _currentState = ChaseState.NO_CHASE;
+    }
+    #endregion
+
+    #region Private Methods - Setup
+    /// <summary>
+    /// Configure les AudioSources (état initial)
+    /// </summary>
+    private void SetupAudioSources()
     {
         _heartbeat.volume = 0;
         _heartbeat.loop = true;
@@ -78,34 +227,53 @@ public class ChaseMusicDynamism : MonoBehaviour
         _tuba.volume = 0;
         _tuba.loop = true;
 
-        _heartbeat.Play();
-        _percussion.Play();
-        _stringAccent.Play();
-        _stringMelody.Play();
-        _tuba.Play();
+        Debug.Log("🎵 AudioSources configurées");
     }
 
     /// <summary>
-    /// Update method
+    /// Vérifie si tous les volumes sont à 0
     /// </summary>
-    private void Update()
+    private bool AreAllVolumesZero()
     {
-        if (_distanceCalculator == null) return;
+        float threshold = 0.01f; // Seuil de tolérance
 
-        _monsterDistance = _distanceCalculator.Distance;
+        return _heartbeat.volume < threshold &&
+               _percussion.volume < threshold &&
+               _stringAccent.volume < threshold &&
+               _stringMelody.volume < threshold &&
+               _tuba.volume < threshold;
+    }
 
-        ChaseState newState = EvaluateStateFromDistance(_monsterDistance);
+    /// <summary>
+    /// Arrête toutes les AudioSources et réinitialise
+    /// </summary>
+    private void StopAllAudioSources()
+    {
+        _heartbeat.Stop();
+        _percussion.Stop();
+        _stringAccent.Stop();
+        _stringMelody.Stop();
+        _tuba.Stop();
 
-        if (newState != _currentState)
-        {
-            TransitionToState(newState);
-        }
+        // Remettre les volumes exactement à 0
+        _heartbeat.volume = 0;
+        _percussion.volume = 0;
+        _stringAccent.volume = 0;
+        _stringMelody.volume = 0;
+        _tuba.volume = 0;
 
-        UpdateCurrentState();
+        // Remettre le temps de lecture à 0
+        _heartbeat.time = 0;
+        _percussion.time = 0;
+        _stringAccent.time = 0;
+        _stringMelody.time = 0;
+        _tuba.time = 0;
+
+        Debug.Log("🔇 Toutes les AudioSources arrêtées et réinitialisées");
     }
     #endregion
 
-    #region Private Methods
+    #region Private Methods - State Management
     private ChaseState EvaluateStateFromDistance(float distance)
     {
         if (distance >= _distanceForNoChase) return ChaseState.NO_CHASE;
@@ -120,6 +288,8 @@ public class ChaseMusicDynamism : MonoBehaviour
     {
         _previousState = _currentState;
         _currentState = newState;
+
+        Debug.Log($"🎵 Chase state: {_previousState} → {_currentState}");
 
         switch (newState)
         {
@@ -144,7 +314,6 @@ public class ChaseMusicDynamism : MonoBehaviour
         switch (_currentState)
         {
             case ChaseState.NO_CHASE:
-
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, 0f, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
@@ -153,7 +322,6 @@ public class ChaseMusicDynamism : MonoBehaviour
                 break;
 
             case ChaseState.FAR:
-
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeFar, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
@@ -162,7 +330,6 @@ public class ChaseMusicDynamism : MonoBehaviour
                 break;
 
             case ChaseState.MID:
-
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeMid, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
@@ -171,7 +338,6 @@ public class ChaseMusicDynamism : MonoBehaviour
                 break;
 
             case ChaseState.NEAR:
-
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeNear, volumeSpeed * Time.deltaTime);
@@ -180,7 +346,6 @@ public class ChaseMusicDynamism : MonoBehaviour
                 break;
 
             case ChaseState.VERY_CLOSE:
-
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeNear * 2 / 3, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
@@ -191,6 +356,7 @@ public class ChaseMusicDynamism : MonoBehaviour
     }
     #endregion
 }
+
 public enum ChaseState
 {
     NO_CHASE,

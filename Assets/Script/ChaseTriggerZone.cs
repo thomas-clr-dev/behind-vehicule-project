@@ -7,17 +7,35 @@ public class ChaseTriggerZone : MonoBehaviour
     public event Action OnChaseBegin;
     #endregion
 
+    #region Unity Methods
+    private void Awake()
+    {
+        Debug.Log($"🟢 ChaseTriggerZone '{gameObject.name}' initialisée");
+    }
+    #endregion
+
     #region Trigger Logic
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log($"🔔 {gameObject.name} - Trigger entered by: {other.name} (Tag: {other.tag})");
+
         if (other.CompareTag("Player"))
         {
-            
+            Debug.Log($"✅ {gameObject.name} - PLAYER DÉTECTÉ!");
+
             if (OnChaseBegin != null)
             {
+                Debug.Log($"🚀 {gameObject.name} - Invocation de OnChaseBegin ({OnChaseBegin.GetInvocationList().Length} abonné(s))");
                 OnChaseBegin.Invoke();
             }
+            else
+            {
+                Debug.LogError($"❌ {gameObject.name} - OnChaseBegin est NULL! Personne n'est abonné!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ {gameObject.name} - Tag incorrect: '{other.tag}' au lieu de 'Player'");
         }
     }
     #endregion
@@ -25,8 +43,13 @@ public class ChaseTriggerZone : MonoBehaviour
     #region Gizmos
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, new Vector3(10f, 5f, 10f));
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+
+        if (boxCollider != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(transform.position, boxCollider.size);
+        }
     }
     #endregion
 }
