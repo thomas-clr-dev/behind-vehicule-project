@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-5298093216340329074
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Msc_School_Dorm_Rythm_3_{-5298093216340329074}
+  m_AudioClip: {fileID: 8300000, guid: 1f0030b8f83070c48bb454ba798e39e7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-5081949944925067365
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Msc_School_Dorm_Rythm_1_{-5081949944925067365}
+  m_AudioClip: {fileID: 8300000, guid: ebfe27d81e579cc40b079aa36b7b0af9, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-2450873587466678948
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Msc_School_Dorm_Rythm_4_{-2450873587466678948}
+  m_AudioClip: {fileID: 8300000, guid: 4d3b243669dffb34b912b97bfd70d54c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1025518279557888075
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Msc_School_Dorm_Rythm_5_{-1025518279557888075}
+  m_AudioClip: {fileID: 8300000, guid: a1a076388bfbba644ab7dacd0183b012, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5776838994250949448
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Msc_School_Dorm_Rythm_2_{5776838994250949448}
+  m_AudioClip: {fileID: 8300000, guid: a16588b284b05634da3107aa1d43d10d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Msc_School_Dorm
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -5081949944925067365}
+  - {fileID: 5776838994250949448}
+  - {fileID: -5298093216340329074}
+  - {fileID: -2450873587466678948}
+  - {fileID: -1025518279557888075}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 2
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0

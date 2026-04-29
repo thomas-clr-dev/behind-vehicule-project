@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 105905396}
   - component: {fileID: 105905395}
   - component: {fileID: 105905394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 743418986}
   - component: {fileID: 743418985}
   - component: {fileID: 743418984}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1320,7 @@ GameObject:
   - component: {fileID: 751806102}
   - component: {fileID: 751806101}
   - component: {fileID: 751806100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2585,7 +2585,7 @@ GameObject:
   - component: {fileID: 1570013850}
   - component: {fileID: 1570013849}
   - component: {fileID: 1570013848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2927,11 +2927,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1141498699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!146 &1636849181 stripped
-WheelCollider:
-  m_CorrespondingSourceObject: {fileID: 9154293957722794505, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-  m_PrefabInstance: {fileID: 6783038735797585267}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1698275071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 348213238770085695, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
@@ -2945,6 +2940,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1555731959267544116, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555731959267544116, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706261180903838848, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706261180903838848, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 6901660746572811511, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2989,10 +3000,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8975989370040704265, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      propertyPath: RightFrontWheelCollider
-      value: 
-      objectReference: {fileID: 1636849181}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

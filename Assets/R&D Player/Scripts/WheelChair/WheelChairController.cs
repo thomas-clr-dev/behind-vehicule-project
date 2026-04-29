@@ -23,9 +23,6 @@ public class WheelChairController : MonoBehaviour
 
     private Rigidbody rb;
 
-    //LOCAl EVENTS
-    public Action<HandType, float> OnHandProgressChanged;
-
     //INPUT SYSTEM  
     private RDPlayerActions controls;
 
@@ -49,7 +46,7 @@ public class WheelChairController : MonoBehaviour
         rightHandMachine.Initialize(wheelMode.CreateState(rightHandContext));
     }
 
-    // Activer/Désactiver les actions
+    // Activer/Désactiver les actions(inputs)
     private void OnEnable()
     {
         controls.Enable();
@@ -80,11 +77,28 @@ public class WheelChairController : MonoBehaviour
     {
         leftHandMachine?.PhysicsUpdateState();
         rightHandMachine?.PhysicsUpdateState();
+
+
+        if (Mathf.Abs(LeftWheelCollider.motorTorque) > 0.1f && Mathf.Abs(RightWheelCollider.motorTorque) > 0.1f)
+        {
+            // On vérifie qu'elles vont dans la même direction (poussée vers l'avant ou l'arrière)
+            if (Mathf.Sign(LeftWheelCollider.motorTorque) == Mathf.Sign(RightWheelCollider.motorTorque))
+            {
+                // On fait la moyenne pour qu'aucune roue ne pousse plus fort que l'autre
+                float averageTorque = (LeftWheelCollider.motorTorque + RightWheelCollider.motorTorque) / 2f;
+                LeftWheelCollider.motorTorque = averageTorque;
+                RightWheelCollider.motorTorque = averageTorque;
+            }
+        }
     }
 
-    public void UpdateHandVisual(HandType hand, float progress)
+    void OnDrawGizmos()
     {
-        OnHandProgressChanged?.Invoke(hand, progress);
+        if (GetComponent<Rigidbody>())
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.TransformPoint(GetComponent<Rigidbody>().centerOfMass), 0.1f);
+        }
     }
 
 }

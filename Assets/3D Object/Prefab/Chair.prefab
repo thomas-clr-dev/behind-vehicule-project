@@ -81,6 +81,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 86c730600c37d954db2607a491cd3598, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a309ec85db0f28f40bcdf9a7edd0db99, type: 2}
     - target: {fileID: 919132149155446097, guid: 86c730600c37d954db2607a491cd3598, type: 3}
       propertyPath: m_Name
       value: Chair_Part-02
@@ -143,6 +147,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 2bfc97c078c0c8c4cb5ea0cace44d093, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a309ec85db0f28f40bcdf9a7edd0db99, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 2bfc97c078c0c8c4cb5ea0cace44d093, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a309ec85db0f28f40bcdf9a7edd0db99, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bfc97c078c0c8c4cb5ea0cace44d093, type: 3}
       propertyPath: m_Name
       value: Chair_Part-01
