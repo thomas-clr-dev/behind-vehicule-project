@@ -32,14 +32,10 @@ public class SimulationWheelState : WheelStateBase
 
     private void OnPushSynchronized(WheelSyncPushEvent e)
     {
-        // Si c'est l'autre main qui a envoyé l'événement
         if (e.Initiator != hand)
         {
-            // Si on est déjà en Cooldown ou en train de pousser
             if (currentStep == GestureStep.Cooldown || currentStep == GestureStep.Pushing)
             {
-                // On s'aligne sur sa direction et on reset notre timer
-                // pour que les deux roues finissent la poussée EN MÊME TEMPS
                 pushDurationTimer = e.Duration;
                 pushDirection = e.Direction;
                 if (currentStep != GestureStep.Cooldown) SwitchState(GestureStep.Cooldown);
@@ -96,7 +92,6 @@ public class SimulationWheelState : WheelStateBase
                 }
                 else
                 {
-                    // Condition de retour au repos quand la roue s'arrête ou qu'on lâche
                     if ((!isPushing || Mathf.Abs(stickY) < 0.2f) && Mathf.Abs(wheel.motorTorque) < 0.1f)
                     {
                         SwitchState(GestureStep.WaitGrip);
@@ -111,11 +106,12 @@ public class SimulationWheelState : WheelStateBase
         switch (currentStep)
         {
             case GestureStep.WaitGrip:
-                wheel.motorTorque = 0; 
+                SetMotorTorque(0f);
+                ApplyBrakeTorque();
                 break;
 
             case GestureStep.Pushing:
-                wheel.motorTorque = 0;
+                SetMotorTorque(0f);
                 wheel.brakeTorque = 0;
                 break;
 
@@ -130,10 +126,20 @@ public class SimulationWheelState : WheelStateBase
                 {
                     // Freinage graduel ou saisie de la main (Grip)
                     wheel.motorTorque = Mathf.MoveTowards(wheel.motorTorque, 0, data.MotorTorque * Time.fixedDeltaTime * data.MoveCutoffSpeed);
-                    wheel.brakeTorque = isPushing ? data.GripBrakeForce : 0;
+                    ApplyBrakeTorque();
                 }
                 break;
         }
+    }
+
+    private void SetMotorTorque(float torque)
+    {
+        if( torque >= 0) wheel.motorTorque = torque;
+    }
+
+    private void ApplyBrakeTorque(float force = 0f)
+    {
+        wheel.brakeTorque = isPushing ? data.GripBrakeForce : 0;
     }
 
     private void SwitchState(GestureStep newState)
@@ -146,5 +152,10 @@ public class SimulationWheelState : WheelStateBase
     private void HandleEvents()
     {
         EventBus<WheelStateDataEvent>.Raise(new WheelStateDataEvent(hand, currentStep, stickY, pushDirection));
+    }
+
+    public override void Exit()
+    {
+        EventBus<WheelSyncPushEvent>.Deregister(dataBinding);
     }
 }

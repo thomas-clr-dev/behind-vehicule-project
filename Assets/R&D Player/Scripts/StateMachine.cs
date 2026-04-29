@@ -7,10 +7,6 @@ public class StateMachine
 {
     public IState CurrentState { get; private set; }
 
-    public StateMachine()
-    {
-    }
-
     public void Initialize(IState newState)
     {
         CurrentState = newState;
@@ -38,6 +34,12 @@ public class StateMachine
     {
         return CurrentState;
     }
+
+    public void ExitCurrentState()
+    {
+        CurrentState?.Exit();
+        CurrentState = null;
+    }   
 
 
 
