@@ -15,11 +15,17 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
     [Tooltip("Distance manuelle (pour tester le système audio)")]
     [Range(0, 30)]
     [SerializeField] private int _manualDistance = -22;
+
+    [Tooltip("Axe de déplacement du monstre en mode manuel")]
+    [SerializeField] private MovementAxis _movementAxis = MovementAxis.X;
     #endregion
 
     #region Distance
     private float _distance;
     public float Distance => _distance;
+
+    // ✅ AJOUT : Exposer l'axe pour que Monster puisse le lire
+    public MovementAxis Axis => _movementAxis;
     #endregion
 
     #region Distance Calculation
@@ -28,7 +34,33 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
         if (_useManualDistance)
         {
             _distance = _manualDistance;
-            transform.position = new Vector3(_manualDistance, transform.position.y, transform.position.z);
+
+            // Déplacer le monstre selon l'axe sélectionné
+            Vector3 newPosition = transform.position;
+
+            switch (_movementAxis)
+            {
+                case MovementAxis.X:
+                    newPosition.x = _manualDistance;
+                    break;
+                case MovementAxis.Y:
+                    newPosition.y = _manualDistance;
+                    break;
+                case MovementAxis.Z:
+                    newPosition.z = _manualDistance;
+                    break;
+                case MovementAxis.NegX:
+                    newPosition.x = -_manualDistance;
+                    break;
+                case MovementAxis.NegY:
+                    newPosition.y = -_manualDistance;
+                    break;
+                case MovementAxis.NegZ:
+                    newPosition.z = -_manualDistance;
+                    break; 
+            }
+
+            transform.position = newPosition;
         }
         else
         {
@@ -48,4 +80,17 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
         Gizmos.DrawLine(transform.position, _player.transform.position);
     }
     #endregion
+}
+
+/// <summary>
+/// Axe de déplacement du monstre
+/// </summary>
+public enum MovementAxis
+{
+    X,
+    Y,
+    Z,
+    NegX,
+    NegY,
+    NegZ
 }
