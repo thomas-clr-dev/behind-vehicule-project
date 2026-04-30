@@ -58,7 +58,7 @@ public class CameraTriggerer : MonoBehaviour
         else if (other.name == ">Spline Class2")
         {
             actualPriority = actualCamera.Priority;
-            actualCamera = firstClassCamera;
+            actualCamera = secondClassCamera;
             Destroy(other.gameObject);
         }
         else if (other.name == ">Spline Class>Toilet")

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem; // Obligatoire pour le nouveau système
 
@@ -55,6 +56,8 @@ public class WheelChairController : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
+
+        leftHandMachine?.ExitCurrentState();
     }
 
     private void Start()
@@ -80,11 +83,9 @@ public class WheelChairController : MonoBehaviour
 
 
         if (Mathf.Abs(LeftWheelCollider.motorTorque) > 0.1f && Mathf.Abs(RightWheelCollider.motorTorque) > 0.1f)
-        {
-            // On vérifie qu'elles vont dans la même direction (poussée vers l'avant ou l'arrière)
+        {     
             if (Mathf.Sign(LeftWheelCollider.motorTorque) == Mathf.Sign(RightWheelCollider.motorTorque))
-            {
-                // On fait la moyenne pour qu'aucune roue ne pousse plus fort que l'autre
+            {     
                 float averageTorque = (LeftWheelCollider.motorTorque + RightWheelCollider.motorTorque) / 2f;
                 LeftWheelCollider.motorTorque = averageTorque;
                 RightWheelCollider.motorTorque = averageTorque;

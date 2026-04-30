@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ArcadeWheelState : WheelStateBase
 {
-    private float chrono; // Chrono propre à cette main
+    private float chrono; 
 
     private ArcadeMode data;
 
