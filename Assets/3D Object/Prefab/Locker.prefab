@@ -201,7 +201,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8231815302513978188}
-  - component: {fileID: 6530945111413061618}
   m_Layer: 0
   m_Name: Locker
   m_TagString: Untagged
@@ -231,30 +230,6 @@ Transform:
   - {fileID: 6502010429256635435}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6530945111413061618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7283236503550448237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93b6f761d0005984e8ca3a3a3183b2ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomRotation
-  _targets:
-  - {fileID: 8544329179006974425}
-  - {fileID: 700523538292619199}
-  - {fileID: 2820024937315585336}
-  - {fileID: 8046144267009692184}
-  - {fileID: 2336595278366917273}
-  - {fileID: 6502010429256635435}
-  min: 0
-  max: 90
-  X: 0
-  Y: 0
-  Z: 0
 --- !u!1001 &960874670052671654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,6 +278,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 54633fbbc678b664a80fe6a8e990674c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: 54633fbbc678b664a80fe6a8e990674c, type: 3}
       propertyPath: m_Name
       value: Locker_Part-06
@@ -365,6 +344,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: edaad1db17085e541a9f4ad2cb5024b4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: edaad1db17085e541a9f4ad2cb5024b4, type: 3}
       propertyPath: m_Name
       value: Locker_Part-02
@@ -427,6 +410,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 49df9283b1020e449846a84257a993dc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: 49df9283b1020e449846a84257a993dc, type: 3}
       propertyPath: m_Name
       value: Locker_Part-03
@@ -489,6 +476,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9d05c8c27546ada4ba691231ed736447, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d05c8c27546ada4ba691231ed736447, type: 3}
       propertyPath: m_Name
       value: Locker_Part-05
@@ -551,6 +542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ab8fe43ea6c519b4d8736693cda9adba, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: ab8fe43ea6c519b4d8736693cda9adba, type: 3}
       propertyPath: m_Name
       value: Locker_Part-07
@@ -613,6 +608,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b41087a5eeda3ac4aa3af3cd54d15532, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: b41087a5eeda3ac4aa3af3cd54d15532, type: 3}
       propertyPath: m_Name
       value: Locker_Part-04
@@ -675,6 +674,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 69a9b942d23a7554f9218fbf2f864c21, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48ac87e2a089eac4f971a5a6ab820f4f, type: 2}
     - target: {fileID: 919132149155446097, guid: 69a9b942d23a7554f9218fbf2f864c21, type: 3}
       propertyPath: m_Name
       value: Locker_Part-01
