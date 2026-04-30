@@ -24,7 +24,6 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
     private float _distance;
     public float Distance => _distance;
 
-    // ✅ AJOUT : Exposer l'axe pour que Monster puisse le lire
     public MovementAxis Axis => _movementAxis;
     #endregion
 
@@ -35,7 +34,6 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
         {
             _distance = _manualDistance;
 
-            // Déplacer le monstre selon l'axe sélectionné
             Vector3 newPosition = transform.position;
 
             switch (_movementAxis)
@@ -75,7 +73,6 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
     {
         if (_player == null) return;
 
-        // Couleur différente selon le mode
         Gizmos.color = _useManualDistance ? Color.yellow : Color.red;
         Gizmos.DrawLine(transform.position, _player.transform.position);
     }
