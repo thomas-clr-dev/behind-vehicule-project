@@ -1,8 +1,12 @@
 
+
 using UnityEngine;
 
 public class WheelVFX : MonoBehaviour
+
 {
+    private bool vfxAlreadyPlayed = false;
+
     private EventBinding<WheelStateDataEvent> dataBinding;
 
     [SerializeField] private GameObject vfxPrefab;
@@ -16,9 +20,16 @@ public class WheelVFX : MonoBehaviour
     private void OnDataUpdated(WheelStateDataEvent e)
     {
         Debug.Log(e.MotorTorque);
-        if(e.MotorTorque > 5)
+        if(e.MotorTorque > 5 && !vfxAlreadyPlayed)
         {
-            GameObject go = Instantiate(vfxPrefab,transform.position, new Quaternion(0,0,0,0));
+            GameObject go = Instantiate(vfxPrefab, transform.position, transform.rotation);
+
+            vfxAlreadyPlayed = true;
+        }
+
+        else if (e.MotorTorque <1)
+        {
+            vfxAlreadyPlayed = false;
         }
     }
    
