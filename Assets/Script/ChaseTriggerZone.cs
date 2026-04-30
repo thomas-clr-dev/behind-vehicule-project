@@ -10,11 +10,19 @@ public class ChaseTriggerZone : MonoBehaviour
     #region Trigger Logic
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"🟢 TriggerZone '{gameObject.name}' - Collision avec: {other.gameObject.name} (Tag: {other.tag})");
+        
         if (other.CompareTag("Player"))
         {
+            Debug.Log($"✅ TriggerZone '{gameObject.name}' - PLAYER DÉTECTÉ! Lancement de OnChaseBegin");
+            
             if (OnChaseBegin != null)
             {
                 OnChaseBegin.Invoke();
+            }
+            else
+            {
+                Debug.LogError($"❌ TriggerZone '{gameObject.name}' - OnChaseBegin est NULL!");
             }
         }
     }

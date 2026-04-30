@@ -10,7 +10,7 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
     #region Manual Distance Override
     [Header("Manual Testing")]
     [Tooltip("Activer pour tester manuellement la distance avec le slider")]
-    [SerializeField] private bool _useManualDistance = true;
+    [SerializeField] private bool _useManualDistance = false;
 
     [Tooltip("Distance manuelle (pour tester le système audio)")]
     [Range(0, 30)]
