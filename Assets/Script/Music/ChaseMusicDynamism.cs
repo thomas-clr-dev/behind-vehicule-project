@@ -144,23 +144,13 @@ public class ChaseMusicDynamism : MonoBehaviour
             return;
         }
 
-        if (!_isChaseActive)
-        {
-            Debug.Log($"⏸️ Update - Chase INACTIVE, return");
-            return;
-        }
+        if (!_isChaseActive) return;
 
-        if (_distanceCalculators == null || _distanceCalculators.Length == 0)
-        {
-            Debug.LogError($"❌ Update - Pas de DistanceCalculators!");
-            return;
-        }
+        if (_distanceCalculators == null || _distanceCalculators.Length == 0) return;
 
         _monsterDistance = GetClosestMonsterDistance();
-        Debug.Log($"📏 Update - Distance: {_monsterDistance:F2}");
 
         ChaseState newState = EvaluateStateFromDistance(_monsterDistance);
-        Debug.Log($"🎯 Update - State évalué: {newState} (Current: {_currentState})");
 
         if (newState != _currentState)
         {
@@ -177,8 +167,6 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void OnChaseStarted()
     {
-        Debug.Log($"🎵 OnChaseStarted - AVANT: _isChaseActive={_isChaseActive}, _currentState={_currentState}");
-        
         _isChaseActive = true;
         _isFadingOut = false;
 
@@ -187,9 +175,6 @@ public class ChaseMusicDynamism : MonoBehaviour
         _stringAccent.Play();
         _stringMelody.Play();
         _tuba.Play();
-        
-        Debug.Log($"🎵 OnChaseStarted - APRÈS: _isChaseActive={_isChaseActive}");
-        Debug.Log($"🔊 Volumes actuels - Heartbeat: {_heartbeat.volume}, Percussion: {_percussion.volume}");
     }
 
     /// <summary>
@@ -197,8 +182,6 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void OnChaseEnded()
     {
-        if (!_isChaseActive) return;
-
         _isChaseActive = false;
         _isFadingOut = true;
 
@@ -266,7 +249,7 @@ public class ChaseMusicDynamism : MonoBehaviour
         _stringAccent.time = 0;
         _stringMelody.time = 0;
         _tuba.time = 0;
-    }   
+    }
     #endregion
 
     #region Private Methods - Distance Calculation
@@ -312,6 +295,7 @@ public class ChaseMusicDynamism : MonoBehaviour
         switch (newState)
         {
             case ChaseState.NO_CHASE:
+                //FadeOut Brutal
                 break;
             case ChaseState.FAR:
                 break;

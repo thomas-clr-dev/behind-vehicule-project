@@ -69,8 +69,6 @@ public class Monster : MonoBehaviour
     #region Initialization
     private void Start()
     {
-        Debug.Log($"🔵 Monster '{gameObject.name}' - Start()");
-
         // Sauvegarder la position initiale
         _initialPosition = transform.position;
 
@@ -79,12 +77,10 @@ public class Monster : MonoBehaviour
 
         // Récupérer tous les renderers
         _renderers = GetComponentsInChildren<Renderer>();
-        Debug.Log($"👁️ Monster '{gameObject.name}' - {_renderers.Length} Renderer(s) trouvé(s)");
 
         // S'abonner à la zone de START
         if (_chaseTriggerZone != null)
         {
-            Debug.Log($"✅ Monster '{gameObject.name}' - ChaseTriggerZone assignée: {_chaseTriggerZone.gameObject.name}");
             _chaseTriggerZone.OnChaseBegin += StartChasing;
         }
         else
@@ -96,7 +92,6 @@ public class Monster : MonoBehaviour
         if (_endZone != null)
         {
             _endZone.OnChaseEnd += StopChasing;
-            Debug.Log($"✅ Monster '{gameObject.name}' - Abonné à EndZone: {_endZone.gameObject.name}");
         }
         else
         {
@@ -203,7 +198,6 @@ public class Monster : MonoBehaviour
         // Log le changement d'état
         if (newState != _currentSpeedState)
         {
-            Debug.Log($"🏃 Monster '{gameObject.name}' - Speed state: {_currentSpeedState} → {newState} (Distance: {distance:F2}, Speed: {targetSpeed:F2})");
             _currentSpeedState = newState;
         }
 
@@ -215,8 +209,6 @@ public class Monster : MonoBehaviour
     #region Chase Logic
     private void StartChasing()
     {
-        Debug.Log($"🏃 Monster '{gameObject.name}' started chasing!");
-
         _isChasing = true;
 
         // Rendre visible
@@ -225,8 +217,6 @@ public class Monster : MonoBehaviour
 
     public void StopChasing()
     {
-        Debug.Log($"🛑 Monster '{gameObject.name}' stopped chasing!");
-
         // Arrêter le déplacement
         _isChasing = false;
 
@@ -257,8 +247,6 @@ public class Monster : MonoBehaviour
                     renderer.enabled = visible;
                 }
             }
-
-            Debug.Log($"👁️ Monster '{gameObject.name}' visibility: {(visible ? "VISIBLE" : "INVISIBLE")}");
         }
         else
         {
@@ -272,7 +260,6 @@ public class Monster : MonoBehaviour
     private void ResetPosition()
     {
         transform.position = _initialPosition;
-        Debug.Log($"🔄 Monster '{gameObject.name}' position reset to {_initialPosition}");
     }
     #endregion
 
@@ -299,9 +286,9 @@ public class Monster : MonoBehaviour
 /// </summary>
 public enum MonsterSpeedState
 {
-    VeryFar,   // > 20 unités
-    Far,       // 15-20 unités
-    Mid,       // 10-15 unités
-    Near,      // 5-10 unités
-    VeryClose  // < 5 unités
+    VeryFar,   
+    Far,       
+    Mid,       
+    Near,      
+    VeryClose  
 }
