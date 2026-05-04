@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -65,6 +66,8 @@ public class Monster : MonoBehaviour
 
     #region Public Properties
     public bool IsChasing => _isChasing;
+
+    public static event Action OnGameOver;
     #endregion
 
     #region Initialization
@@ -234,6 +237,16 @@ public class Monster : MonoBehaviour
         SetVisibility(false);
 
         ResetPosition();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log($"⚠️ Monster '{gameObject.name}' - Collision avec le joueur! Fin de la chase.");
+            StopChasing();
+            OnGameOver?.Invoke();
+        }
     }
     #endregion
 
