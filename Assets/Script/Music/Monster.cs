@@ -60,6 +60,7 @@ public class Monster : MonoBehaviour
     private Vector3 _initialPosition;
     private float _currentSpeed;
     private MonsterSpeedState _currentSpeedState;
+    private MovementAxis _currentDirection; // ✅ NOUVEAU : Direction actuelle
     #endregion
 
     #region Public Properties
@@ -69,36 +70,22 @@ public class Monster : MonoBehaviour
     #region Initialization
     private void Start()
     {
-        // Sauvegarder la position initiale
         _initialPosition = transform.position;
 
-        // Initialiser la vitesse
         _currentSpeed = _speedVeryFar;
 
-        // Récupérer tous les renderers
         _renderers = GetComponentsInChildren<Renderer>();
 
-        // S'abonner à la zone de START
         if (_chaseTriggerZone != null)
         {
             _chaseTriggerZone.OnChaseBegin += StartChasing;
         }
-        else
-        {
-            Debug.LogError($"❌ Monster '{gameObject.name}' - ChaseTriggerZone NON ASSIGNÉE!");
-        }
 
-        // S'abonner à la zone de END
         if (_endZone != null)
         {
             _endZone.OnChaseEnd += StopChasing;
         }
-        else
-        {
-            Debug.LogError($"❌ Monster '{gameObject.name}' - EndZone NON ASSIGNÉE!");
-        }
 
-        // Vérifier la référence au distance calculator
         if (_distanceCalculator == null)
         {
             _distanceCalculator = GetComponent<DistanceFromMonsterToPlayer>();
@@ -110,11 +97,40 @@ public class Monster : MonoBehaviour
             else
             {
                 Debug.Log($"✅ Monster '{gameObject.name}' - DistanceFromMonsterToPlayer trouvé");
+                _currentDirection = _distanceCalculator.Axis;
             }
         }
+        else
+        {
+            _currentDirection = _distanceCalculator.Axis;
+        }
 
-        // Rendre invisible au démarrage
+        SubscribeToDirectionZones();
+
         SetVisibility(false);
+    }
+
+    /// <summary>
+    /// S'abonne à toutes les ChangeDirectionChaseTriggerZone de la scène
+    /// </summary>
+    private void SubscribeToDirectionZones()
+    {
+        ChangeDirectionChaseTriggerZone[] directionZones = FindObjectsByType<ChangeDirectionChaseTriggerZone>(FindObjectsSortMode.None);
+        
+        Debug.Log($"🔍 Monster '{gameObject.name}' - Recherche de zones de direction... Trouvé: {directionZones.Length}");
+        
+        if (directionZones.Length > 0)
+        {
+            foreach (var zone in directionZones)
+            {
+                zone.OnDirectionChange += OnDirectionChanged;
+                Debug.Log($"✅ Monster '{gameObject.name}' - Abonné à ChangeDirectionChaseTriggerZone: {zone.gameObject.name}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ Monster '{gameObject.name}' - Aucune ChangeDirectionChaseTriggerZone trouvée dans la scène!");
+        }
     }
     #endregion
 
@@ -123,13 +139,10 @@ public class Monster : MonoBehaviour
     {
         if (_isChasing && _distanceCalculator != null)
         {
-            // Mettre à jour la vitesse en fonction de la distance
             UpdateSpeedBasedOnDistance();
-
-            // Calculer le déplacement selon l'axe configuré
             Vector3 movement = Vector3.zero;
 
-            switch (_distanceCalculator.Axis)
+            switch (_currentDirection)
             {
                 case MovementAxis.X:
                     movement = new Vector3(_currentSpeed * Time.deltaTime, 0, 0);
@@ -168,7 +181,6 @@ public class Monster : MonoBehaviour
         float targetSpeed = _speedVeryFar;
         MonsterSpeedState newState = MonsterSpeedState.VeryFar;
 
-        // Évaluer le palier de vitesse en fonction de la distance
         if (distance >= _distanceVeryFar)
         {
             targetSpeed = _speedVeryFar;
@@ -195,13 +207,11 @@ public class Monster : MonoBehaviour
             newState = MonsterSpeedState.VeryClose;
         }
 
-        // Log le changement d'état
         if (newState != _currentSpeedState)
         {
             _currentSpeedState = newState;
         }
 
-        // Transition fluide vers la vitesse cible
         _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, _speedTransitionSpeed * Time.deltaTime);
     }
     #endregion
@@ -211,23 +221,18 @@ public class Monster : MonoBehaviour
     {
         _isChasing = true;
 
-        // Rendre visible
         SetVisibility(true);
     }
 
     public void StopChasing()
     {
-        // Arrêter le déplacement
         _isChasing = false;
 
-        // Réinitialiser la vitesse
         _currentSpeed = _speedVeryFar;
         _currentSpeedState = MonsterSpeedState.VeryFar;
 
-        // Rendre invisible
         SetVisibility(false);
 
-        // Réinitialiser la position
         ResetPosition();
     }
     #endregion
@@ -266,16 +271,40 @@ public class Monster : MonoBehaviour
     #region Cleanup
     private void OnDestroy()
     {
-        // Désabonnement de la zone de START
         if (_chaseTriggerZone != null)
         {
             _chaseTriggerZone.OnChaseBegin -= StartChasing;
         }
 
-        // Désabonnement de la zone de END
         if (_endZone != null)
         {
             _endZone.OnChaseEnd -= StopChasing;
+        }
+
+        ChangeDirectionChaseTriggerZone[] directionZones = FindObjectsByType<ChangeDirectionChaseTriggerZone>(FindObjectsSortMode.None);
+        foreach (var zone in directionZones)
+        {
+            zone.OnDirectionChange -= OnDirectionChanged;
+        }
+    }
+    #endregion
+
+    #region Direction Management
+    /// <summary>
+    /// Appelé quand le monstre entre dans une zone de changement de direction
+    /// </summary>
+    private void OnDirectionChanged(MovementAxis newDirection)
+    {
+        Debug.Log($"🔔 Monster '{gameObject.name}' - OnDirectionChanged appelé! Nouvelle direction: {newDirection} (Chasing: {_isChasing})");
+        
+        if (_isChasing)
+        {
+            Debug.Log($"🔄 Monster '{gameObject.name}' - Changement de direction: {_currentDirection} → {newDirection}");
+            _currentDirection = newDirection;
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ Monster '{gameObject.name}' - Changement ignoré car pas en chase");
         }
     }
     #endregion
