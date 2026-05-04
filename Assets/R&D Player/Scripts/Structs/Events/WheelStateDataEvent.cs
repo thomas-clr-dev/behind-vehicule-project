@@ -1,17 +1,19 @@
-// Événement purement orienté "Données"
+// ï¿½vï¿½nement purement orientï¿½ "Donnï¿½es"
 public struct WheelStateDataEvent : IEvent
 {
     public HandType Hand;
     public GestureStep Step;
     public float StickY;
     public float PushDirection;
+    public float MotorTorque;
 
-    public WheelStateDataEvent(HandType hand, GestureStep step, float stickY, float pushDir)
+    public WheelStateDataEvent(HandType hand, GestureStep step, float stickY, float pushDir, float motorTorque)
     {
         Hand = hand;
         Step = step;
         StickY = stickY;
         PushDirection = pushDir;
+        MotorTorque = motorTorque;
     }
 
 }
