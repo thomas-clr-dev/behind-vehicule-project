@@ -89,116 +89,6 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
     ""name"": ""R&D Player Actions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
-            ""id"": ""b152d451-6e81-44a3-b3e5-f69814af94b8"",
-            ""actions"": [
-                {
-                    ""name"": ""HoldLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""584f597c-3870-426f-bedc-251f465eb06c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""HoldRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""b4006bad-eb0e-4ded-ace3-5b9c4fe103f2"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""LeftStick"",
-                    ""type"": ""Value"",
-                    ""id"": ""3f81bafd-ec98-4294-aede-76c42ab53891"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""RightStick"",
-                    ""type"": ""Value"",
-                    ""id"": ""2b1c1564-ca43-4165-b336-af6e18b5d2b3"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""fd42fd02-45ec-4bf9-8672-79fe8951e1a9"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HoldLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dcc16bdc-1858-42cd-a9a7-03b6f4af5453"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HoldLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3f4e4124-215e-4278-98ba-7db5380a43f8"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HoldRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2507cda7-6d4c-4234-988d-c4ae765d289b"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HoldRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6c9b9095-7d54-4e74-a202-8864eb315253"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": ""StickDeadzone(min=0.2)"",
-                    ""groups"": """",
-                    ""action"": ""LeftStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2051c5b4-b5cc-4a57-b88a-c73b0ef6788e"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""StickDeadzone(min=0.2)"",
-                    ""groups"": """",
-                    ""action"": ""RightStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Wheel"",
             ""id"": ""ea919cb0-985b-4d31-beb5-3c59317673c3"",
             ""actions"": [
@@ -311,12 +201,6 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_HoldLeft = m_Player.FindAction("HoldLeft", throwIfNotFound: true);
-        m_Player_HoldRight = m_Player.FindAction("HoldRight", throwIfNotFound: true);
-        m_Player_LeftStick = m_Player.FindAction("LeftStick", throwIfNotFound: true);
-        m_Player_RightStick = m_Player.FindAction("RightStick", throwIfNotFound: true);
         // Wheel
         m_Wheel = asset.FindActionMap("Wheel", throwIfNotFound: true);
         m_Wheel_MoveLeft = m_Wheel.FindAction("MoveLeft", throwIfNotFound: true);
@@ -327,7 +211,6 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
 
     ~@RDPlayerActions()
     {
-        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, RDPlayerActions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Wheel.enabled, "This will cause a leak and performance issues, RDPlayerActions.Wheel.Disable() has not been called.");
     }
 
@@ -400,135 +283,6 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
-
-    // Player
-    private readonly InputActionMap m_Player;
-    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_HoldLeft;
-    private readonly InputAction m_Player_HoldRight;
-    private readonly InputAction m_Player_LeftStick;
-    private readonly InputAction m_Player_RightStick;
-    /// <summary>
-    /// Provides access to input actions defined in input action map "Player".
-    /// </summary>
-    public struct PlayerActions
-    {
-        private @RDPlayerActions m_Wrapper;
-
-        /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
-        public PlayerActions(@RDPlayerActions wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "Player/HoldLeft".
-        /// </summary>
-        public InputAction @HoldLeft => m_Wrapper.m_Player_HoldLeft;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/HoldRight".
-        /// </summary>
-        public InputAction @HoldRight => m_Wrapper.m_Player_HoldRight;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/LeftStick".
-        /// </summary>
-        public InputAction @LeftStick => m_Wrapper.m_Player_LeftStick;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/RightStick".
-        /// </summary>
-        public InputAction @RightStick => m_Wrapper.m_Player_RightStick;
-        /// <summary>
-        /// Provides access to the underlying input action map instance.
-        /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-        public void Enable() { Get().Enable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-        public void Disable() { Get().Disable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-        public bool enabled => Get().enabled;
-        /// <summary>
-        /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        /// <summary>
-        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <param name="instance">Callback instance.</param>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-        /// </remarks>
-        /// <seealso cref="PlayerActions" />
-        public void AddCallbacks(IPlayerActions instance)
-        {
-            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @HoldLeft.started += instance.OnHoldLeft;
-            @HoldLeft.performed += instance.OnHoldLeft;
-            @HoldLeft.canceled += instance.OnHoldLeft;
-            @HoldRight.started += instance.OnHoldRight;
-            @HoldRight.performed += instance.OnHoldRight;
-            @HoldRight.canceled += instance.OnHoldRight;
-            @LeftStick.started += instance.OnLeftStick;
-            @LeftStick.performed += instance.OnLeftStick;
-            @LeftStick.canceled += instance.OnLeftStick;
-            @RightStick.started += instance.OnRightStick;
-            @RightStick.performed += instance.OnRightStick;
-            @RightStick.canceled += instance.OnRightStick;
-        }
-
-        /// <summary>
-        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <remarks>
-        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-        /// </remarks>
-        /// <seealso cref="PlayerActions" />
-        private void UnregisterCallbacks(IPlayerActions instance)
-        {
-            @HoldLeft.started -= instance.OnHoldLeft;
-            @HoldLeft.performed -= instance.OnHoldLeft;
-            @HoldLeft.canceled -= instance.OnHoldLeft;
-            @HoldRight.started -= instance.OnHoldRight;
-            @HoldRight.performed -= instance.OnHoldRight;
-            @HoldRight.canceled -= instance.OnHoldRight;
-            @LeftStick.started -= instance.OnLeftStick;
-            @LeftStick.performed -= instance.OnLeftStick;
-            @LeftStick.canceled -= instance.OnLeftStick;
-            @RightStick.started -= instance.OnRightStick;
-            @RightStick.performed -= instance.OnRightStick;
-            @RightStick.canceled -= instance.OnRightStick;
-        }
-
-        /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
-        /// </summary>
-        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-        public void RemoveCallbacks(IPlayerActions instance)
-        {
-            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        /// <summary>
-        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-        /// </remarks>
-        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-        public void SetCallbacks(IPlayerActions instance)
-        {
-            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    /// <summary>
-    /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
-    /// </summary>
-    public PlayerActions @Player => new PlayerActions(this);
 
     // Wheel
     private readonly InputActionMap m_Wheel;
@@ -658,42 +412,6 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="WheelActions" /> instance referencing this action map.
     /// </summary>
     public WheelActions @Wheel => new WheelActions(this);
-    /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
-    /// </summary>
-    /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-    /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-    public interface IPlayerActions
-    {
-        /// <summary>
-        /// Method invoked when associated input action "HoldLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHoldLeft(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "HoldRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHoldRight(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "LeftStick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLeftStick(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "RightStick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRightStick(InputAction.CallbackContext context);
-    }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Wheel" which allows adding and removing callbacks.
     /// </summary>

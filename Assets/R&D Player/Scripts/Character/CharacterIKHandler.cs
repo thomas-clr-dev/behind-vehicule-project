@@ -4,30 +4,72 @@ using UnityEngine.Animations.Rigging;
 
 public class CharacterIKHandler : MonoBehaviour
 {
-
-
     [Header("IK References")]
-    [SerializeField] private HandIKArcVisual leftHandVisual;
-    [SerializeField] private HandIKArcVisual rightHandVisual;
-    [Min(1f)][SerializeField] private float handOffset;
 
+    [Tooltip("Visuals pour les arcs de mouvement des mains")]
+    [SerializeField] private HandIKArcVisual leftHandVisual;
+    [Tooltip("Visuals pour les arcs de mouvement des mains")]
+    [SerializeField] private HandIKArcVisual rightHandVisual;
+
+    [Space(10)]
     [Header("Final IK Rig Targets")]
+
+    [Tooltip("Effector final pour les bras, cible finale de l'IK")]
     [SerializeField] private Transform leftArmEffector;
+    [Tooltip("Effector final pour les bras, cible finale de l'IK")]
     [SerializeField] private Transform rightArmEffector;
 
+    [Space(10)]
     [Header("Free Hand Targets (Points dans le vide)")]
+
+    [Tooltip("Points de référence pour les mains quand elles ne sont pas sur la roue")]
     [SerializeField] private Transform leftFreeHandTarget;
+    [Tooltip("Points de référence pour les mains quand elles ne sont pas sur la roue")]
     [SerializeField] private Transform rightFreeHandTarget;
 
+    [Space(10)]
+    [Header("Free Hand Rotation(Back)")]
+
+    [Tooltip("Rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 backLeftFreeHandRotationTarget;
+    [Tooltip("Rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 backRightFreeHandRotationTarget;
+
+    [Space(10)]
+    [Header("Free Hand Rotation(Front)")]
+
+    [Tooltip("Rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 forwardLeftFreeHandRotationTarget;
+    [Tooltip("Rotation des mains quand elles ne sont pas sur la roue")]
+    [SerializeField] private Vector3 forwardRightFreeHandRotationTarget;
+
+    [Space(10)]
     [Header("Grip Tuning (Ajustements)")]
-    [Tooltip("Décalage de la main par rapport à la cible (Local)")]
+
+    [Tooltip("Distance de la main par rapport à la cible (Local)")]
     [SerializeField] private Vector3 gripOffset;
     [Tooltip("Rotation supplémentaire pour bien aligner la paume")]
     [SerializeField] private Vector3 gripRotationOffset;
 
+    [Space(10)]
     [Header("Base Rotations")]
+
+    [Tooltip("Rotation de base pour les bras quand ils sont sur la roue (Local)")]
     [SerializeField] private Vector3 leftBaseRotation;
+    [Tooltip("Rotation de base pour les bras quand ils sont sur la roue (Local)")]
     [SerializeField] private Vector3 rightBaseRotation;
+
+    [Space(10)]
+    [Header("Chest Rigging")]
+
+    [Tooltip("Effector pour la poitrine, utilisé pour ajouter du mouvement de torse")]
+    [SerializeField] private MultiAimConstraint chestConstraint;
+    [SerializeField] private float chestTransitionSpeed = 3f;
+
+    private float chestTargetWeight = 0f;
+
+    [Space(10)]
+    [Header("Transition Settings")]
 
     [SerializeField] private float transitionSpeed = 5f;
 
@@ -55,12 +97,26 @@ public class CharacterIKHandler : MonoBehaviour
         leftWeight = Mathf.MoveTowards(leftWeight, leftTargetWeight, Time.deltaTime * transitionSpeed);
         rightWeight = Mathf.MoveTowards(rightWeight, rightTargetWeight, Time.deltaTime * transitionSpeed);
 
-        UpdateEffector(leftArmEffector, leftHandVisual.ikTarget, leftFreeHandTarget, leftWeight, leftPushDir, true);
-        UpdateEffector(rightArmEffector, rightHandVisual.ikTarget, rightFreeHandTarget, rightWeight, rightPushDir, false);
+        UpdateHandEffector(leftArmEffector, leftHandVisual.ikTarget, leftFreeHandTarget, leftWeight, leftPushDir, true);
+        UpdateHandEffector(rightArmEffector, rightHandVisual.ikTarget, rightFreeHandTarget, rightWeight, rightPushDir, false);
+
+        UpdateChestEffector();
 
     }
 
-    private void UpdateEffector(Transform effector, Transform wheelPoint, Transform freePoint, float weight, float direction, bool isLeft)
+    private void UpdateChestEffector()
+    {
+        if (chestConstraint == null) return;
+
+        // On fait bouger le poids réel vers le poids cible
+        chestConstraint.weight = Mathf.MoveTowards(
+            chestConstraint.weight,
+            chestTargetWeight,
+            Time.deltaTime * chestTransitionSpeed
+        );
+    }
+
+    private void UpdateHandEffector(Transform effector, Transform wheelPoint, Transform freePoint, float weight, float direction, bool isLeft)
     {
         if (effector == null) return;
 
@@ -72,8 +128,22 @@ public class CharacterIKHandler : MonoBehaviour
         }
         effector.position = Vector3.Lerp(finalFreePos, wheelPoint.position, weight);
 
-        Vector3 rotation = isLeft ? leftBaseRotation : rightBaseRotation;
-        effector.localRotation = Quaternion.Euler(rotation);
+        Vector3 targetFreeRotationEuler;
+        if (direction >= 0)
+        {
+            targetFreeRotationEuler = isLeft ? forwardLeftFreeHandRotationTarget : forwardRightFreeHandRotationTarget;
+        }
+        else
+        {
+            targetFreeRotationEuler = isLeft ? backLeftFreeHandRotationTarget : backRightFreeHandRotationTarget;
+        }
+
+        Vector3 baseRotationEuler = isLeft ? leftBaseRotation : rightBaseRotation;
+
+        Quaternion freeRot = Quaternion.Euler(targetFreeRotationEuler);
+        Quaternion wheelRot = Quaternion.Euler(baseRotationEuler);
+
+        effector.localRotation = Quaternion.Slerp(freeRot, wheelRot, weight);
 
         if (weight > 0.01f)
         {
@@ -102,10 +172,12 @@ public class CharacterIKHandler : MonoBehaviour
 
         float weightGoal = (e.Step == GestureStep.Cooldown) ? 0f : 1f;
 
+        chestTargetWeight = (e.Step == GestureStep.Cooldown) ? 1f : 0f;
+
         if (e.Hand == HandType.LeftHand)
         {
             leftTargetWeight = weightGoal;
-            leftPushDir = e.PushDirection; // On enregistre la direction !
+            leftPushDir = e.PushDirection; 
         }
         else
         {
