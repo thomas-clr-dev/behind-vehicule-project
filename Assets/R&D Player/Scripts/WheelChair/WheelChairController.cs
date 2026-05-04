@@ -81,11 +81,16 @@ public class WheelChairController : MonoBehaviour
         leftHandMachine?.PhysicsUpdateState();
         rightHandMachine?.PhysicsUpdateState();
 
+        ApplyAverageTorque();   
 
+    }
+
+    private void ApplyAverageTorque()
+    {
         if (Mathf.Abs(LeftWheelCollider.motorTorque) > 0.1f && Mathf.Abs(RightWheelCollider.motorTorque) > 0.1f)
-        {     
+        {
             if (Mathf.Sign(LeftWheelCollider.motorTorque) == Mathf.Sign(RightWheelCollider.motorTorque))
-            {     
+            {
                 float averageTorque = (LeftWheelCollider.motorTorque + RightWheelCollider.motorTorque) / 2f;
                 LeftWheelCollider.motorTorque = averageTorque;
                 RightWheelCollider.motorTorque = averageTorque;
@@ -95,10 +100,10 @@ public class WheelChairController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (GetComponent<Rigidbody>())
+        if (rb != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.TransformPoint(GetComponent<Rigidbody>().centerOfMass), 0.1f);
+            Gizmos.DrawSphere(transform.TransformPoint(rb.centerOfMass), 0.1f);
         }
     }
 

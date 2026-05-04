@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     {
         controls = new RDPlayerActions();        
 
-        controls.Player.LeftStick.performed += ctx => leftInput = ctx.ReadValue<Vector2>();
-        controls.Player.LeftStick.canceled += ctx => leftInput = Vector2.zero;
-        controls.Player.RightStick.performed += ctx => rightInput = ctx.ReadValue<Vector2>();
-        controls.Player.RightStick.canceled += ctx => rightInput = Vector2.zero;
+        //controls.Player.LeftStick.performed += ctx => leftInput = ctx.ReadValue<Vector2>();
+        //controls.Player.LeftStick.canceled += ctx => leftInput = Vector2.zero;
+        //controls.Player.RightStick.performed += ctx => rightInput = ctx.ReadValue<Vector2>();
+        //controls.Player.RightStick.canceled += ctx => rightInput = Vector2.zero;
     }
 
     private void OnEnable()

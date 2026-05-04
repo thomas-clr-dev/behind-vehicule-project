@@ -1,8 +1,3 @@
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
-using static UnityEditor.VersionControl.Asset;
-
 public class StateMachine
 {
     public IState CurrentState { get; private set; }
@@ -40,8 +35,4 @@ public class StateMachine
         CurrentState?.Exit();
         CurrentState = null;
     }   
-
-
-
-
 }
