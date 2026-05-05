@@ -9,9 +9,9 @@ public class ChangeDirectionChaseTriggerZone : MonoBehaviour
     #region Events
     /// <summary>
     /// Événement déclenché quand un monstre entre dans la zone.
-    /// Le paramètre est la nouvelle direction à prendre.
+    /// Fournit les informations de rotation et de direction.
     /// </summary>
-    public event Action<MovementAxis> OnDirectionChange;
+    public event Action<DirectionChangeData> OnDirectionChange;
     #endregion
 
     #region SerializeField
@@ -19,42 +19,38 @@ public class ChangeDirectionChaseTriggerZone : MonoBehaviour
     [Tooltip("Nouvelle direction que le monstre doit prendre")]
     [SerializeField] private MovementAxis _newDirection = MovementAxis.X;
 
-    [Header("Debug")]
-    [Tooltip("Afficher les logs de debug")]
-    [SerializeField] private bool _showDebugLogs = true;
+    [Header("Rotation Settings")]
+    [Tooltip("Angle de rotation en degrés (ex: 90, 180, 270)")]
+    [SerializeField] private float _rotationAngle = 90f;
+
+    [Tooltip("Sens de rotation")]
+    [SerializeField] private RotationDirection _rotationDirection = RotationDirection.Clockwise;
+
+    [Tooltip("Durée de la rotation en secondes")]
+    [SerializeField] private float _rotationDuration = 1f;
+
+    [Header("Speed Settings")]
+    [Tooltip("Multiplicateur de vitesse pendant la rotation (0.5 = 50% de vitesse)")]
+    [SerializeField] [Range(0f, 1f)] private float _speedMultiplierDuringRotation = 0.5f;
     #endregion
 
     #region Trigger Logic
     private void OnTriggerEnter(Collider other)
     {
-        // ✅ LOG : Tout ce qui entre dans la zone
-        Debug.Log($"🟢 ChangeDirectionChaseTriggerZone '{gameObject.name}' - OnTriggerEnter avec: {other.gameObject.name}");
-
         Monster monster = other.GetComponent<Monster>();
-
-        if (monster != null)
+        
+        if (monster != null && OnDirectionChange != null)
         {
-            Debug.Log($"✅ Monster trouvé sur '{other.gameObject.name}'!");
+            DirectionChangeData changeData = new DirectionChangeData
+            {
+                NewDirection = _newDirection,
+                RotationAngle = _rotationAngle,
+                RotationDirection = _rotationDirection,
+                RotationDuration = _rotationDuration,
+                SpeedMultiplier = _speedMultiplierDuringRotation
+            };
 
-            if (_showDebugLogs)
-            {
-                Debug.Log($"🔄 ChangeDirectionChaseTriggerZone '{gameObject.name}' - Monstre '{other.gameObject.name}' détecté! Nouvelle direction: {_newDirection}");
-            }
-
-            // ✅ Vérifier si l'event a des abonnés
-            if (OnDirectionChange != null)
-            {
-                Debug.Log($"📢 Invocation de OnDirectionChange avec direction: {_newDirection}");
-                OnDirectionChange.Invoke(_newDirection);
-            }
-            else
-            {
-                Debug.LogWarning($"⚠️ OnDirectionChange n'a AUCUN abonné!");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"❌ Pas de Monster sur '{other.gameObject.name}'");
+            OnDirectionChange.Invoke(changeData);
         }
     }
     #endregion
@@ -66,12 +62,44 @@ public class ChangeDirectionChaseTriggerZone : MonoBehaviour
 
         if (boxCollider != null)
         {
+            // Dessine la zone en cyan
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube(transform.position, boxCollider.size);
 
+            // Dessine la direction finale en jaune
             Vector3 arrowDirection = GetDirectionVector();
             Gizmos.color = Color.yellow;
             Gizmos.DrawRay(transform.position, arrowDirection * 2f);
+
+            // Dessine un arc pour visualiser la rotation
+            DrawRotationArc();
+        }
+    }
+
+    /// <summary>
+    /// Dessine un arc pour visualiser la rotation
+    /// </summary>
+    private void DrawRotationArc()
+    {
+        Vector3 center = transform.position;
+        float radius = 1.5f;
+        int segments = 20;
+        
+        Gizmos.color = _rotationDirection == RotationDirection.Clockwise ? Color.green : Color.magenta;
+
+        Vector3 startDir = GetDirectionVector();
+        float angleStep = _rotationAngle / segments;
+        float sign = _rotationDirection == RotationDirection.Clockwise ? 1f : -1f;
+
+        for (int i = 0; i < segments; i++)
+        {
+            float angle1 = i * angleStep * sign;
+            float angle2 = (i + 1) * angleStep * sign;
+
+            Vector3 point1 = center + Quaternion.Euler(0, angle1, 0) * startDir * radius;
+            Vector3 point2 = center + Quaternion.Euler(0, angle2, 0) * startDir * radius;
+
+            Gizmos.DrawLine(point1, point2);
         }
     }
 
@@ -92,4 +120,25 @@ public class ChangeDirectionChaseTriggerZone : MonoBehaviour
         };
     }
     #endregion
+}
+
+/// <summary>
+/// Sens de rotation
+/// </summary>
+public enum RotationDirection
+{
+    Clockwise,      // Sens horaire
+    Anticlockwise   // Sens anti-horaire
+}
+
+/// <summary>
+/// Données de changement de direction avec rotation
+/// </summary>
+public struct DirectionChangeData
+{
+    public MovementAxis NewDirection;
+    public float RotationAngle;
+    public RotationDirection RotationDirection;
+    public float RotationDuration;
+    public float SpeedMultiplier;
 }
