@@ -46,6 +46,7 @@ public class SimulationWheelState : WheelStateBase
 
     public override void Update()
     {
+        base.Update();
         stickVelocity = (stickY - lastStickY) / Time.deltaTime;
         lastStickY = stickY;
 
