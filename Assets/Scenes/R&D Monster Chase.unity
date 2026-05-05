@@ -704,7 +704,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   _chaseSpeed: 4
+  _distanceCalculator: {fileID: 0}
   _chaseTriggerZone: {fileID: 1784034968}
+  _endZone: {fileID: 0}
 --- !u!65 &543738069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -813,6 +815,7 @@ MonoBehaviour:
   _player: {fileID: 53986659}
   _useManualDistance: 1
   _manualDistance: 25
+  _movementAxis: 0
 --- !u!1 &636044716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,42 +1233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d6e2ab34dd38048bb1656a58e2bffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseMusicDynamism
-  _distanceCalculator: {fileID: 543738073}
+  _distanceCalculators: []
   _distanceForNoChase: 20
   _distanceForFar: 15
   _distanceForMid: 10
   _distanceForNear: 5
   _distanceForVeryClose: 0
+  _startZones: []
+  _endZones: []
   _heartbeat: {fileID: 926105076}
   _percussion: {fileID: 24169686}
   _stringAccent: {fileID: 1068440819}
   _stringMelody: {fileID: 2111159327}
   _tuba: {fileID: 500524045}
-  _heartbeatClips:
-  - {fileID: 8300000, guid: 840596edbc36edc46851b9ac37a63a45, type: 3}
-  - {fileID: 8300000, guid: 510bb9f9dd276d449bd3d303ca6c9b6e, type: 3}
-  - {fileID: 8300000, guid: d37347b4407333a469d7c4f5f86d134e, type: 3}
-  - {fileID: 8300000, guid: 5b3667a8bb2c5674da9425d88721b959, type: 3}
-  _percussionClips:
-  - {fileID: 8300000, guid: a6df8510aedd67a408add9436f95cf83, type: 3}
-  - {fileID: 8300000, guid: 44519f520b10b7b4098bbe6830d454d2, type: 3}
-  - {fileID: 8300000, guid: 790f0f4504361284a97ff171baec462a, type: 3}
-  - {fileID: 8300000, guid: ad1987af3a51dd046a250dcdb94fab06, type: 3}
-  _stringAccentClips:
-  - {fileID: 8300000, guid: 90cf7871d1312d44ba5e6c74535343b2, type: 3}
-  - {fileID: 8300000, guid: 7611c23fdb98b3a4696220d4cbc207a6, type: 3}
-  - {fileID: 8300000, guid: 04cfe291b7713004eadecc4490e8d9b4, type: 3}
-  - {fileID: 8300000, guid: 91c19f5f9ca1e584ca1e1c1a0d709fd1, type: 3}
-  _stringMelodyClips:
-  - {fileID: 8300000, guid: d2d6dfc4a7e6ff64da0aa1382c0fc155, type: 3}
-  - {fileID: 8300000, guid: 59f98bd3772eaa249a7dc5e10b9ea1ca, type: 3}
-  - {fileID: 8300000, guid: 777febb02d5a6fe4d9fe486538a92404, type: 3}
-  - {fileID: 8300000, guid: 78c05a96c60b18143aa4dc910a601a92, type: 3}
-  _tubaClips:
-  - {fileID: 8300000, guid: 7c6c9fbadc4fd5b45b8c45a70680cfc5, type: 3}
-  - {fileID: 8300000, guid: a79fb9968d02dd844a7429ce3ff5efca, type: 3}
-  - {fileID: 8300000, guid: a4426f94d6b44dd4fbbf2e392ba8e0e4, type: 3}
-  - {fileID: 8300000, guid: 6a2c99f95d924be4fbc1dd8d1eedad43, type: 3}
   _volumeFar: 0.8
   _volumeMid: 0.9
   _volumeNear: 1
@@ -1373,59 +1353,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1790024826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1790024828}
-  - component: {fileID: 1790024827}
-  m_Layer: 0
-  m_Name: PlayerBoxCollider
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1790024827
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790024826}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1790024828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790024826}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32000005, z: 0}
-  m_LocalScale: {x: 0.5000001, y: 0.5, z: 0.5000001}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 53986660}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1827646082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,11 +1538,8 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 348213238770085695, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 159181037}
-    - targetCorrespondingSourceObject: {fileID: 348213238770085695, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1790024828}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819bcbff2ab0434eb23a5e334e84b1a, type: 3}
 --- !u!1 &2089806912

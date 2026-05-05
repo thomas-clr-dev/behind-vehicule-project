@@ -4,9 +4,9 @@ public class ChaseMusicDynamism : MonoBehaviour
 {
     #region SerializeField - Distance 
     /// <summary> 
-    /// Reference to the distance calculator of the monster 
+    /// References to the distance calculators of the monsters 
     /// </summary> 
-    [SerializeField] private DistanceFromMonsterToPlayer _distanceCalculator;
+    [SerializeField] private DistanceFromMonsterToPlayer[] _distanceCalculators;
     [SerializeField] private int _distanceForNoChase = 20;
     [SerializeField] private int _distanceForFar = 15;
     [SerializeField] private int _distanceForMid = 10;
@@ -77,10 +77,8 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        // Configuration initiale
         SetupAudioSources();
 
-        // S'abonner aux zones de START
         if (_startZones != null && _startZones.Length > 0)
         {
             foreach (var zone in _startZones)
@@ -90,10 +88,8 @@ public class ChaseMusicDynamism : MonoBehaviour
                     zone.OnChaseBegin += OnChaseStarted;
                 }
             }
-            Debug.Log($"✅ Abonné à {_startZones.Length} zone(s) de START");
         }
 
-        // S'abonner aux zones de END
         if (_endZones != null && _endZones.Length > 0)
         {
             foreach (var zone in _endZones)
@@ -103,13 +99,11 @@ public class ChaseMusicDynamism : MonoBehaviour
                     zone.OnChaseEnd += OnChaseEnded;
                 }
             }
-            Debug.Log($"✅ Abonné à {_endZones.Length} zone(s) de END");
         }
     }
 
     private void OnDestroy()
     {
-        // Désabonnement propre
         if (_startZones != null)
         {
             foreach (var zone in _startZones)
@@ -138,27 +132,23 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // Si on est en train de faire un fade out, on continue de mettre à jour
         if (_isFadingOut)
         {
             UpdateCurrentState();
 
-            // Vérifier si tous les volumes sont à 0
             if (AreAllVolumesZero())
             {
-                Debug.Log("✅ Fade out terminé, arrêt des AudioSources");
                 _isFadingOut = false;
                 StopAllAudioSources();
             }
             return;
         }
 
-        // Si la chase n'est pas active, ne rien faire
         if (!_isChaseActive) return;
 
-        if (_distanceCalculator == null) return;
+        if (_distanceCalculators == null || _distanceCalculators.Length == 0) return;
 
-        _monsterDistance = _distanceCalculator.Distance;
+        _monsterDistance = GetClosestMonsterDistance();
 
         ChaseState newState = EvaluateStateFromDistance(_monsterDistance);
 
@@ -177,12 +167,9 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void OnChaseStarted()
     {
-        Debug.Log("🏃 CHASE DÉMARRÉE!");
-
         _isChaseActive = true;
         _isFadingOut = false;
 
-        // Démarrer la musique
         _heartbeat.Play();
         _percussion.Play();
         _stringAccent.Play();
@@ -195,12 +182,9 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void OnChaseEnded()
     {
-        Debug.Log("🛑 CHASE TERMINÉE! Début du fade out...");
-
         _isChaseActive = false;
-        _isFadingOut = true; // Activer le fade out
+        _isFadingOut = true;
 
-        // Forcer l'état NO_CHASE pour déclencher le fade out
         _previousState = _currentState;
         _currentState = ChaseState.NO_CHASE;
     }
@@ -227,7 +211,6 @@ public class ChaseMusicDynamism : MonoBehaviour
         _tuba.volume = 0;
         _tuba.loop = true;
 
-        Debug.Log("🎵 AudioSources configurées");
     }
 
     /// <summary>
@@ -235,7 +218,7 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private bool AreAllVolumesZero()
     {
-        float threshold = 0.01f; // Seuil de tolérance
+        float threshold = 0.01f;
 
         return _heartbeat.volume < threshold &&
                _percussion.volume < threshold &&
@@ -255,21 +238,41 @@ public class ChaseMusicDynamism : MonoBehaviour
         _stringMelody.Stop();
         _tuba.Stop();
 
-        // Remettre les volumes exactement à 0
         _heartbeat.volume = 0;
         _percussion.volume = 0;
         _stringAccent.volume = 0;
         _stringMelody.volume = 0;
         _tuba.volume = 0;
 
-        // Remettre le temps de lecture à 0
         _heartbeat.time = 0;
         _percussion.time = 0;
         _stringAccent.time = 0;
         _stringMelody.time = 0;
         _tuba.time = 0;
+    }
+    #endregion
 
-        Debug.Log("🔇 Toutes les AudioSources arrêtées et réinitialisées");
+    #region Private Methods - Distance Calculation
+    /// <summary>
+    /// Retourne la distance du monstre le plus proche
+    /// </summary>
+    private float GetClosestMonsterDistance()
+    {
+        float minDistance = float.MaxValue;
+
+        foreach (var calculator in _distanceCalculators)
+        {
+            if (calculator != null)
+            {
+                float distance = calculator.Distance;
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                }
+            }
+        }
+
+        return minDistance == float.MaxValue ? _distanceForNoChase + 1 : minDistance;
     }
     #endregion
 
@@ -288,8 +291,6 @@ public class ChaseMusicDynamism : MonoBehaviour
     {
         _previousState = _currentState;
         _currentState = newState;
-
-        Debug.Log($"🎵 Chase state: {_previousState} → {_currentState}");
 
         switch (newState)
         {
