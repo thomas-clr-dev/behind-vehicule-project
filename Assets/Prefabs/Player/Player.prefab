@@ -916,9 +916,9 @@ MonoBehaviour:
   radiusDirection: 5
   angleMin: -30
   angleMax: 70
-  pushProgress: 0
-  radius: 0.4
-  smoothSpeed: 10
+  radius: 0.5
+  targetProgress: 0
+  smoothSpeed: 5
   debug: 0
 --- !u!1 &1483876323818466122
 GameObject:
@@ -4196,9 +4196,9 @@ MonoBehaviour:
   radiusDirection: 5
   angleMin: -30
   angleMax: 70
-  pushProgress: 0
-  radius: 0.4
-  smoothSpeed: 10
+  radius: 0.5
+  targetProgress: 0
+  smoothSpeed: 5
   debug: 0
 --- !u!1 &7059188630659642620
 GameObject:
