@@ -261,7 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IKChestModule
   chestConstraint: {fileID: 6580028941328528530}
-  transitionSpeed: 5
+  duration: 0.5
+  easeType: 6
 --- !u!1 &349831595218338345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1863,7 @@ Transform:
   m_GameObject: {fileID: 2161922238843828203}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.623, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2066,9 +2067,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 348213238770085695}
-  - component: {fileID: 4183108986652580077}
-  - component: {fileID: 8975989370040704265}
-  - component: {fileID: 2230112155226162922}
   m_Layer: 0
   m_Name: Wheelchair_Root
   m_TagString: Untagged
@@ -2085,7 +2083,7 @@ Transform:
   m_GameObject: {fileID: 2689673198739328687}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2097,69 +2095,6 @@ Transform:
   - {fileID: 6274356420894123487}
   m_Father: {fileID: 6901660746572811511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4183108986652580077
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2689673198739328687}
-  serializedVersion: 5
-  m_Mass: 85
-  m_LinearDamping: 0.1
-  m_AngularDamping: 0.1
-  m_CenterOfMass: {x: 0, y: -0.2, z: 0.3}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 0
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 3
---- !u!114 &8975989370040704265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2689673198739328687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1711bedea54f1d4cb32c981a416273a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WheelChairController
-  wheelMode: {fileID: 11400000, guid: 657e032855ad3774787e19207415fadf, type: 2}
-  RightWheelCollider: {fileID: 8416981038383236050}
-  LeftWheelCollider: {fileID: 6338879109476112584}
-  RightFrontWheelCollider: {fileID: 9154293957722794505}
-  LeftFrontWheelCollider: {fileID: 7249418848082041420}
-  centerOfMass: {fileID: 4223260760310544152}
---- !u!114 &2230112155226162922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2689673198739328687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce4e4fe73e51ac4a8e29b5beb0d581f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WheelChairVisual
-  rightParentWheel: {fileID: 7373060022271818707}
-  leftParentWheel: {fileID: 6892651174115860029}
-  rightWheel: {fileID: 1784217646602539889}
-  leftWheel: {fileID: 2337827845505267053}
-  rightFrontWheel: {fileID: 6119585275718664898}
-  leftFrontWheel: {fileID: 691820835754221829}
 --- !u!1 &2727942275644326615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,7 +2295,7 @@ Transform:
   m_GameObject: {fileID: 3087343862438919501}
   serializedVersion: 2
   m_LocalRotation: {x: -0.36070073, y: 0.36070073, z: 0.60818994, w: 0.60818994}
-  m_LocalPosition: {x: -0.11120929, y: 0.43, z: 0.516}
+  m_LocalPosition: {x: -0.11120929, y: 0.173, z: 0.516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2612,7 +2547,7 @@ Transform:
   m_GameObject: {fileID: 3421248718102647033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.043619387, z: -0, w: 0.99904823}
-  m_LocalPosition: {x: -0.099429995, y: 2.2065681e-17, z: 0}
+  m_LocalPosition: {x: -0.171, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2646,7 +2581,7 @@ Transform:
   m_GameObject: {fileID: 3460990123865796368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.93, z: 0.104}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3759,7 +3694,7 @@ Transform:
   m_GameObject: {fileID: 5731291171871745063}
   serializedVersion: 2
   m_LocalRotation: {x: 0.60818994, y: -0.60818994, z: 0.36070073, w: 0.36070073}
-  m_LocalPosition: {x: 0.11351386, y: 0.43, z: 0.515}
+  m_LocalPosition: {x: 0.11351386, y: 0.173, z: 0.515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3790,7 +3725,7 @@ Transform:
   m_GameObject: {fileID: 5827907704252992577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.623, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3994,6 +3929,7 @@ Transform:
   - {fileID: 5599635442494977105}
   - {fileID: 1655564980495623786}
   - {fileID: 8433452572320300986}
+  - {fileID: 5505088717497496422}
   m_Father: {fileID: 4587448606421916168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3754725070259006145
@@ -4025,6 +3961,52 @@ MonoBehaviour:
   chestConstraint: {fileID: 0}
   chestTransitionSpeed: 3
   transitionSpeed: 5
+--- !u!1 &6247561508512963625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5505088717497496422}
+  - component: {fileID: 4569283264323135995}
+  m_Layer: 0
+  m_Name: HipsIK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5505088717497496422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6247561508512963625}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.618, z: 0.122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8289487626867914885}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4569283264323135995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6247561508512963625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cfe0e27d5f7b64397e6f9b22b38207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IKHipsModule
+  hipsTransform: {fileID: 9058723073951890426}
+  target: {fileID: 5505088717497496422}
 --- !u!1 &6399660633871803061
 GameObject:
   m_ObjectHideFlags: 0
@@ -4747,7 +4729,7 @@ Transform:
   m_GameObject: {fileID: 8185890127153269148}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0, y: 0.493, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4945,6 +4927,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6901660746572811511}
+  - component: {fileID: 8444606852574694433}
+  - component: {fileID: 1106150913037743232}
+  - component: {fileID: 8102372134873127148}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4963,11 +4948,74 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 348213238770085695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8444606852574694433
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  serializedVersion: 5
+  m_Mass: 85
+  m_LinearDamping: 0.1
+  m_AngularDamping: 0.1
+  m_CenterOfMass: {x: 0, y: -0.2, z: 0.3}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &1106150913037743232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1711bedea54f1d4cb32c981a416273a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WheelChairController
+  wheelMode: {fileID: 11400000, guid: 657e032855ad3774787e19207415fadf, type: 2}
+  RightWheelCollider: {fileID: 8416981038383236050}
+  LeftWheelCollider: {fileID: 6338879109476112584}
+  RightFrontWheelCollider: {fileID: 9154293957722794505}
+  LeftFrontWheelCollider: {fileID: 7249418848082041420}
+  centerOfMass: {fileID: 4223260760310544152}
+--- !u!114 &8102372134873127148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce4e4fe73e51ac4a8e29b5beb0d581f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WheelVisuals
+  rightParentWheel: {fileID: 7373060022271818707}
+  leftParentWheel: {fileID: 6892651174115860029}
+  rightWheel: {fileID: 1784217646602539889}
+  leftWheel: {fileID: 2337827845505267053}
+  rightFrontWheel: {fileID: 6119585275718664898}
+  leftFrontWheel: {fileID: 691820835754221829}
 --- !u!1 &8648307838069562327
 GameObject:
   m_ObjectHideFlags: 0
