@@ -2,16 +2,25 @@ using UnityEngine;
 
 public class ChaseMusicDynamism : MonoBehaviour
 {
-    #region SerializeField - Distance
-    /// <summary>
-    /// Reference to the distance calculator of the monster
-    /// </summary>
-    [SerializeField] private DistanceFromMonsterToPlayer _distanceCalculator;
+    #region SerializeField - Distance 
+    /// <summary> 
+    /// References to the distance calculators of the monsters 
+    /// </summary> 
+    [SerializeField] private DistanceFromMonsterToPlayer[] _distanceCalculators;
     [SerializeField] private int _distanceForNoChase = 20;
     [SerializeField] private int _distanceForFar = 15;
     [SerializeField] private int _distanceForMid = 10;
     [SerializeField] private int _distanceForNear = 5;
     [SerializeField] private int _distanceForVeryClose = 0;
+    #endregion
+
+    #region SerializeField - Chase Triggers
+    [Header("Chase Triggers")]
+    [Tooltip("Zone(s) de déclenchement de la chase")]
+    [SerializeField] private ChaseTriggerZone[] _startZones;
+
+    [Tooltip("Zone(s) de fin de la chase")]
+    [SerializeField] private ChaseEndZone[] _endZones;
     #endregion
 
     #region SerializeField - Audio Layers
@@ -24,16 +33,6 @@ public class ChaseMusicDynamism : MonoBehaviour
     #endregion
 
     #region SerializeField - Audio Settings
-    [Header("Audio Settings - Pitch")]
-    [Tooltip("Pitch quand FAR")]
-    [SerializeField] private float _pitchFar = 0.8f;
-    [Tooltip("Pitch quand MID")]
-    [SerializeField] private float _pitchMid = 0.9f;
-    [Tooltip("Pitch quand NEAR")]
-    [SerializeField] private float _pitchNear = 1f;
-    [Tooltip("Pitch quand VERY CLOSE")]
-    [SerializeField] private float _pitchVeryClose = 1.1f;
-
     [Header("Audio Settings - Volume")]
     [Tooltip("Volume quand FAR")]
     [SerializeField] private float _volumeFar = 0.8f;
@@ -63,12 +62,14 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private ChaseState _previousState;
     /// <summary>
-    /// Actual pitch for music
+    /// Indique si la chase est active
     /// </summary>
-    private float _currentPitch = 1f;
-    private float _defaultPitch;
+    private bool _isChaseActive = false;
+    /// <summary>
+    /// Indique si on est en train de faire un fade out
+    /// </summary>
+    private bool _isFadingOut = false;
     #endregion
-
 
     #region Unity Methods
     /// <summary>
@@ -76,34 +77,54 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        _defaultPitch = _pitchFar - 0.1f;
-        _currentPitch = _defaultPitch;
+        SetupAudioSources();
 
-        _heartbeat.volume = 0;
-        _heartbeat.loop = true;
-        _heartbeat.pitch = _defaultPitch;
+        if (_startZones != null && _startZones.Length > 0)
+        {
+            foreach (var zone in _startZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseBegin += OnChaseStarted;
+                }
+            }
+        }
 
-        _percussion.volume = 0;
-        _percussion.loop = true;
-        _percussion.pitch = _defaultPitch;
+        if (_endZones != null && _endZones.Length > 0)
+        {
+            foreach (var zone in _endZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseEnd += OnChaseEnded;
+                }
+            }
+        }
+    }
 
-        _stringAccent.volume = 0;
-        _stringAccent.loop = true;
-        _stringAccent.pitch = _defaultPitch;
+    private void OnDestroy()
+    {
+        if (_startZones != null)
+        {
+            foreach (var zone in _startZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseBegin -= OnChaseStarted;
+                }
+            }
+        }
 
-        _stringMelody.volume = 0;
-        _stringMelody.loop = true;
-        _stringMelody.pitch = _defaultPitch;
-
-        _tuba.volume = 0;
-        _tuba.loop = true;
-        _tuba.pitch = _defaultPitch;
-
-        _heartbeat.Play();
-        _percussion.Play();
-        _stringAccent.Play();
-        _stringMelody.Play();
-        _tuba.Play();
+        if (_endZones != null)
+        {
+            foreach (var zone in _endZones)
+            {
+                if (zone != null)
+                {
+                    zone.OnChaseEnd -= OnChaseEnded;
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -111,9 +132,23 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (_distanceCalculator == null) return;
+        if (_isFadingOut)
+        {
+            UpdateCurrentState();
 
-        _monsterDistance = _distanceCalculator.Distance;
+            if (AreAllVolumesZero())
+            {
+                _isFadingOut = false;
+                StopAllAudioSources();
+            }
+            return;
+        }
+
+        if (!_isChaseActive) return;
+
+        if (_distanceCalculators == null || _distanceCalculators.Length == 0) return;
+
+        _monsterDistance = GetClosestMonsterDistance();
 
         ChaseState newState = EvaluateStateFromDistance(_monsterDistance);
 
@@ -126,7 +161,122 @@ public class ChaseMusicDynamism : MonoBehaviour
     }
     #endregion
 
-    #region Private Methods
+    #region Event Handlers
+    /// <summary>
+    /// Appelé quand le joueur entre dans une zone de START
+    /// </summary>
+    private void OnChaseStarted()
+    {
+        _isChaseActive = true;
+        _isFadingOut = false;
+
+        _heartbeat.Play();
+        _percussion.Play();
+        _stringAccent.Play();
+        _stringMelody.Play();
+        _tuba.Play();
+    }
+
+    /// <summary>
+    /// Appelé quand le joueur entre dans une zone de END
+    /// </summary>
+    private void OnChaseEnded()
+    {
+        _isChaseActive = false;
+        _isFadingOut = true;
+
+        _previousState = _currentState;
+        _currentState = ChaseState.NO_CHASE;
+    }
+    #endregion
+
+    #region Private Methods - Setup
+    /// <summary>
+    /// Configure les AudioSources (état initial)
+    /// </summary>
+    private void SetupAudioSources()
+    {
+        _heartbeat.volume = 0;
+        _heartbeat.loop = true;
+
+        _percussion.volume = 0;
+        _percussion.loop = true;
+
+        _stringAccent.volume = 0;
+        _stringAccent.loop = true;
+
+        _stringMelody.volume = 0;
+        _stringMelody.loop = true;
+
+        _tuba.volume = 0;
+        _tuba.loop = true;
+
+    }
+
+    /// <summary>
+    /// Vérifie si tous les volumes sont à 0
+    /// </summary>
+    private bool AreAllVolumesZero()
+    {
+        float threshold = 0.01f;
+
+        return _heartbeat.volume < threshold &&
+               _percussion.volume < threshold &&
+               _stringAccent.volume < threshold &&
+               _stringMelody.volume < threshold &&
+               _tuba.volume < threshold;
+    }
+
+    /// <summary>
+    /// Arrête toutes les AudioSources et réinitialise
+    /// </summary>
+    private void StopAllAudioSources()
+    {
+        _heartbeat.Stop();
+        _percussion.Stop();
+        _stringAccent.Stop();
+        _stringMelody.Stop();
+        _tuba.Stop();
+
+        _heartbeat.volume = 0;
+        _percussion.volume = 0;
+        _stringAccent.volume = 0;
+        _stringMelody.volume = 0;
+        _tuba.volume = 0;
+
+        _heartbeat.time = 0;
+        _percussion.time = 0;
+        _stringAccent.time = 0;
+        _stringMelody.time = 0;
+        _tuba.time = 0;
+    }
+    #endregion
+
+    #region Private Methods - Distance Calculation
+    /// <summary>
+    /// Retourne la distance du monstre le plus proche
+    /// </summary>
+    private float GetClosestMonsterDistance()
+    {
+        float minDistance = float.MaxValue;
+
+        foreach (var calculator in _distanceCalculators)
+        {
+            if (calculator != null)
+            {
+                float distance = calculator.Distance;
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                }
+            }
+        }
+
+        return minDistance == float.MaxValue ? _distanceForNoChase + 1 : minDistance;
+    }
+    #endregion
+
+    #region Private Methods - State Management
     private ChaseState EvaluateStateFromDistance(float distance)
     {
         if (distance >= _distanceForNoChase) return ChaseState.NO_CHASE;
@@ -160,16 +310,11 @@ public class ChaseMusicDynamism : MonoBehaviour
 
     private void UpdateCurrentState()
     {
-        float targetPitch = 1f;
-        
-        float volumeSpeed = 1.4f / _fadeTime; 
-        float pitchSpeed = 0.3f / _fadeTime;  
+        float volumeSpeed = 1.4f / _fadeTime;
 
         switch (_currentState)
         {
             case ChaseState.NO_CHASE:
-                targetPitch = _defaultPitch;
-                
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, 0f, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
@@ -178,54 +323,37 @@ public class ChaseMusicDynamism : MonoBehaviour
                 break;
 
             case ChaseState.FAR:
-                targetPitch = _pitchFar;
-                
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeFar, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
-                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeFar, volumeSpeed * Time.deltaTime);
-                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeFar, volumeSpeed * Time.deltaTime);
-                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeFar, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
+                _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, 0f, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, 0f, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.MID:
-                targetPitch = _pitchMid;
-                
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeMid, volumeSpeed * Time.deltaTime);
                 _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
-                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeMid, volumeSpeed * Time.deltaTime);
-                _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeMid, volumeSpeed * Time.deltaTime);
+                _tuba.volume = Mathf.MoveTowards(_tuba.volume, 0f, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.NEAR:
-                targetPitch = _pitchNear;
-                
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeNear, volumeSpeed * Time.deltaTime);
-                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeNear / 2, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, 0f, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeNear, volumeSpeed * Time.deltaTime);
                 break;
 
             case ChaseState.VERY_CLOSE:
-                targetPitch = _pitchVeryClose;
-                
                 _heartbeat.volume = Mathf.MoveTowards(_heartbeat.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
-                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
+                _percussion.volume = Mathf.MoveTowards(_percussion.volume, _volumeNear * 2 / 3, volumeSpeed * Time.deltaTime);
                 _stringAccent.volume = Mathf.MoveTowards(_stringAccent.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 _stringMelody.volume = Mathf.MoveTowards(_stringMelody.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 _tuba.volume = Mathf.MoveTowards(_tuba.volume, _volumeVeryClose, volumeSpeed * Time.deltaTime);
                 break;
         }
-
-
-        _currentPitch = Mathf.MoveTowards(_currentPitch, targetPitch, pitchSpeed * Time.deltaTime);
-
-        _heartbeat.pitch = _currentPitch;
-        _percussion.pitch = _currentPitch;
-        _stringAccent.pitch = _currentPitch;
-        _stringMelody.pitch = _currentPitch;
-        _tuba.pitch = _currentPitch;
     }
     #endregion
 }

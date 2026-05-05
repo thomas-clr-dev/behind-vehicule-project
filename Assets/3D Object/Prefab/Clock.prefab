@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: db03316cc4b2e87488ebf74340a65b35, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 867ddff592522324ca08209c12dc2c1b, type: 2}
     - target: {fileID: 919132149155446097, guid: db03316cc4b2e87488ebf74340a65b35, type: 3}
       propertyPath: m_Name
       value: clock_Part-02
@@ -146,6 +150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4a1bc3a5edf15d3459eae389eab723c5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ca431f7b87370ed4a8e38c07206903c8, type: 2}
     - target: {fileID: 919132149155446097, guid: 4a1bc3a5edf15d3459eae389eab723c5, type: 3}
       propertyPath: m_Name
       value: clock_Part-04
@@ -208,6 +216,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 583eb6668f3f65942b0dd96372579e0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ae08c3375f8854b45a7570db36447900, type: 2}
     - target: {fileID: 919132149155446097, guid: 583eb6668f3f65942b0dd96372579e0e, type: 3}
       propertyPath: m_Name
       value: clock_Part-03
@@ -270,6 +282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4d38a575e5674d14baf7e3744917495b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b8e29e65769b7bc41b99822e27552ae8, type: 2}
     - target: {fileID: 919132149155446097, guid: 4d38a575e5674d14baf7e3744917495b, type: 3}
       propertyPath: m_Name
       value: clock_Part-01
@@ -332,6 +348,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eee5493c259a2494f939702ec45d7102, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 931ba81f829a7b84e856113bf2b44d88, type: 2}
     - target: {fileID: 919132149155446097, guid: eee5493c259a2494f939702ec45d7102, type: 3}
       propertyPath: m_Name
       value: clock_Part-05

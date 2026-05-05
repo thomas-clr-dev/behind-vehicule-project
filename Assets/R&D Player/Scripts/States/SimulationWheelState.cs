@@ -13,8 +13,9 @@ public class SimulationWheelState : WheelStateBase
     private float stickVelocity;
     private float pushDurationTimer = 0f;
     private HandType hand;
+    private float currentTorque;
 
-    // Propriétés calculées pour plus de clarté
+    // Propriï¿½tï¿½s calculï¿½es pour plus de clartï¿½
     private bool isPushing => GetPushInput() > 0.5f;
     private float stickY => GetMoveInput();
 
@@ -45,8 +46,11 @@ public class SimulationWheelState : WheelStateBase
 
     public override void Update()
     {
+        base.Update();
         stickVelocity = (stickY - lastStickY) / Time.deltaTime;
         lastStickY = stickY;
+
+        currentTorque = wheel.motorTorque;
 
         HandleStateTransitions();
 
@@ -151,7 +155,7 @@ public class SimulationWheelState : WheelStateBase
 
     private void HandleEvents()
     {
-        EventBus<WheelStateDataEvent>.Raise(new WheelStateDataEvent(hand, currentStep, stickY, pushDirection));
+        EventBus<WheelStateDataEvent>.Raise(new WheelStateDataEvent(hand, currentStep, stickY, pushDirection,currentTorque));
     }
 
     public override void Exit()
