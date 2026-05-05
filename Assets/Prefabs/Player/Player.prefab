@@ -2031,8 +2031,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5000001, y: 1.5000001, z: 1.5000001}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2754817814552033295}
   - {fileID: 4804059478431612110}
@@ -4822,6 +4822,7 @@ GameObject:
   - component: {fileID: 8444606852574694433}
   - component: {fileID: 1106150913037743232}
   - component: {fileID: 8102372134873127148}
+  - component: {fileID: 2558547561024651138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4908,6 +4909,30 @@ MonoBehaviour:
   leftWheel: {fileID: 2337827845505267053}
   rightFrontWheel: {fileID: 6119585275718664898}
   leftFrontWheel: {fileID: 691820835754221829}
+--- !u!114 &2558547561024651138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398c2741c7fa6f04ebf6b27c71d642ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  actualCamera: {fileID: 0}
+  actualPriority: 0
+  dormCorridorCamera: {fileID: 0}
+  infirmaryDoorCamera: {fileID: 0}
+  infirmaryCamera: {fileID: 0}
+  infirmaryCorridorCamera: {fileID: 0}
+  infirmaryCorridorChaseCamera: {fileID: 0}
+  firstClassCamera: {fileID: 0}
+  secondClassCamera: {fileID: 0}
+  classCorridorCamera: {fileID: 0}
+  firstToiletCorridorCamera: {fileID: 0}
+  secondToiletCorridorCamera: {fileID: 0}
 --- !u!1 &8648307838069562327
 GameObject:
   m_ObjectHideFlags: 0

@@ -195,7 +195,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -708,6 +708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbbc69ad44a5fb47b2c90a1c5ccee99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelector
+  scene: {fileID: 11400000, guid: 896eaf86372f37848b0fdd1c7c1020d2, type: 2}
+  doNotUseLevelManager: 0
 --- !u!1 &1479475223
 GameObject:
   m_ObjectHideFlags: 0

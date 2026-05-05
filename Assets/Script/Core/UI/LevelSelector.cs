@@ -1,16 +1,21 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private SceneReference scene;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private bool doNotUseLevelManager;   
+
+    public void LoadLevel()
     {
-        
+        if (doNotUseLevelManager)
+        {
+           SceneManager.LoadScene(scene.SceneName);
+        }
+        else
+        {
+            GameServiceLocator.Get<ILevelManager>()?.LoadLevel(scene.SceneName);
+        }
     }
 }

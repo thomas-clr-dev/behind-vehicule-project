@@ -10,6 +10,10 @@ public class LevelManager : MonoBehaviour, ILevelManager
     [SerializeField] private string levelName;
     [SerializeField] private Transform initialSpawnPoint;
 
+    public void LoadLevel(string levelName)
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void Awake()
     {

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public interface ILevelManager 
+public interface ILevelManager
 {
-   
-   
+    void LoadLevel(string levelName);
 }
