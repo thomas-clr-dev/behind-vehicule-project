@@ -12,7 +12,19 @@ public class LevelManager : MonoBehaviour, ILevelManager
 
     public void LoadLevel(string levelName)
     {
-        throw new System.NotImplementedException();
+       
+    }
+
+    public void Initialization()
+    {
+        if (playerPrefab != null && initialSpawnPoint != null)
+        {
+            Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
+        }
+        else
+        {
+            Debug.LogError("Player prefab or initial spawn point is not assigned in LevelManager.");
+        }
     }
 
     private void Awake()

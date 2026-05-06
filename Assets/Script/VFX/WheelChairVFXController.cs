@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Runtime.Serialization;
 
 
-public class WheelVFX : MonoBehaviour
+public class WheelVFX : MonoBehaviour, EventListener<WheelStateDataEvent>
 {
     [Header("Settings")]
     [Range(0f, 1f)] public float torqueThreshold = 0.9f; 
@@ -28,12 +28,10 @@ public class WheelVFX : MonoBehaviour
 
     private bool vfxAlreadyPlayed = false;
     private float lastPlayedTime = -1f;
-    private EventBinding<WheelStateDataEvent> dataBinding;
 
     private void OnEnable()
     {
-        dataBinding = new EventBinding<WheelStateDataEvent>(OnDataUpdated);
-        EventBus<WheelStateDataEvent>.Register(dataBinding);
+        this.EventStartListening<WheelStateDataEvent>();
     }
 
     private void OnDataUpdated(WheelStateDataEvent e)
@@ -88,6 +86,11 @@ public class WheelVFX : MonoBehaviour
 
     private void OnDisable()
     {
-        EventBus<WheelStateDataEvent>.Deregister(dataBinding);
+        this.EventStopListening<WheelStateDataEvent>();
+    }
+
+    public void OnEvent(WheelStateDataEvent eventType)
+    {
+        OnDataUpdated(eventType);
     }
 }

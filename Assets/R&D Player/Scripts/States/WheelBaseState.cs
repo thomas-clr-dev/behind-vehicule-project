@@ -42,7 +42,8 @@ public abstract class WheelStateBase : IState
 
         if(isPushPressed)
         {
-           EventBus<PushEvent>.Raise(new PushEvent(handType));
+           //EventBus<PushEvent>.Raise(new PushEvent(handType));
+            PushEvent.Trigger(handType);
         }
     }
 }

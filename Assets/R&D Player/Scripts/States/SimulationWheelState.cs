@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public enum GestureStep { WaitGrip, Pushing, Cooldown }
-public class SimulationWheelState : WheelStateBase
+public class SimulationWheelState : WheelStateBase, EventListener<WheelSyncPushEvent>
 {
     private GestureStep currentStep = GestureStep.WaitGrip;
     private float lastStickY;
@@ -15,11 +15,9 @@ public class SimulationWheelState : WheelStateBase
     private HandType hand;
     private float currentTorque;
 
-    // Propri�t�s calcul�es pour plus de clart�
     private bool isPushing => GetPushInput() > 0.5f;
     private float stickY => GetMoveInput();
 
-    private EventBinding<WheelSyncPushEvent> dataBinding;
 
     public SimulationWheelState(WheelStateContext context) : base(context)
     {
@@ -27,8 +25,7 @@ public class SimulationWheelState : WheelStateBase
         hand = context.handType;
         wheel = GetWheel();
 
-        dataBinding = new EventBinding<WheelSyncPushEvent>(OnPushSynchronized);
-        EventBus<WheelSyncPushEvent>.Register(dataBinding);
+        this.EventStartListening<WheelSyncPushEvent>();
     }
 
     private void OnPushSynchronized(WheelSyncPushEvent e)
@@ -84,7 +81,7 @@ public class SimulationWheelState : WheelStateBase
                 {
                     pushDurationTimer = data.pushDuration;
 
-                    EventBus<WheelSyncPushEvent>.Raise(new WheelSyncPushEvent(data.pushDuration, pushDirection, hand));
+                    WheelSyncPushEvent.Trigger(data.pushDuration, pushDirection, hand);
                     SwitchState(GestureStep.Cooldown);
                 }
                 break;
@@ -150,16 +147,21 @@ public class SimulationWheelState : WheelStateBase
     {
         var lastState = currentStep;
         currentStep = newState;
-        EventBus<WheelStateChangedEvent>.Raise(new WheelStateChangedEvent(newState, lastState));
+        WheelStateChangedEvent.Trigger(newState, lastState);
     }
 
     private void HandleEvents()
     {
-        EventBus<WheelStateDataEvent>.Raise(new WheelStateDataEvent(hand, currentStep, stickY, pushDirection,currentTorque));
+        WheelStateDataEvent.Trigger(hand, currentStep, stickY, pushDirection, currentTorque);
     }
 
     public override void Exit()
     {
-        EventBus<WheelSyncPushEvent>.Deregister(dataBinding);
+        this.EventStopListening<WheelSyncPushEvent>();
+    }
+
+    public void OnEvent(WheelSyncPushEvent eventType)
+    {
+        
     }
 }

@@ -3,19 +3,18 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class WheelChairSFX : MonoBehaviour
+public class WheelChairSFX : MonoBehaviour, EventListener<PushEvent>
 {
 
     public List<AudioClip> grabList;
     public AudioSource audioGrab;
-    
-      private EventBinding<PushEvent> dataBinding;
-      
+       
 
       private void Start()
     {
-        dataBinding = new EventBinding<PushEvent>(OnPush);
-        EventBus<PushEvent>.Register(dataBinding);
+
+
+        this.EventStartListening<PushEvent>();
     }
 
     private void OnPush(PushEvent data)
@@ -29,6 +28,11 @@ public class WheelChairSFX : MonoBehaviour
 
     private void OnDisable()
     {
-        EventBus<PushEvent>.Deregister(dataBinding);
+        this.EventStopListening<PushEvent>();
+    }
+
+    public void OnEvent(PushEvent eventType)
+    {
+       OnPush(eventType);   
     }
 }
