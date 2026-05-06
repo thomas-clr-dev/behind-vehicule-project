@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class AmbienceSound : MonoBehaviour
 {
+    public bool activeRandomStereo = false;
+
     public Collider Area;
     public GameObject Player;
 
@@ -42,7 +44,10 @@ public class AmbienceSound : MonoBehaviour
             AudioClip clip = ambList[r];
             ambSource.clip = clip;
             ambSource.Play();
-            ambSource.panStereo = Random.Range(-0.9f, 0.9f);
+            if(activeRandomStereo == true)
+            {
+                ambSource.panStereo = Random.Range(-0.9f, 0.9f);
+            }
             StartCoroutine(AmbPlay());
             Debug.Log("je fais du bruit");
         }
