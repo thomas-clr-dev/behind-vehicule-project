@@ -69,7 +69,7 @@ public class WheelVFX : MonoBehaviour
 
 
 
-            Instantiate(vfxPrefab, targetAnchor.position, targetAnchor.rotation);             // On utilise directement la position et la rotation de l'anchor sélectionné
+            Instantiate(vfxPrefab, targetAnchor.position, targetAnchor.rotation); // On utilise directement la position et la rotation de l'anchor sélectionné
             
             vfxAlreadyPlayed = true;
             lastPlayedTime = Time.time; 
