@@ -1,5 +1,4 @@
-// �v�nement purement orient� "Donn�es"
-public struct WheelStateDataEvent : IEvent
+public struct WheelStateDataEvent
 {
     public HandType Hand;
     public GestureStep Step;
@@ -16,4 +15,15 @@ public struct WheelStateDataEvent : IEvent
         MotorTorque = motorTorque;
     }
 
+    // Logique TDE
+    static WheelStateDataEvent e;
+    public static void Trigger(HandType hand, GestureStep step, float stickY, float pushDir, float motorTorque)
+    {
+        e.Hand = hand;
+        e.Step = step;
+        e.StickY = stickY;
+        e.PushDirection = pushDir;
+        e.MotorTorque = motorTorque;
+        EventBus.TriggerEvent(e);
+    }
 }
