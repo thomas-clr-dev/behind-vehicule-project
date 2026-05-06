@@ -18,7 +18,13 @@ public class AmbienceSound : MonoBehaviour
  
     void Start()
     {
+        ambSource.clip = ambList[0];
         if(!ambSource.isPlaying)
+        {
+            ambSource.clip = ambList[0];
+            PlayAmb();
+        }
+        else
         {
             PlayAmb();
         }
@@ -43,7 +49,8 @@ public class AmbienceSound : MonoBehaviour
             int r = Random.Range(0, ambList.Count);
             AudioClip clip = ambList[r];
             ambSource.clip = clip;
-            ambSource.Play();
+            //ambSource.Play();
+            ambSource.PlayOneShot(ambList[r], 0.5f);
             if(activeRandomStereo == true)
             {
                 ambSource.panStereo = Random.Range(-0.9f, 0.9f);
