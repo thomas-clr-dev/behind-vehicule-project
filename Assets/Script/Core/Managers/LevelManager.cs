@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour, ILevelManager
@@ -15,7 +16,23 @@ public class LevelManager : MonoBehaviour, ILevelManager
        
     }
 
+    private void Start()
+    {
+        Initialization();
+    }
+
     public void Initialization()
+    {
+        GameEngineEvent.Trigger(GameEngineEventTypes.SpawnCharacterStarts);
+
+        SpawnCharacter();
+
+        GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
+
+        CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, playerPrefab);
+    }
+
+    private void SpawnCharacter()
     {
         if (playerPrefab != null && initialSpawnPoint != null)
         {
@@ -25,6 +42,7 @@ public class LevelManager : MonoBehaviour, ILevelManager
         {
             Debug.LogError("Player prefab or initial spawn point is not assigned in LevelManager.");
         }
+
     }
 
     private void Awake()
