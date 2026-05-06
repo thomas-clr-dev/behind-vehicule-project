@@ -8,9 +8,9 @@ public class LevelManager : MonoBehaviour, ILevelManager
     [SerializeField] private WheelChairController playerPrefab;
 
     [Space(10)]
-    [SerializeField] private string levelName;
     [SerializeField] private Transform initialSpawnPoint;
 
+    private WheelChairController spawnedPlayer;
     public void LoadLevel(string levelName)
     {
        
@@ -29,14 +29,15 @@ public class LevelManager : MonoBehaviour, ILevelManager
 
         GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
 
-        CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, playerPrefab);
+        CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, spawnedPlayer);
+        CameraEvent.Trigger(CameraEventTypes.StartFollowing);
     }
 
     private void SpawnCharacter()
     {
         if (playerPrefab != null && initialSpawnPoint != null)
         {
-            Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
+            spawnedPlayer = Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
         }
         else
         {
