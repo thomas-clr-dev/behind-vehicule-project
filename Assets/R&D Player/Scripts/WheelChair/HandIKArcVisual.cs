@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class HandIKArcVisual : MonoBehaviour
@@ -10,72 +9,65 @@ public class HandIKArcVisual : MonoBehaviour
     public Transform ikTarget;
 
     [Header("Réglages des Axes")]
-    public Axis rotationAxis = Axis.X; 
-    public Axis radiusDirection = Axis.Up; 
+    public Axis rotationAxis = Axis.X;
+    public Axis radiusDirection = Axis.Up;
 
     [Header("Réglages de l'Arc")]
     [Range(-180f, 180f)] public float angleMin = -45f;
     [Range(-180f, 180f)] public float angleMax = 45f;
-
-    [Header("Animation")]
-    [Range(0f, 1f)] public float pushProgress = 0f;
     public float radius = 0.35f;
 
-    [Header("Smoothing")]
+    [Header("Animation & Smoothing")]
+    [Range(0f, 1f)] public float targetProgress = 0f; // La cible voulue
     public float smoothSpeed = 10f; // Vitesse de lissage
-    private float currentOffset = 1f;
-    private float targetOffset = 1f;
+
+    private float currentProgress = 0f; // La valeur lissée actuelle
 
     [Header("Debug")]
     public bool debug = true;
 
-    //void OnValidate() { UpdateHandPosition(); }
-    void Update() { UpdateHandPosition(); }
+    void Update()
+    {
+        UpdateHandPosition();
+    }
 
     private void UpdateHandPosition()
     {
         if (pivot == null || ikTarget == null) return;
 
-        currentOffset = Mathf.Lerp(currentOffset, targetOffset, Time.deltaTime * smoothSpeed);
+        currentProgress = Mathf.Lerp(currentProgress, targetProgress, Time.deltaTime * smoothSpeed);
 
-        float currentAngle = Mathf.Lerp(angleMin, angleMax, pushProgress);
+        float currentAngle = Mathf.Lerp(angleMin, angleMax, currentProgress);
 
         Vector3 axisVector = GetAxisVector(rotationAxis);
-
         pivot.localRotation = Quaternion.AngleAxis(currentAngle, axisVector);
 
-        ikTarget.position = pivot.position + (pivot.up * currentOffset) * radius;
+        Vector3 direction = GetAxisVector(radiusDirection);
+        ikTarget.position = pivot.TransformPoint(direction * radius);
     }
 
     Vector3 GetAxisVector(Axis axis)
     {
         switch (axis)
         {
-            case Axis.X: return Vector3.right;
-            case Axis.Y: return Vector3.up;
-            case Axis.Z: return Vector3.forward;
-            case Axis.Forward: return Vector3.forward;
-            case Axis.Right: return Vector3.right;
-            case Axis.Up: return Vector3.up;
+            case Axis.X: case Axis.Right: return Vector3.right;
+            case Axis.Y: case Axis.Up: return Vector3.up;
+            case Axis.Z: case Axis.Forward: return Vector3.forward;
             default: return Vector3.up;
         }
     }
 
+    // Appeler cette méthode pour changer la position de la main
     public void SetVisualProgress(float progress)
     {
-        pushProgress = Mathf.Clamp01(progress);
-        UpdateHandPosition();
-    }
-
-    public void SetVisualOffset(float offset)
-    {
-       targetOffset = offset;
+        targetProgress = Mathf.Clamp01(progress);
     }
 
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        if (pivot == null || debug ==  false) return;
+        if (pivot == null || !debug) return;
+
         UnityEditor.Handles.matrix = pivot.parent != null ? pivot.parent.localToWorldMatrix : Matrix4x4.identity;
 
         Vector3 center = pivot.localPosition;
@@ -86,7 +78,5 @@ public class HandIKArcVisual : MonoBehaviour
         Vector3 startDirection = Quaternion.AngleAxis(angleMin, rotAxis) * radDir;
         UnityEditor.Handles.DrawSolidArc(center, rotAxis, startDirection, angleMax - angleMin, radius);
     }
-
-
 #endif
 }

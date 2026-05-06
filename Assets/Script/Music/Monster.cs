@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -10,32 +12,32 @@ public class Monster : MonoBehaviour
     [Header("Adaptive Speed Settings")]
     [Tooltip("Vitesse quand très loin du joueur")]
     [SerializeField] private float _speedVeryFar = 6f;
-    
+
     [Tooltip("Vitesse quand loin du joueur")]
     [SerializeField] private float _speedFar = 5f;
-    
+
     [Tooltip("Vitesse quand à distance moyenne du joueur")]
     [SerializeField] private float _speedMid = 4f;
-    
+
     [Tooltip("Vitesse quand proche du joueur")]
     [SerializeField] private float _speedNear = 3.5f;
-    
+
     [Tooltip("Vitesse quand très proche du joueur")]
     [SerializeField] private float _speedVeryClose = 3f;
 
     [Header("Distance Thresholds")]
     [Tooltip("Distance pour être considéré comme 'Very Far'")]
     [SerializeField] private float _distanceVeryFar = 20f;
-    
+
     [Tooltip("Distance pour être considéré comme 'Far'")]
     [SerializeField] private float _distanceFar = 15f;
-    
+
     [Tooltip("Distance pour être considéré comme 'Mid'")]
     [SerializeField] private float _distanceMid = 10f;
-    
+
     [Tooltip("Distance pour être considéré comme 'Near'")]
     [SerializeField] private float _distanceNear = 5f;
-    
+
     [Tooltip("Distance pour être considéré comme 'Very Close' (< cette valeur)")]
     [SerializeField] private float _distanceVeryClose = 3f;
 
@@ -58,19 +60,28 @@ public class Monster : MonoBehaviour
     private bool _isChasing = false;
     private Renderer[] _renderers;
     private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
     private float _currentSpeed;
     private MonsterSpeedState _currentSpeedState;
-    private MovementAxis _currentDirection; // ✅ NOUVEAU : Direction actuelle
+    private MovementAxis _currentDirection;
+
+    // Champs pour la rotation
+    private bool _isRotating = false;
+    private float _rotationSpeedMultiplier = 1f;
+    private Coroutine _rotationCoroutine;
     #endregion
 
     #region Public Properties
     public bool IsChasing => _isChasing;
+
+    public static event Action OnGameOver;
     #endregion
 
     #region Initialization
     private void Start()
     {
         _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
 
         _currentSpeed = _speedVeryFar;
 
@@ -116,20 +127,10 @@ public class Monster : MonoBehaviour
     private void SubscribeToDirectionZones()
     {
         ChangeDirectionChaseTriggerZone[] directionZones = FindObjectsByType<ChangeDirectionChaseTriggerZone>(FindObjectsSortMode.None);
-        
-        Debug.Log($"🔍 Monster '{gameObject.name}' - Recherche de zones de direction... Trouvé: {directionZones.Length}");
-        
-        if (directionZones.Length > 0)
+
+        foreach (var zone in directionZones)
         {
-            foreach (var zone in directionZones)
-            {
-                zone.OnDirectionChange += OnDirectionChanged;
-                Debug.Log($"✅ Monster '{gameObject.name}' - Abonné à ChangeDirectionChaseTriggerZone: {zone.gameObject.name}");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"⚠️ Monster '{gameObject.name}' - Aucune ChangeDirectionChaseTriggerZone trouvée dans la scène!");
+            zone.OnDirectionChange += OnDirectionChanged;
         }
     }
     #endregion
@@ -142,25 +143,27 @@ public class Monster : MonoBehaviour
             UpdateSpeedBasedOnDistance();
             Vector3 movement = Vector3.zero;
 
+            float effectiveSpeed = _currentSpeed * _rotationSpeedMultiplier;
+
             switch (_currentDirection)
             {
                 case MovementAxis.X:
-                    movement = new Vector3(_currentSpeed * Time.deltaTime, 0, 0);
+                    movement = new Vector3(effectiveSpeed * Time.deltaTime, 0, 0);
                     break;
                 case MovementAxis.Y:
-                    movement = new Vector3(0, _currentSpeed * Time.deltaTime, 0);
+                    movement = new Vector3(0, effectiveSpeed * Time.deltaTime, 0);
                     break;
                 case MovementAxis.Z:
-                    movement = new Vector3(0, 0, _currentSpeed * Time.deltaTime);
+                    movement = new Vector3(0, 0, effectiveSpeed * Time.deltaTime);
                     break;
                 case MovementAxis.NegX:
-                    movement = new Vector3(-_currentSpeed * Time.deltaTime, 0, 0);
+                    movement = new Vector3(-effectiveSpeed * Time.deltaTime, 0, 0);
                     break;
                 case MovementAxis.NegY:
-                    movement = new Vector3(0, -_currentSpeed * Time.deltaTime, 0);
+                    movement = new Vector3(0, -effectiveSpeed * Time.deltaTime, 0);
                     break;
                 case MovementAxis.NegZ:
-                    movement = new Vector3(0, 0, -_currentSpeed * Time.deltaTime);
+                    movement = new Vector3(0, 0, -effectiveSpeed * Time.deltaTime);
                     break;
             }
 
@@ -231,9 +234,64 @@ public class Monster : MonoBehaviour
         _currentSpeed = _speedVeryFar;
         _currentSpeedState = MonsterSpeedState.VeryFar;
 
+        if (_rotationCoroutine != null)
+        {
+            StopCoroutine(_rotationCoroutine);
+            _rotationCoroutine = null;
+        }
+        _isRotating = false;
+        _rotationSpeedMultiplier = 1f;
+
         SetVisibility(false);
 
         ResetPosition();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            StopChasing();
+            OnGameOver?.Invoke();
+        }
+    }
+    #endregion
+
+    #region Rotation Logic
+    /// <summary>
+    /// Coroutine qui effectue la rotation progressive
+    /// </summary>
+    private IEnumerator RotateToNewDirection(DirectionChangeData changeData)
+    {
+        _isRotating = true;
+        _rotationSpeedMultiplier = changeData.SpeedMultiplier;
+
+        Quaternion startRotation = transform.rotation;
+
+        float angleSign = changeData.RotationDirection == RotationDirection.Clockwise ? -1f : 1f;
+        Vector3 rotationAxis = Vector3.up;
+        Quaternion targetRotation = startRotation * Quaternion.AngleAxis(changeData.RotationAngle * angleSign, rotationAxis);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < changeData.RotationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / changeData.RotationDuration);
+
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
+
+            yield return null;
+        }
+
+        transform.rotation = targetRotation;
+
+        _currentDirection = changeData.NewDirection;
+
+        _isRotating = false;
+        _rotationSpeedMultiplier = 1f;
+
+        _rotationCoroutine = null;
     }
     #endregion
 
@@ -253,10 +311,6 @@ public class Monster : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            Debug.LogWarning($"⚠️ Monster '{gameObject.name}' - Aucun Renderer trouvé!");
-        }
     }
 
     /// <summary>
@@ -265,6 +319,7 @@ public class Monster : MonoBehaviour
     private void ResetPosition()
     {
         transform.position = _initialPosition;
+        transform.rotation = _initialRotation;
     }
     #endregion
 
@@ -293,18 +348,16 @@ public class Monster : MonoBehaviour
     /// <summary>
     /// Appelé quand le monstre entre dans une zone de changement de direction
     /// </summary>
-    private void OnDirectionChanged(MovementAxis newDirection)
+    private void OnDirectionChanged(DirectionChangeData changeData)
     {
-        Debug.Log($"🔔 Monster '{gameObject.name}' - OnDirectionChanged appelé! Nouvelle direction: {newDirection} (Chasing: {_isChasing})");
-        
-        if (_isChasing)
+        if (_isChasing && !_isRotating)
         {
-            Debug.Log($"🔄 Monster '{gameObject.name}' - Changement de direction: {_currentDirection} → {newDirection}");
-            _currentDirection = newDirection;
-        }
-        else
-        {
-            Debug.LogWarning($"⚠️ Monster '{gameObject.name}' - Changement ignoré car pas en chase");
+            if (_rotationCoroutine != null)
+            {
+                StopCoroutine(_rotationCoroutine);
+            }
+
+            _rotationCoroutine = StartCoroutine(RotateToNewDirection(changeData));
         }
     }
     #endregion
@@ -315,9 +368,9 @@ public class Monster : MonoBehaviour
 /// </summary>
 public enum MonsterSpeedState
 {
-    VeryFar,   
-    Far,       
-    Mid,       
-    Near,      
-    VeryClose  
+    VeryFar,
+    Far,
+    Mid,
+    Near,
+    VeryClose
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class CharacterIKHandler : MonoBehaviour
+public class CharacterIKHandler : MonoBehaviour, EventListener<WheelStateDataEvent>
 {
     [Header("IK References")]
 
@@ -82,13 +82,9 @@ public class CharacterIKHandler : MonoBehaviour
     private float leftPushDir = 1f;
     private float rightPushDir = 1f;
 
-    private EventBinding<WheelStateDataEvent> dataBinding;
-
-
     private void OnEnable()
     {
-        dataBinding = new EventBinding<WheelStateDataEvent>(HandleDataUpdate);
-        EventBus<WheelStateDataEvent>.Register(dataBinding);
+        this.EventStartListening<WheelStateDataEvent>();
     }
 
 
@@ -188,7 +184,11 @@ public class CharacterIKHandler : MonoBehaviour
 
     private void OnDisable()
     {
-       EventBus<WheelStateDataEvent>.Deregister(dataBinding);
+        this.EventStopListening<WheelStateDataEvent>();
     }
 
+    public void OnEvent(WheelStateDataEvent eventType)
+    {
+       HandleDataUpdate(eventType);
+    }
 }

@@ -1,9 +1,7 @@
-using UnityEngine;
-
-public struct WheelStateChangedEvent : IEvent
+public struct WheelStateChangedEvent
 {
-    public GestureStep NewState { get; }
-    public GestureStep OldState { get; }
+    public GestureStep NewState;
+    public GestureStep OldState;
 
     public WheelStateChangedEvent(GestureStep newState, GestureStep oldState)
     {
@@ -11,4 +9,12 @@ public struct WheelStateChangedEvent : IEvent
         OldState = oldState;
     }
 
+    // Logique TDE
+    static WheelStateChangedEvent e;
+    public static void Trigger(GestureStep newState, GestureStep oldState)
+    {
+        e.NewState = newState;
+        e.OldState = oldState;
+        EventBus.TriggerEvent(e);
+    }
 }
