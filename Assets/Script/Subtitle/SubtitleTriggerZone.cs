@@ -88,9 +88,16 @@ public class SubtitleTriggerZone : MonoBehaviour
     #region Private Methods
     private void ShowSubtitle()
     {
+        Debug.Log($"🎯 SubtitleTriggerZone.ShowSubtitle() - Manager exists: {SubtitleManager.Instance != null}"); // ← AJOUTEZ CECI
+    
         if (SubtitleManager.Instance != null)
         {
+            Debug.Log($"🎯 Calling ShowSubtitle with text: {_subtitleData?.Text ?? "NULL"}"); // ← AJOUTEZ CECI
             SubtitleManager.Instance.ShowSubtitle(_subtitleData);
+        }
+        else
+        {
+            Debug.LogError("🎯 SubtitleManager.Instance is NULL!"); // ← AJOUTEZ CECI
         }
     }
     #endregion
