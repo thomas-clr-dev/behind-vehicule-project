@@ -1,10 +1,23 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections; // ✅ Ajouter pour les Coroutines
 
 public class DistanceFromMonsterToPlayer : MonoBehaviour
 {
     #region References
+    [Header("Player Reference (Optional)")]
+    [Tooltip("Référence au joueur (si vide, recherche automatique de 'PlayerCollider' avec tag 'Player')")]
     [SerializeField] private GameObject _player;
+
+    [Header("Auto-Find Settings")]
+    [Tooltip("Délai avant la première recherche (secondes)")]
+    [SerializeField] private float _initialSearchDelay = 0.5f;
+
+    [Tooltip("Nombre maximum de tentatives")]
+    [SerializeField] private int _maxRetries = 10;
+
+    [Tooltip("Délai entre chaque tentative (secondes)")]
+    [SerializeField] private float _retryInterval = 0.5f;
     #endregion
 
     #region Manual Distance Override
@@ -25,6 +38,76 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
     public float Distance => _distance;
 
     public MovementAxis Axis => _movementAxis;
+    #endregion
+
+    #region Initialization
+    private void Start()
+    {
+        if (_player == null)
+        {
+            StartCoroutine(FindPlayerWithRetry());
+        }
+    }
+
+    /// <summary>
+    /// Coroutine qui cherche le player avec plusieurs tentatives
+    /// </summary>
+    private IEnumerator FindPlayerWithRetry()
+    {
+        yield return new WaitForSeconds(_initialSearchDelay);
+
+        int attempts = 0;
+
+        while (_player == null && attempts < _maxRetries)
+        {
+            attempts++;
+
+            FindPlayerCollider();
+
+            if (_player != null)
+            {
+                yield break;
+            }
+
+            yield return new WaitForSeconds(_retryInterval);
+        }
+
+        if (_player == null)
+        {
+            Debug.LogError($"❌ DistanceFromMonsterToPlayer '{gameObject.name}' - Player introuvable après {_maxRetries} tentatives!");
+        }
+    }
+
+    /// <summary>
+    /// Cherche automatiquement l'objet "PlayerCollider" avec le tag "Player"
+    /// </summary>
+    private void FindPlayerCollider()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        if (players.Length == 0)
+        {
+            return;
+        }
+
+        foreach (GameObject player in players)
+        {
+            if (player.name == "PlayerCollider")
+            {
+                _player = player;
+                return;
+            }
+        }
+
+        foreach (GameObject player in players)
+        {
+            if (player.name.Contains("PlayerCollider"))
+            {
+                _player = player;
+                return;
+            }
+        }
+    }
     #endregion
 
     #region Distance Calculation
@@ -63,6 +146,7 @@ public class DistanceFromMonsterToPlayer : MonoBehaviour
         else
         {
             if (_player == null) return;
+
             _distance = Vector3.Distance(transform.position, _player.transform.position);
         }
     }

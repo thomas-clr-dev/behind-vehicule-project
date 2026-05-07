@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a828254501e93439c635a0b88339fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DistanceFromMonsterToPlayer
-  _player: {fileID: 0}
+  _player: {fileID: 3007933666498353948, guid: 1a46492c67fe06441b157541697a95e4, type: 3}
   _useManualDistance: 0
   _manualDistance: 25
   _movementAxis: 0

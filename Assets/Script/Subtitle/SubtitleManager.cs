@@ -67,6 +67,8 @@ public class SubtitleManager : MonoBehaviour
     #region Unity Lifecycle
     private void Awake()
     {
+        Debug.Log("🎬 SubtitleManager.Awake() called!"); // ← AJOUTEZ CECI
+
         // Singleton
         if (Instance != null && Instance != this)
         {
@@ -74,6 +76,8 @@ public class SubtitleManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        Debug.Log("✅ SubtitleManager Instance created!"); // ← AJOUTEZ CECI
 
         // Setup CanvasGroup pour le fade
         if (_useFadeEffect && _subtitlePanel != null)
@@ -87,6 +91,8 @@ public class SubtitleManager : MonoBehaviour
 
         // Cache les sous-titres au démarrage
         HideSubtitleImmediate();
+        
+        Debug.Log("🎬 SubtitleManager initialization complete!"); // ← AJOUTEZ CECI
     }
 
     private void OnDestroy()
@@ -104,6 +110,8 @@ public class SubtitleManager : MonoBehaviour
     /// </summary>
     public void ShowSubtitle(SubtitleData data)
     {
+        Debug.Log($"🎬 ShowSubtitle called with: {data?.Text ?? "NULL"}"); // ← AJOUTEZ CECI
+        
         if (data == null)
         {
             Debug.LogWarning("SubtitleManager: SubtitleData is null!");

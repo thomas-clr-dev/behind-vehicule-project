@@ -165,4 +165,21 @@ public class SubtitleSequenceTrigger : MonoBehaviour
         }
     }
     #endregion
+
+    #region Gizmos
+    private void OnDrawGizmos()
+    {
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+
+        if (boxCollider != null)
+        {
+            Gizmos.color = new Color(1f, 0f, 1f, 0.3f);
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawCube(boxCollider.center, boxCollider.size);
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireCube(boxCollider.center, boxCollider.size);
+        }
+    }
+    #endregion
 }
