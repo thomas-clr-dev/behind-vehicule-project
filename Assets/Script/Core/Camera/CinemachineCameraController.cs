@@ -6,7 +6,7 @@ using UnityEngine.TextCore.Text;
 public class CinemachineCameraController : MonoBehaviour, EventListener<CameraEvent>
 {
     [SerializeField] private Flag cameraFlag;
-    private int basePriority = 10;
+    //private int basePriority = 10;
     public WheelChairController TargetCharacter { get; set; }
 
     private CinemachineCamera virtualCamera;
