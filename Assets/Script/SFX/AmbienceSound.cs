@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 
-public class AmbienceSound : MonoBehaviour
+public class AmbienceSound : MonoBehaviour, EventListener<PlayerEvent>
 {
 
     public float maxDistance = 10f; 
@@ -13,13 +13,28 @@ public class AmbienceSound : MonoBehaviour
     public bool activeRandomStereo = false;
 
     public Collider Area;
-    public GameObject Player;
+    private GameObject Player;
 
     public List<AudioClip> ambList;
     public AudioSource ambSource;
 
     public float timeSound = 5;
- 
+
+    public void OnEvent(PlayerEvent e)
+    {
+        Player = e.TargetCharacter.gameObject;
+    }
+
+
+    private void OnEnable()
+    {
+        this.EventStartListening<PlayerEvent>();
+    }
+
+    private void OnDisable()
+    {
+        this.EventStopListening<PlayerEvent>();
+    }
     void Start()
     {
         ambSource.clip = ambList[0];
@@ -32,10 +47,12 @@ public class AmbienceSound : MonoBehaviour
         {
             PlayAmb();
         }
+      
     }
 
     void Update()
     {
+        if (Player == null) return;
         Vector3 closestPoint = Area.ClosestPoint(Player.transform.position);
 
         transform.position = closestPoint;
@@ -74,4 +91,5 @@ public class AmbienceSound : MonoBehaviour
         PlayAmb();
     }
 
+  
 }
