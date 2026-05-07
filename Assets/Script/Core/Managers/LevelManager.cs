@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour, ILevelManager
 
         GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
 
+        PlayerEvent.Trigger(PlayerEventTypes.PlayerSpawn, spawnedPlayer);   
         CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, spawnedPlayer);
         CameraEvent.Trigger(CameraEventTypes.StartFollowing);
     }
