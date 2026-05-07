@@ -51,7 +51,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 1309142085165913748}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 1804732190035028586}
@@ -69,7 +69,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 1309142085165913748}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -190,7 +190,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -661,7 +661,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 1649992201019282861}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 5338778319011816381}
@@ -679,7 +679,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -779,7 +779,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 1649992201019282861}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -800,7 +800,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 4712075588503920202}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 4792882964806511465}
@@ -953,7 +953,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 4712075588503920202}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -1074,7 +1074,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 100583097314120364}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 9ffec5af19654b64e8b478ad4e428825, type: 3}
   - {fileID: 8300000, guid: 5822513420278a64588f97c429d59d48, type: 3}
@@ -1260,7 +1260,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1440,7 +1440,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 6886443252646928637}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 4147489103651060480}
@@ -1458,7 +1458,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 6886443252646928637}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -1579,7 +1579,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 2373974247089855319}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 5379503520593512272}
@@ -2030,7 +2030,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 2373974247089855319}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -2151,7 +2151,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2286,7 +2286,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 3316747099203380772}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 9166609533233165448}
@@ -2304,7 +2304,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2404,7 +2404,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 3316747099203380772}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -2425,7 +2425,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2649,7 +2649,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 3043633929909421173}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: ecabc616f322e5146a142ab15d059fcb, type: 3}
   - {fileID: 8300000, guid: 1a1490771dafb0549a751ae1c72c94c4, type: 3}
@@ -2669,7 +2669,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2811,7 +2811,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 6796374592242578800}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 4ba5d5f29ed514342b462c24ac9f7443, type: 3}
   - {fileID: 8300000, guid: a984b8ed8cfef1a4dac521d5dc5e8c73, type: 3}
@@ -2831,7 +2831,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3008,7 +3008,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 1440819332871901172}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 7282722993401741883}
@@ -3026,7 +3026,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3126,7 +3126,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 1
   Area: {fileID: 1440819332871901172}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 430c6174e137b654b8dfb26722846eaa, type: 3}
   - {fileID: 8300000, guid: 42873184657eb534b8393a160d11f553, type: 3}
@@ -3147,7 +3147,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3280,7 +3280,7 @@ MonoBehaviour:
   minDistance: 2
   activeRandomStereo: 0
   Area: {fileID: 433658405946233417}
-  Player: {fileID: 0}
+  Player: {fileID: 8483868162987937870, guid: b829470150d8fd2478aaf062b3102b42, type: 3}
   ambList:
   - {fileID: 8300000, guid: 692e5de674bf2c44f82719cbc077d994, type: 3}
   ambSource: {fileID: 5238043952830814375}
@@ -3298,7 +3298,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0

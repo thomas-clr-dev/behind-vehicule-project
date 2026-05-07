@@ -47,7 +47,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: ebe5521b44107f447b78e3c5e9e72713, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -508,7 +508,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e2c22b56af1046f4a875bf0120713a08, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.9
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomMusicTrigger
   musicSource: {fileID: 2774790839139992083}
-  inTargetVolume: 1
+  inTargetVolume: 0.3
   outTargetVolume: 0
   fadeInDuration: 2
   fadeOutDuration: 2
@@ -968,7 +968,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 57de142fa0d89534aa10e516cfd76492, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomMusicTrigger
   musicSource: {fileID: 2774790839139992083}
-  inTargetVolume: 1
+  inTargetVolume: 0.3
   outTargetVolume: 0
   fadeInDuration: 2
   fadeOutDuration: 2
@@ -1208,7 +1208,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 7348b2d9f8e5d65419b2e00fa7858272, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1530,10 +1530,10 @@ MonoBehaviour:
   _stringAccent: {fileID: 3650002660434255491}
   _stringMelody: {fileID: 8616013937144522007}
   _tuba: {fileID: 700839997405855918}
-  _volumeFar: 0.8
-  _volumeMid: 1
-  _volumeNear: 1.2
-  _volumeVeryClose: 1.4
+  _volumeFar: 0.4
+  _volumeMid: 0.5
+  _volumeNear: 0.6
+  _volumeVeryClose: 0.8
   _fadeTime: 8
 --- !u!1 &8361193352127456527
 GameObject:
@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomMusicTrigger
   musicSource: {fileID: 2774790839139992083}
-  inTargetVolume: 1
+  inTargetVolume: 0.3
   outTargetVolume: 0
   fadeInDuration: 2
   fadeOutDuration: 2
@@ -1785,7 +1785,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 2882ce87c0ed76347809c6a90828d152, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
