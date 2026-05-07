@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 
-public class IKHandModule : MonoBehaviour
+public class IKHandModule : MonoBehaviour, EventListener<WheelStateDataEvent>
 {
     [Header("Side Settings")]
     [SerializeField] private HandType side; 
@@ -25,12 +25,10 @@ public class IKHandModule : MonoBehaviour
     private float currentWeight = 1f;
     private float targetWeight = 1f;
     private float pushDir = 1f;
-    private EventBinding<WheelStateDataEvent> dataBinding;
 
     private void OnEnable()
     {
-        dataBinding = new EventBinding<WheelStateDataEvent>(HandleUpdate);
-        EventBus<WheelStateDataEvent>.Register(dataBinding);
+        this.EventStartListening<WheelStateDataEvent>();
     }
 
     private void HandleUpdate(WheelStateDataEvent e)
@@ -73,5 +71,10 @@ public class IKHandModule : MonoBehaviour
         }
     }
 
-    private void OnDisable() => EventBus<WheelStateDataEvent>.Deregister(dataBinding);
+    private void OnDisable() => this.EventStopListening<WheelStateDataEvent>();
+
+    public void OnEvent(WheelStateDataEvent eventType)
+    {
+       HandleUpdate(eventType);
+    }
 }
