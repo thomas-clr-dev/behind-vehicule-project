@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour, ILevelManager
@@ -7,24 +8,42 @@ public class LevelManager : MonoBehaviour, ILevelManager
     [SerializeField] private WheelChairController playerPrefab;
 
     [Space(10)]
-    [SerializeField] private string levelName;
     [SerializeField] private Transform initialSpawnPoint;
 
+    private WheelChairController spawnedPlayer;
     public void LoadLevel(string levelName)
     {
        
     }
 
+    private void Start()
+    {
+        Initialization();
+    }
+
     public void Initialization()
+    {
+        GameEngineEvent.Trigger(GameEngineEventTypes.SpawnCharacterStarts);
+
+        SpawnCharacter();
+
+        GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
+
+        CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, spawnedPlayer);
+        CameraEvent.Trigger(CameraEventTypes.StartFollowing);
+    }
+
+    private void SpawnCharacter()
     {
         if (playerPrefab != null && initialSpawnPoint != null)
         {
-            Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
+            spawnedPlayer = Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
         }
         else
         {
             Debug.LogError("Player prefab or initial spawn point is not assigned in LevelManager.");
         }
+
     }
 
     private void Awake()

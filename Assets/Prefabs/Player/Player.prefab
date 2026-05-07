@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 1555731959267544116}
   m_Layer: 0
   m_Name: Roulette Gauche
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 541054375284650281}
   m_Layer: 0
   m_Name: Roue Gauche
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2031,7 +2031,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5000001, y: 1.5000001, z: 1.5000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2754817814552033295}
@@ -2969,7 +2969,7 @@ GameObject:
   - component: {fileID: 3328299467841728336}
   m_Layer: 0
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3233,7 +3233,7 @@ GameObject:
   - component: {fileID: 5862993791311395260}
   m_Layer: 0
   m_Name: Roue Droite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3617,7 +3617,7 @@ Transform:
   m_GameObject: {fileID: 5827907704252992577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.623, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3713,7 +3713,7 @@ Transform:
   m_GameObject: {fileID: 6119791631714185672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.418, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4373,7 +4373,7 @@ GameObject:
   - component: {fileID: 3706261180903838848}
   m_Layer: 0
   m_Name: Roulette Droite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4822,10 +4822,9 @@ GameObject:
   - component: {fileID: 8444606852574694433}
   - component: {fileID: 1106150913037743232}
   - component: {fileID: 8102372134873127148}
-  - component: {fileID: 2558547561024651138}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4909,30 +4908,6 @@ MonoBehaviour:
   leftWheel: {fileID: 2337827845505267053}
   rightFrontWheel: {fileID: 6119585275718664898}
   leftFrontWheel: {fileID: 691820835754221829}
---- !u!114 &2558547561024651138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8483868162987937870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398c2741c7fa6f04ebf6b27c71d642ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  actualCamera: {fileID: 0}
-  actualPriority: 0
-  dormCorridorCamera: {fileID: 0}
-  infirmaryDoorCamera: {fileID: 0}
-  infirmaryCamera: {fileID: 0}
-  infirmaryCorridorCamera: {fileID: 0}
-  infirmaryCorridorChaseCamera: {fileID: 0}
-  firstClassCamera: {fileID: 0}
-  secondClassCamera: {fileID: 0}
-  classCorridorCamera: {fileID: 0}
-  firstToiletCorridorCamera: {fileID: 0}
-  secondToiletCorridorCamera: {fileID: 0}
 --- !u!1 &8648307838069562327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5065,7 +5040,7 @@ GameObject:
   - component: {fileID: 8857576666071526296}
   m_Layer: 0
   m_Name: Buttocks
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
