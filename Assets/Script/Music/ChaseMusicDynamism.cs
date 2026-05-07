@@ -21,6 +21,9 @@ public class ChaseMusicDynamism : MonoBehaviour
 
     [Tooltip("Zone(s) de fin de la chase")]
     [SerializeField] private ChaseEndZone[] _endZones;
+
+    [Tooltip("Zone de victoire")]
+    [SerializeField] private VictoryTriggerZone _victoryZone;
     #endregion
 
     #region SerializeField - Audio Layers
@@ -69,6 +72,10 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// Indique si on est en train de faire un fade out
     /// </summary>
     private bool _isFadingOut = false;
+    /// <summary>
+    /// Indique si le jeu est terminé (victoire ou défaite)
+    /// </summary>
+    private bool _isGameEnded = false;
     #endregion
 
     #region Unity Methods
@@ -78,6 +85,13 @@ public class ChaseMusicDynamism : MonoBehaviour
     private void Start()
     {
         SetupAudioSources();
+
+        Monster.OnGameOver += OnGameEnded;
+
+        if (_victoryZone != null)
+        {
+            _victoryZone.OnVictory += OnGameEnded;
+        }
 
         if (_startZones != null && _startZones.Length > 0)
         {
@@ -104,6 +118,13 @@ public class ChaseMusicDynamism : MonoBehaviour
 
     private void OnDestroy()
     {
+        Monster.OnGameOver -= OnGameEnded;
+
+        if (_victoryZone != null)
+        {
+            _victoryZone.OnVictory -= OnGameEnded;
+        }
+
         if (_startZones != null)
         {
             foreach (var zone in _startZones)
@@ -132,6 +153,8 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (_isGameEnded) return;
+
         if (_isFadingOut)
         {
             UpdateCurrentState();
@@ -167,6 +190,8 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void OnChaseStarted()
     {
+        if (_isGameEnded) return;
+
         _isChaseActive = true;
         _isFadingOut = false;
 
@@ -182,11 +207,25 @@ public class ChaseMusicDynamism : MonoBehaviour
     /// </summary>
     private void OnChaseEnded()
     {
+        if (_isGameEnded) return;
+
         _isChaseActive = false;
         _isFadingOut = true;
 
         _previousState = _currentState;
         _currentState = ChaseState.NO_CHASE;
+    }
+
+    /// <summary>
+    /// Appelé quand le jeu se termine (victoire ou défaite)
+    /// </summary>
+    private void OnGameEnded()
+    {
+        _isGameEnded = true;
+        _isChaseActive = false;
+        _isFadingOut = false;
+
+        StopAllAudioSources();
     }
     #endregion
 
@@ -295,7 +334,6 @@ public class ChaseMusicDynamism : MonoBehaviour
         switch (newState)
         {
             case ChaseState.NO_CHASE:
-                //FadeOut Brutal
                 break;
             case ChaseState.FAR:
                 break;

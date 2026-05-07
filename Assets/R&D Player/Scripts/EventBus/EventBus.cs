@@ -29,34 +29,6 @@ public struct GameEvent
 [ExecuteAlways]
 public static class EventBus
 {
-
-
-    //static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();
-
-    //public static void Register(EventBinding<T> binding) => bindings.Add(binding);
-    //public static void Deregister(EventBinding<T> binding) => bindings.Remove(binding);
-
-    //public static void Raise(T @event)
-    //{
-    //    var snapshot = new HashSet<IEventBinding<T>>(bindings);
-
-    //    foreach (var binding in snapshot)
-    //    {
-    //        if (bindings.Contains(binding))
-    //        {
-    //            binding.OnEvent.Invoke(@event);
-    //            binding.OnEventNoArgs.Invoke();
-    //        }
-    //    }
-    //}
-
-    //static void Clear()
-    //{
-    //    Debug.Log($"Clearing {typeof(T).Name} bindings");
-    //    bindings.Clear();
-    //}
-
-
     private static Dictionary<Type, List<EventListenerBase>> _subscribersList;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -150,7 +122,7 @@ public static class EventBus
         List<EventListenerBase> list;
         if (!_subscribersList.TryGetValue(typeof(Event), out list))
 #if EVENTROUTER_REQUIRELISTENER
-			            throw new ArgumentException( string.Format( "Attempting to send event of type \"{0}\", but no listener for this type has been found. Make sure this.Subscribe<{0}>(EventRouter) has been called, or that all listeners to this event haven't been unsubscribed.", typeof( MMEvent ).ToString() ) );
+			            throw new ArgumentException( string.Format( "Attempting to send event of type \"{0}\", but no listener for this type has been found. Make sure this.Subscribe<{0}>(EventRouter) has been called, or that all listeners to this event haven't been unsubscribed.", typeof( Event ).ToString() ) );
 #else
             return;
 #endif

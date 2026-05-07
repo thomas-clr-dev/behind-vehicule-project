@@ -4,9 +4,9 @@ using UnityEngine;
 public class CameraTriggerer : MonoBehaviour
 {
     public CinemachineCamera actualCamera;
-    [SerializeField] int actualPriority; 
+    [SerializeField] int actualPriority;
 
-    public CinemachineCamera dormCorridorCamera; 
+    public CinemachineCamera dormCorridorCamera;
     public CinemachineCamera infirmaryDoorCamera;
     public CinemachineCamera infirmaryCamera;
     public CinemachineCamera infirmaryCorridorCamera;
@@ -15,14 +15,14 @@ public class CameraTriggerer : MonoBehaviour
     public CinemachineCamera secondClassCamera;
     public CinemachineCamera classCorridorCamera;
     public CinemachineCamera firstToiletCorridorCamera;
-    public CinemachineCamera secondToiletCorridorCamera; 
+    public CinemachineCamera secondToiletCorridorCamera;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == ">Spline Dorm>Infirmary")
         {
-            actualPriority = actualCamera.Priority; 
-            actualCamera = dormCorridorCamera; 
+            actualPriority = actualCamera.Priority;
+            actualCamera = dormCorridorCamera;
             Destroy(other.gameObject);
         }
         else if (other.name == ">Spot Infirmary Door")
@@ -81,8 +81,14 @@ public class CameraTriggerer : MonoBehaviour
         }
 
 
-
-        actualCamera.Priority = actualPriority + 1; 
+        if (actualCamera != null)
+        {
+            actualCamera.Priority = actualPriority + 1;
+        }
+        else
+        {
+            Debug.LogError($"CameraTriggerer: actualCamera is null after trigger '{other.name}'! Camera reference might be missing in Inspector.");
+        }
 
 
     }
