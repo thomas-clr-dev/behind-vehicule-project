@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public class AmbienceSound : MonoBehaviour
 {
+
+    public float maxDistance = 10f; 
+    public float minDistance = 2f; 
+
     public bool activeRandomStereo = false;
 
     public Collider Area;
@@ -36,10 +40,13 @@ public class AmbienceSound : MonoBehaviour
 
         transform.position = closestPoint;
 
-        /*if(!ambSource.isPlaying)
-        {
-            PlayAmb();
-        }*/
+
+
+        float distance = Vector3.Distance(Player.transform.position, closestPoint);
+
+
+        float t = (distance - minDistance) / (maxDistance - minDistance);        
+        ambSource.spatialBlend = Mathf.Clamp(t, 0f, 1f);  // Si distance <= minDistance -> 0 (2D), Si distance >= maxDistance -> 1 (3D)
     }
 
     void PlayAmb()
@@ -49,11 +56,10 @@ public class AmbienceSound : MonoBehaviour
             int r = Random.Range(0, ambList.Count);
             AudioClip clip = ambList[r];
             ambSource.clip = clip;
-            //ambSource.Play();
             ambSource.PlayOneShot(ambList[r], 0.5f);
             if(activeRandomStereo == true)
             {
-                ambSource.panStereo = Random.Range(-0.9f, 0.9f);
+                ambSource.panStereo = Random.Range(-0.9f, 0.9f);  // Random de son de droite à gauche
             }
             StartCoroutine(AmbPlay());
             Debug.Log("je fais du bruit");
