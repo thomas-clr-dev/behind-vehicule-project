@@ -4823,6 +4823,7 @@ GameObject:
   - component: {fileID: 8444606852574694433}
   - component: {fileID: 1106150913037743232}
   - component: {fileID: 8102372134873127148}
+  - component: {fileID: -2375781440360124914}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4909,6 +4910,21 @@ MonoBehaviour:
   leftWheel: {fileID: 2337827845505267053}
   rightFrontWheel: {fileID: 6119585275718664898}
   leftFrontWheel: {fileID: 691820835754221829}
+--- !u!114 &-2375781440360124914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e1bab2f3c6d9845aca979ac14b4d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RumbleManager
+  timer: 0
+  threshold: 0
+  isChased: 0
 --- !u!1 &8648307838069562327
 GameObject:
   m_ObjectHideFlags: 0
