@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4115764172105010491
+--- !u!114 &-2219800645920619729
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Wardrobe
+  m_Name: MAT_Office_Chair
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,11 +41,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: d4e30a16e40ff7b4bb0261b0fe8ac838, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7c6a9a295905694f80559193f72df35, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 94ffa72c59bbbb84da6ecddc9da419a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: fc752d137fa471b4eb11e0d0b974e628, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -65,11 +65,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d4e30a16e40ff7b4bb0261b0fe8ac838, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7c6a9a295905694f80559193f72df35, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: e63e45c0e8ca24c4f97a941c58f88a36, type: 3}
+        m_Texture: {fileID: 2800000, guid: a8df26b9b3ec3be47aeac2ec6e5f6484, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
