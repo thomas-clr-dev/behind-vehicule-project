@@ -35,7 +35,7 @@ public class RumbleManager : MonoBehaviour
             isChased = true; 
         }
 
-        if (other.name == ">Spot Infirmary ")
+        if (other.name == ">Spot Infirmary")
         {
             isChased = false;
         }
