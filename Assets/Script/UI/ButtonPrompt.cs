@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ public class ButtonPrompt : MonoBehaviour
     public CanvasGroup ContainerCanvasGroup;
     /// the Text component of the prompt
     [Tooltip("the Text component of the prompt")]
-    public Text PromptText;
+    public TextMeshProUGUI PromptText;
 
     [Header("Durations")]
     /// the duration of the fade in, in seconds

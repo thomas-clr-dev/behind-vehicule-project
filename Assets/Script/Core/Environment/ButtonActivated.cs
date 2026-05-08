@@ -181,7 +181,7 @@ public class ButtonActivated : MonoBehaviour
     protected Collider _collider;
     protected Collider2D _collider2D;
     protected bool _promptHiddenForever = false;
-    //protected CharacterButtonActivation _characterButtonActivation;
+    protected CharacterButtonActivation _characterButtonActivation;
     protected float _lastActivationTimestamp;
     protected List<GameObject> _collidingObjects;
     //protected Character _currentCharacter;
@@ -210,9 +210,9 @@ public class ButtonActivated : MonoBehaviour
 
     private void OnDisable()
     {
-#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 				InputSystemAction.action.Disable();
-#endif
+        #endif
     }
 
     public void Initialization()
@@ -227,9 +227,9 @@ public class ButtonActivated : MonoBehaviour
             ShowPrompt();
         }
 
-#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 	        InputSystemAction.action.Enable();
-#endif
+        #endif
     }
 
     protected virtual IEnumerator TriggerButtonActionCo()
@@ -508,16 +508,17 @@ public class ButtonActivated : MonoBehaviour
 
         //EnterFeedback?.PlayFeedbacks(this.transform.position);
 
-        //if (ShouldUpdateState)
-        //{
-        //    _characterButtonActivation = collider.gameObject.GetComponentNoAlloc<Character>()?.FindAbility<CharacterButtonActivation>();
-        //    if (_characterButtonActivation != null)
-        //    {
-        //        _characterButtonActivation.InButtonActivatedZone = true;
-        //        _characterButtonActivation.ButtonActivatedZone = this;
-        //        _characterButtonActivation.InButtonAutoActivatedZone = AutoActivation;
-        //    }
-        //}
+        if (ShouldUpdateState)
+        {
+            _characterButtonActivation = collider.gameObject.GetComponentInParent<CharacterButtonActivation>();
+            if (_characterButtonActivation != null)
+            {
+                Debug.Log("Found a CharacterButtonActivation component, updating its state");
+                _characterButtonActivation.InButtonActivatedZone = true;
+                _characterButtonActivation.ButtonActivatedZone = this;
+                _characterButtonActivation.InButtonAutoActivatedZone = AutoActivation;
+            }
+        }
 
         if (AutoActivation)
         {
@@ -555,12 +556,12 @@ public class ButtonActivated : MonoBehaviour
 
         if (ShouldUpdateState)
         {
-            //_characterButtonActivation = collider.gameObject.MMGetComponentNoAlloc<Character>()?.FindAbility<CharacterButtonActivation>();
-            //if (_characterButtonActivation != null && _characterButtonActivation.ButtonActivatedZone == this)
-            //{
-            //    _characterButtonActivation.InButtonActivatedZone = false;
-            //    _characterButtonActivation.ButtonActivatedZone = null;
-            //}
+            _characterButtonActivation = collider.gameObject.GetComponentAround<CharacterButtonActivation>();
+            if (_characterButtonActivation != null && _characterButtonActivation.ButtonActivatedZone == this)
+            {
+                _characterButtonActivation.InButtonActivatedZone = false;
+                _characterButtonActivation.ButtonActivatedZone = null;
+            }
         }
 
         //ExitFeedback?.PlayFeedbacks(this.transform.position);
@@ -644,7 +645,7 @@ public class ButtonActivated : MonoBehaviour
             return false;
         }
 
-        WheelChairController character = collider.gameObject.GetComponentNoAlloc<WheelChairController>();
+        WheelChairController character = collider.gameObject.GetComponentAround<WheelChairController>();
 
         switch (ButtonActivatedRequirement)
         {

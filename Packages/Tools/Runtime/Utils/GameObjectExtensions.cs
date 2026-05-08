@@ -53,6 +53,16 @@ public static  class GameObjectExtensions
         return component;
     }
 
+    public static T GetComponentAround<T>(this GameObject @this) where T : Component
+    {
+        T component = @this.GetComponentInChildren<T>(true);
+        if (component == null)
+        {
+            component = @this.GetComponentInParent<T>();
+        }
+        return component;
+    }
+
     /// <summary>
     /// Gets the specified component on the object, or adds it and returns it if there isn't already one
     /// </summary>
