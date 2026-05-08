@@ -73,27 +73,27 @@ public static class EventBus
 
         if (!_subscribersList.ContainsKey(eventType))
         {
-#if EVENTROUTER_THROWEXCEPTIONS
+            #if EVENTROUTER_THROWEXCEPTIONS
 					throw new ArgumentException( string.Format( "Removing listener \"{0}\", but the event type \"{1}\" isn't registered.", listener, eventType.ToString() ) );
-#else
+            #else
             return;
-#endif
+            #endif
         }
 
         List<EventListenerBase> subscriberList = _subscribersList[eventType];
 
-#if EVENTROUTER_THROWEXCEPTIONS
+        #if EVENTROUTER_THROWEXCEPTIONS
 	            bool listenerFound = false;
-#endif
+        #endif
 
         for (int i = subscriberList.Count - 1; i >= 0; i--)
         {
             if (subscriberList[i] == listener)
             {
                 subscriberList.Remove(subscriberList[i]);
-#if EVENTROUTER_THROWEXCEPTIONS
+            #if EVENTROUTER_THROWEXCEPTIONS
 					    listenerFound = true;
-#endif
+            #endif
 
                 if (subscriberList.Count == 0)
                 {
@@ -104,12 +104,12 @@ public static class EventBus
             }
         }
 
-#if EVENTROUTER_THROWEXCEPTIONS
+            #if EVENTROUTER_THROWEXCEPTIONS
 		        if( !listenerFound )
 		        {
 					throw new ArgumentException( string.Format( "Removing listener, but the supplied receiver isn't subscribed to event type \"{0}\".", eventType.ToString() ) );
 		        }
-#endif
+            #endif
     }
 
     /// <summary>
@@ -121,11 +121,11 @@ public static class EventBus
     {
         List<EventListenerBase> list;
         if (!_subscribersList.TryGetValue(typeof(Event), out list))
-#if EVENTROUTER_REQUIRELISTENER
+            #if EVENTROUTER_REQUIRELISTENER
 			            throw new ArgumentException( string.Format( "Attempting to send event of type \"{0}\", but no listener for this type has been found. Make sure this.Subscribe<{0}>(EventRouter) has been called, or that all listeners to this event haven't been unsubscribed.", typeof( Event ).ToString() ) );
-#else
+            #else
             return;
-#endif
+            #endif
 
         for (int i = list.Count - 1; i >= 0; i--)
         {

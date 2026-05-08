@@ -89,7 +89,7 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
     ""name"": ""R&D Player Actions"",
     ""maps"": [
         {
-            ""name"": ""Wheel"",
+            ""name"": ""Player"",
             ""id"": ""ea919cb0-985b-4d31-beb5-3c59317673c3"",
             ""actions"": [
                 {
@@ -123,6 +123,15 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
                     ""name"": ""PushRight"",
                     ""type"": ""Button"",
                     ""id"": ""51c29807-ff02-4d7b-bafb-e9d65aea1b0f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""9895aad9-0ccd-4261-b102-6244a21d4d2a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -195,23 +204,46 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""PushRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6219f8db-aaeb-460d-ba79-16d003fb2f11"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ead6d75-9de5-4010-bf2b-350183aedf14"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Wheel
-        m_Wheel = asset.FindActionMap("Wheel", throwIfNotFound: true);
-        m_Wheel_MoveLeft = m_Wheel.FindAction("MoveLeft", throwIfNotFound: true);
-        m_Wheel_MoveRight = m_Wheel.FindAction("MoveRight", throwIfNotFound: true);
-        m_Wheel_PushLeft = m_Wheel.FindAction("PushLeft", throwIfNotFound: true);
-        m_Wheel_PushRight = m_Wheel.FindAction("PushRight", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_MoveLeft = m_Player.FindAction("MoveLeft", throwIfNotFound: true);
+        m_Player_MoveRight = m_Player.FindAction("MoveRight", throwIfNotFound: true);
+        m_Player_PushLeft = m_Player.FindAction("PushLeft", throwIfNotFound: true);
+        m_Player_PushRight = m_Player.FindAction("PushRight", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     ~@RDPlayerActions()
     {
-        UnityEngine.Debug.Assert(!m_Wheel.enabled, "This will cause a leak and performance issues, RDPlayerActions.Wheel.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, RDPlayerActions.Player.Disable() has not been called.");
     }
 
     /// <summary>
@@ -284,44 +316,49 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Wheel
-    private readonly InputActionMap m_Wheel;
-    private List<IWheelActions> m_WheelActionsCallbackInterfaces = new List<IWheelActions>();
-    private readonly InputAction m_Wheel_MoveLeft;
-    private readonly InputAction m_Wheel_MoveRight;
-    private readonly InputAction m_Wheel_PushLeft;
-    private readonly InputAction m_Wheel_PushRight;
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_MoveLeft;
+    private readonly InputAction m_Player_MoveRight;
+    private readonly InputAction m_Player_PushLeft;
+    private readonly InputAction m_Player_PushRight;
+    private readonly InputAction m_Player_Interact;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Wheel".
+    /// Provides access to input actions defined in input action map "Player".
     /// </summary>
-    public struct WheelActions
+    public struct PlayerActions
     {
         private @RDPlayerActions m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public WheelActions(@RDPlayerActions wrapper) { m_Wrapper = wrapper; }
+        public PlayerActions(@RDPlayerActions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Wheel/MoveLeft".
+        /// Provides access to the underlying input action "Player/MoveLeft".
         /// </summary>
-        public InputAction @MoveLeft => m_Wrapper.m_Wheel_MoveLeft;
+        public InputAction @MoveLeft => m_Wrapper.m_Player_MoveLeft;
         /// <summary>
-        /// Provides access to the underlying input action "Wheel/MoveRight".
+        /// Provides access to the underlying input action "Player/MoveRight".
         /// </summary>
-        public InputAction @MoveRight => m_Wrapper.m_Wheel_MoveRight;
+        public InputAction @MoveRight => m_Wrapper.m_Player_MoveRight;
         /// <summary>
-        /// Provides access to the underlying input action "Wheel/PushLeft".
+        /// Provides access to the underlying input action "Player/PushLeft".
         /// </summary>
-        public InputAction @PushLeft => m_Wrapper.m_Wheel_PushLeft;
+        public InputAction @PushLeft => m_Wrapper.m_Player_PushLeft;
         /// <summary>
-        /// Provides access to the underlying input action "Wheel/PushRight".
+        /// Provides access to the underlying input action "Player/PushRight".
         /// </summary>
-        public InputAction @PushRight => m_Wrapper.m_Wheel_PushRight;
+        public InputAction @PushRight => m_Wrapper.m_Player_PushRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Wheel; }
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -329,9 +366,9 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="WheelActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(WheelActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -339,11 +376,11 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="WheelActions" />
-        public void AddCallbacks(IWheelActions instance)
+        /// <seealso cref="PlayerActions" />
+        public void AddCallbacks(IPlayerActions instance)
         {
-            if (instance == null || m_Wrapper.m_WheelActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_WheelActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
             @MoveLeft.started += instance.OnMoveLeft;
             @MoveLeft.performed += instance.OnMoveLeft;
             @MoveLeft.canceled += instance.OnMoveLeft;
@@ -356,6 +393,9 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
             @PushRight.started += instance.OnPushRight;
             @PushRight.performed += instance.OnPushRight;
             @PushRight.canceled += instance.OnPushRight;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         /// <summary>
@@ -364,8 +404,8 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="WheelActions" />
-        private void UnregisterCallbacks(IWheelActions instance)
+        /// <seealso cref="PlayerActions" />
+        private void UnregisterCallbacks(IPlayerActions instance)
         {
             @MoveLeft.started -= instance.OnMoveLeft;
             @MoveLeft.performed -= instance.OnMoveLeft;
@@ -379,15 +419,18 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
             @PushRight.started -= instance.OnPushRight;
             @PushRight.performed -= instance.OnPushRight;
             @PushRight.canceled -= instance.OnPushRight;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="WheelActions.UnregisterCallbacks(IWheelActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
         /// </summary>
-        /// <seealso cref="WheelActions.UnregisterCallbacks(IWheelActions)" />
-        public void RemoveCallbacks(IWheelActions instance)
+        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+        public void RemoveCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_WheelActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -397,27 +440,27 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="WheelActions.AddCallbacks(IWheelActions)" />
-        /// <seealso cref="WheelActions.RemoveCallbacks(IWheelActions)" />
-        /// <seealso cref="WheelActions.UnregisterCallbacks(IWheelActions)" />
-        public void SetCallbacks(IWheelActions instance)
+        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+        public void SetCallbacks(IPlayerActions instance)
         {
-            foreach (var item in m_Wrapper.m_WheelActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_WheelActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="WheelActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
     /// </summary>
-    public WheelActions @Wheel => new WheelActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Wheel" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="WheelActions.AddCallbacks(IWheelActions)" />
-    /// <seealso cref="WheelActions.RemoveCallbacks(IWheelActions)" />
-    public interface IWheelActions
+    /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+    /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+    public interface IPlayerActions
     {
         /// <summary>
         /// Method invoked when associated input action "MoveLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -447,5 +490,12 @@ public partial class @RDPlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPushRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

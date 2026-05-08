@@ -3,7 +3,7 @@
     "name": "R&D Player Actions",
     "maps": [
         {
-            "name": "Wheel",
+            "name": "Player",
             "id": "ea919cb0-985b-4d31-beb5-3c59317673c3",
             "actions": [
                 {
@@ -37,6 +37,15 @@
                     "name": "PushRight",
                     "type": "Button",
                     "id": "51c29807-ff02-4d7b-bafb-e9d65aea1b0f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "9895aad9-0ccd-4261-b102-6244a21d4d2a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -107,6 +116,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "PushRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6219f8db-aaeb-460d-ba79-16d003fb2f11",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ead6d75-9de5-4010-bf2b-350183aedf14",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

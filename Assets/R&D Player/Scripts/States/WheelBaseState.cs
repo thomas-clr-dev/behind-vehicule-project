@@ -32,13 +32,13 @@ public abstract class WheelStateBase : IState
     public virtual void Exit() { }
 
 
-    protected virtual float GetMoveInput() => handType == HandType.LeftHand ? controls.Wheel.MoveLeft.ReadValue<float>() : controls.Wheel.MoveRight.ReadValue<float>();
-    protected virtual float GetPushInput() => handType == HandType.LeftHand ? controls.Wheel.PushLeft.ReadValue<float>() : controls.Wheel.PushRight.ReadValue<float>();
+    protected virtual float GetMoveInput() => handType == HandType.LeftHand ? controls.Player.MoveLeft.ReadValue<float>() : controls.Player.MoveRight.ReadValue<float>();
+    protected virtual float GetPushInput() => handType == HandType.LeftHand ? controls.Player.PushLeft.ReadValue<float>() : controls.Player.PushRight.ReadValue<float>();
     protected virtual WheelCollider GetWheel() => handType == HandType.LeftHand ? hub.LeftWheelCollider : hub.RightWheelCollider;
 
     protected virtual void  HandlePushPressed()
     {
-        isPushPressed = controls.Wheel.PushLeft.WasPressedThisFrame() || controls.Wheel.PushRight.WasPressedThisFrame();
+        isPushPressed = controls.Player.PushLeft.WasPressedThisFrame() || controls.Player.PushRight.WasPressedThisFrame();
 
         if(isPushPressed)
         {
