@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 [RequireComponent(typeof(CinemachineCamera))]
-public class CinemachineCameraController : MonoBehaviour, EventListener<CameraEvent>
+public class CinemachineCameraController : MonoBehaviour, IEventListener<CameraEvent>
 {
     [SerializeField] private Flag cameraFlag;
     //private int basePriority = 10;

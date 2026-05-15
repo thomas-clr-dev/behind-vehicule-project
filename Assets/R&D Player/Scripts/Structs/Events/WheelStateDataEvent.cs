@@ -24,6 +24,6 @@ public struct WheelStateDataEvent
         e.StickY = stickY;
         e.PushDirection = pushDir;
         e.MotorTorque = motorTorque;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }

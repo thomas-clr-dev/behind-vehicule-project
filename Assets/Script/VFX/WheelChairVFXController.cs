@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Runtime.Serialization;
 
 
-public class WheelVFX : MonoBehaviour, EventListener<WheelStateDataEvent>
+public class WheelVFX : MonoBehaviour, IEventListener<WheelStateDataEvent>
 {
     [Header("Settings")]
     [Range(0f, 1f)] public float torqueThreshold = 0.9f; 

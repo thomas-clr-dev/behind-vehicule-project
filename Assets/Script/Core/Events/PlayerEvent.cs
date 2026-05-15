@@ -18,6 +18,6 @@ public struct PlayerEvent
     {
         e.EventType = eventType;
         e.TargetCharacter = targetCharacter;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }

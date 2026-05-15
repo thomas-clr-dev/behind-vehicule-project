@@ -12,6 +12,6 @@ public struct PushEvent
     public static void Trigger(HandType handType)
     {
         e.HandType = handType;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }

@@ -15,6 +15,6 @@ public struct WheelStateChangedEvent
     {
         e.NewState = newState;
         e.OldState = oldState;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }

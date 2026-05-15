@@ -35,7 +35,7 @@ public struct GameEngineEvent : IEvent
     {
         e.EventType = eventType;
         e.Payload = payload;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }
 

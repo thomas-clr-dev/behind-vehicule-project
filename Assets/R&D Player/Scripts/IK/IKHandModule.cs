@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 
-public class IKHandModule : MonoBehaviour, EventListener<WheelStateDataEvent>
+public class IKHandModule : MonoBehaviour, IEventListener<WheelStateDataEvent>
 {
     [Header("Side Settings")]
     [SerializeField] private HandType side; 

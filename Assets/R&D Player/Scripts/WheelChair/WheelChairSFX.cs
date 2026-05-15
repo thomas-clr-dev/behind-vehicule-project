@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class WheelChairSFX : MonoBehaviour, EventListener<PushEvent>
+public class WheelChairSFX : MonoBehaviour, IEventListener<PushEvent>
 {
 
     public List<AudioClip> grabList;

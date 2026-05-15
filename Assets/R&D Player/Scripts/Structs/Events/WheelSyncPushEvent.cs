@@ -18,6 +18,6 @@ public struct WheelSyncPushEvent
         e.Duration = duration;
         e.Direction = direction;
         e.Initiator = initiator;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }

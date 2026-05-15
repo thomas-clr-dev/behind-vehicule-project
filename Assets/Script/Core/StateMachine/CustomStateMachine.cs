@@ -121,7 +121,7 @@ public class CustomStateMachine<T> : MonoBehaviour, MMIStateMachine where T : st
 
         if (TriggerEvents)
         {
-            EventBus.TriggerEvent(new MMStateChangeEvent<T>(this));
+            EventBus.Publish(new MMStateChangeEvent<T>(this));
         }
     }
 
@@ -137,7 +137,7 @@ public class CustomStateMachine<T> : MonoBehaviour, MMIStateMachine where T : st
 
         if (TriggerEvents)
         {
-            EventBus.TriggerEvent(new MMStateChangeEvent<T>(this));
+            EventBus.Publish(new MMStateChangeEvent<T>(this));
         }
     }
 }

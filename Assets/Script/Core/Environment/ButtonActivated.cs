@@ -243,7 +243,7 @@ public class ButtonActivated : MonoBehaviour
         {
             AutoActivationInProgress = true;
             AutoActivationStartedAt = Time.time;
-            yield return Tools.Coroutine.WaitFor(AutoActivationDelay);
+            yield return MyCoroutine.WaitFor(AutoActivationDelay);
             AutoActivationInProgress = false;
             TriggerButtonAction();
             yield break;

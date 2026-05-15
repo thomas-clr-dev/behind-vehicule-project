@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 
-public class AmbienceSound : MonoBehaviour, EventListener<PlayerEvent>
+public class AmbienceSound : MonoBehaviour, IEventListener<PlayerEvent>
 {
 
     public float maxDistance = 10f; 

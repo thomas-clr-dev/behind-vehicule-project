@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "com.abdoumouaad.inspectorstyle": {
-      "version": "file:Tools",
+      "version": "file:D:/UnityPackages/Tools",
       "depth": 0,
-      "source": "embedded",
+      "source": "local",
       "dependencies": {}
     },
     "com.unity.ai.navigation": {

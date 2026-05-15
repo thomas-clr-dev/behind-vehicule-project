@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 
-public class IKChestModule : MonoBehaviour, EventListener<WheelStateDataEvent>
+public class IKChestModule : MonoBehaviour, IEventListener<WheelStateDataEvent>
 {
     [SerializeField] private MultiAimConstraint chestConstraint;
     [SerializeField] private float duration = 0.5f;

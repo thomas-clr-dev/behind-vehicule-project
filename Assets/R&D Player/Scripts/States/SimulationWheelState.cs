@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public enum GestureStep { WaitGrip, Pushing, Cooldown }
-public class SimulationWheelState : WheelStateBase, EventListener<WheelSyncPushEvent>
+public class SimulationWheelState : WheelStateBase, IEventListener<WheelSyncPushEvent>
 {
     private GestureStep currentStep = GestureStep.WaitGrip;
     private float lastStickY;

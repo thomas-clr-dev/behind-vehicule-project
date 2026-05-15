@@ -29,7 +29,7 @@ public struct CameraEvent
         e.Bounds2D = bounds2D;
         e.TargetCharacter = targetCharacter;
         e.CameraFlag = cameraName;
-        EventBus.TriggerEvent(e);
+        EventBus.Publish(e);
     }
 }
 

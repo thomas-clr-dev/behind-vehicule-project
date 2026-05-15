@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class CharacterIKHandler : MonoBehaviour, EventListener<WheelStateDataEvent>
+public class CharacterIKHandler : MonoBehaviour, IEventListener<WheelStateDataEvent>
 {
     [Header("IK References")]
 
