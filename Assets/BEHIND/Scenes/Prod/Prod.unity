@@ -1736,37 +1736,6 @@ Transform:
   - {fileID: 1352063852}
   m_Father: {fileID: 189712044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &298799673
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 298799674}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &298799674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298799673}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &308206925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2116,134 +2085,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1629689756035971118, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
   m_PrefabInstance: {fileID: 377755251}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &382072982
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 382072983}
-  - component: {fileID: 382072984}
-  m_Layer: 0
-  m_Name: Feedback NO CHASE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &382072983
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382072982}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496038343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &382072984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382072982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76170e4cb22f714ebbb7d23a3a0a99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Tools.Runtime::MyFeedbackPlayer
-  Feedbacks:
-  - rid: 24504091481210969
-  - rid: 24504112335552512
-  - rid: 24504112335552513
-  - rid: 24504112335552514
-  - rid: 24504112335552601
-  references:
-    version: 2
-    RefIds:
-    - rid: 24504091481210969
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 8300000, guid: e5c80728961cc154ba73d60655cec762, type: 3}
-        LayerID: 1
-        Track: 1
-        TargetVolume: 0
-        FadeDuration: 1
-    - rid: 24504112335552512
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 8300000, guid: cd7f841c5ce7aba43afbcf20ac09a897, type: 3}
-        LayerID: 2
-        Track: 1
-        TargetVolume: 0
-        FadeDuration: 1
-    - rid: 24504112335552513
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 8300000, guid: e3a07decdcaf92c45b2fc86b6f067b96, type: 3}
-        LayerID: 3
-        Track: 1
-        TargetVolume: 0
-        FadeDuration: 1
-    - rid: 24504112335552514
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 8300000, guid: c5a92c4a4e3e9864fb61991077f6c861, type: 3}
-        LayerID: 4
-        Track: 1
-        TargetVolume: 0
-        FadeDuration: 1
-    - rid: 24504112335552601
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 8300000, guid: a9207049d4a6ebf45b785e3e03fc566f, type: 3}
-        LayerID: 5
-        Track: 1
-        TargetVolume: 0
-        FadeDuration: 1
 --- !u!1001 &389019248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2292,33 +2133,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 386673558550933083, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 468523986612879009, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1722069994817168560, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774790839139992083, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4258895602446295303, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5599706758541947358, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
+    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
+      propertyPath: _heartbeat
+      value: 
+      objectReference: {fileID: 1799055448}
+    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
+      propertyPath: _percussion
+      value: 
+      objectReference: {fileID: 2089395502}
     - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
       propertyPath: _audioLayers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
       propertyPath: '_endZones.Array.data[0]'
@@ -2337,26 +2162,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 819704546}
     - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: '_stateFeedbacks.Array.data[0]'
-      value: 
-      objectReference: {fileID: 382072984}
-    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: '_stateFeedbacks.Array.data[1]'
-      value: 
-      objectReference: {fileID: 927834053}
-    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: '_stateFeedbacks.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1559777537}
-    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: '_stateFeedbacks.Array.data[3]'
-      value: 
-      objectReference: {fileID: 2057744634}
-    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: '_stateFeedbacks.Array.data[4]'
-      value: 
-      objectReference: {fileID: 1986721894}
-    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
       propertyPath: '_distanceCalculators.Array.data[0]'
       value: 
       objectReference: {fileID: 2092545120}
@@ -2368,39 +2173,23 @@ PrefabInstance:
       propertyPath: _audioLayers.Array.data[0].TargetVolumes.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
+      propertyPath: _audioLayers.Array.data[1].TargetVolumes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499097012037488025, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
+      propertyPath: _audioLayers.Array.data[1].StateOverrides.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7551090636934159415, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
       propertyPath: m_Name
       value: Music
       objectReference: {fileID: 0}
-    - target: {fileID: 7551090636934159415, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8839610705861526381, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9048443311137231302, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9078247198688261731, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      propertyPath: inTargetVolume
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 17657207086836625, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1496038343}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
---- !u!4 &389019249 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 17657207086836625, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
-  m_PrefabInstance: {fileID: 389019248}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &436669198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,134 +5198,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!1 &927834051
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 927834052}
-  - component: {fileID: 927834053}
-  m_Layer: 0
-  m_Name: Feedback FAR
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &927834052
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927834051}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496038343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &927834053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927834051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76170e4cb22f714ebbb7d23a3a0a99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Tools.Runtime::MyFeedbackPlayer
-  Feedbacks:
-  - rid: 24504091481210969
-  - rid: 24504112335552512
-  - rid: 24504112335552513
-  - rid: 24504112335552514
-  - rid: 24504112335552602
-  references:
-    version: 2
-    RefIds:
-    - rid: 24504091481210969
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 1
-        Track: 1
-        TargetVolume: 0.4
-        FadeDuration: 1
-    - rid: 24504112335552512
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 2
-        Track: 1
-        TargetVolume: 0.4
-        FadeDuration: 1
-    - rid: 24504112335552513
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 3
-        Track: 1
-        TargetVolume: 0.4
-        FadeDuration: 1
-    - rid: 24504112335552514
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 4
-        Track: 1
-        TargetVolume: 0.4
-        FadeDuration: 1
-    - rid: 24504112335552602
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 5
-        Track: 1
-        TargetVolume: 0.4
-        FadeDuration: 1
 --- !u!1 &938874734
 GameObject:
   m_ObjectHideFlags: 0
@@ -6636,7 +6297,7 @@ PrefabInstance:
       objectReference: {fileID: 1852650450}
     - target: {fileID: 719233110109842426, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17291
+      value: 17300
       objectReference: {fileID: 0}
     - target: {fileID: 731314029468679899, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6652,7 +6313,7 @@ PrefabInstance:
       objectReference: {fileID: 589581364}
     - target: {fileID: 740806700213843083, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5053
+      value: 5062
       objectReference: {fileID: 0}
     - target: {fileID: 913876742701331004, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6668,7 +6329,7 @@ PrefabInstance:
       objectReference: {fileID: 562874924}
     - target: {fileID: 1153390103080097105, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5053
+      value: 5062
       objectReference: {fileID: 0}
     - target: {fileID: 1222698781844844125, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6676,7 +6337,7 @@ PrefabInstance:
       objectReference: {fileID: 601217783}
     - target: {fileID: 1222698781844844125, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5065
+      value: 5074
       objectReference: {fileID: 0}
     - target: {fileID: 1225804292589044569, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6688,7 +6349,7 @@ PrefabInstance:
       objectReference: {fileID: 1882146339}
     - target: {fileID: 1252424547503488676, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 6564
+      value: 6573
       objectReference: {fileID: 0}
     - target: {fileID: 1468295738240985181, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6716,7 +6377,7 @@ PrefabInstance:
       objectReference: {fileID: 1314936393}
     - target: {fileID: 2277943107253018937, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 2956
+      value: 2965
       objectReference: {fileID: 0}
     - target: {fileID: 2328723993612306364, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6788,7 +6449,7 @@ PrefabInstance:
       objectReference: {fileID: 1826195865}
     - target: {fileID: 2966936534582484506, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 4970
+      value: 4979
       objectReference: {fileID: 0}
     - target: {fileID: 3168977129417973158, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6804,7 +6465,7 @@ PrefabInstance:
       objectReference: {fileID: 762827038}
     - target: {fileID: 3496274415623807138, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 2962
+      value: 2971
       objectReference: {fileID: 0}
     - target: {fileID: 3661563545444960802, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6816,7 +6477,7 @@ PrefabInstance:
       objectReference: {fileID: 597966830}
     - target: {fileID: 3757148846165269838, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17288
+      value: 17297
       objectReference: {fileID: 0}
     - target: {fileID: 3831246876437739110, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6828,7 +6489,7 @@ PrefabInstance:
       objectReference: {fileID: 650030286}
     - target: {fileID: 4038394124419153703, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5078
+      value: 5087
       objectReference: {fileID: 0}
     - target: {fileID: 4058271346215365826, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6844,7 +6505,7 @@ PrefabInstance:
       objectReference: {fileID: 1529655557}
     - target: {fileID: 4424328861617831195, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 2959
+      value: 2968
       objectReference: {fileID: 0}
     - target: {fileID: 4506660488139375477, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6852,7 +6513,7 @@ PrefabInstance:
       objectReference: {fileID: 1336206941}
     - target: {fileID: 4506660488139375477, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5094
+      value: 5103
       objectReference: {fileID: 0}
     - target: {fileID: 4555316838442014945, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6860,7 +6521,7 @@ PrefabInstance:
       objectReference: {fileID: 991255573}
     - target: {fileID: 4555316838442014945, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 3317
+      value: 3326
       objectReference: {fileID: 0}
     - target: {fileID: 4555316838442014945, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_SelectedEdges.Array.size
@@ -6880,7 +6541,7 @@ PrefabInstance:
       objectReference: {fileID: 636940498}
     - target: {fileID: 4957051376266570289, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 4973
+      value: 4982
       objectReference: {fileID: 0}
     - target: {fileID: 5044302407043651683, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6904,7 +6565,7 @@ PrefabInstance:
       objectReference: {fileID: 69672017}
     - target: {fileID: 5398453301368173011, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17285
+      value: 17294
       objectReference: {fileID: 0}
     - target: {fileID: 5403905061251658970, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6912,7 +6573,7 @@ PrefabInstance:
       objectReference: {fileID: 900564940}
     - target: {fileID: 5403905061251658970, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17291
+      value: 17300
       objectReference: {fileID: 0}
     - target: {fileID: 5465493474556432347, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6920,7 +6581,7 @@ PrefabInstance:
       objectReference: {fileID: 2089757937}
     - target: {fileID: 5465493474556432347, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5660
+      value: 5669
       objectReference: {fileID: 0}
     - target: {fileID: 5560864656737481761, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6932,7 +6593,7 @@ PrefabInstance:
       objectReference: {fileID: 1438267535}
     - target: {fileID: 5587939384897226260, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17264
+      value: 17273
       objectReference: {fileID: 0}
     - target: {fileID: 5673770910081831166, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6964,7 +6625,7 @@ PrefabInstance:
       objectReference: {fileID: 1424271701}
     - target: {fileID: 6564910712008398719, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17279
+      value: 17288
       objectReference: {fileID: 0}
     - target: {fileID: 6572823544364555317, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6972,7 +6633,7 @@ PrefabInstance:
       objectReference: {fileID: 1151505958}
     - target: {fileID: 6572823544364555317, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5053
+      value: 5062
       objectReference: {fileID: 0}
     - target: {fileID: 6649054540963024069, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -6984,7 +6645,7 @@ PrefabInstance:
       objectReference: {fileID: 1148456634}
     - target: {fileID: 6835328714482585481, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17276
+      value: 17285
       objectReference: {fileID: 0}
     - target: {fileID: 6985616567169426146, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7012,7 +6673,7 @@ PrefabInstance:
       objectReference: {fileID: 2062429307}
     - target: {fileID: 7348405818531486282, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17282
+      value: 17291
       objectReference: {fileID: 0}
     - target: {fileID: 7458418823896021212, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7028,7 +6689,7 @@ PrefabInstance:
       objectReference: {fileID: 1845675744}
     - target: {fileID: 7570340427778008589, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17253
+      value: 17262
       objectReference: {fileID: 0}
     - target: {fileID: 7585099491763136661, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7044,7 +6705,7 @@ PrefabInstance:
       objectReference: {fileID: 1392216805}
     - target: {fileID: 7673587501704522284, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17273
+      value: 17282
       objectReference: {fileID: 0}
     - target: {fileID: 7766157447974029496, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7052,7 +6713,7 @@ PrefabInstance:
       objectReference: {fileID: 549933526}
     - target: {fileID: 7766157447974029496, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 5047
+      value: 5056
       objectReference: {fileID: 0}
     - target: {fileID: 7921435969082237641, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7080,7 +6741,7 @@ PrefabInstance:
       objectReference: {fileID: 1312234494}
     - target: {fileID: 8766775546920950941, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17270
+      value: 17279
       objectReference: {fileID: 0}
     - target: {fileID: 8789960295439383156, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7088,7 +6749,7 @@ PrefabInstance:
       objectReference: {fileID: 916073043}
     - target: {fileID: 8789960295439383156, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 17258
+      value: 17267
       objectReference: {fileID: 0}
     - target: {fileID: 8898011040377503907, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -7096,7 +6757,7 @@ PrefabInstance:
       objectReference: {fileID: 163730686}
     - target: {fileID: 8898011040377503907, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_VersionIndex
-      value: 4976
+      value: 4985
       objectReference: {fileID: 0}
     - target: {fileID: 8904782115688957694, guid: a6cb7e6a9896aa544b0f6a4042515a1b, type: 3}
       propertyPath: m_Mesh
@@ -8985,42 +8646,6 @@ MonoBehaviour:
         PositionOffset: -4.29
         SearchResolution: 8
         SearchIteration: 5
---- !u!1 &1496038342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1496038343}
-  m_Layer: 0
-  m_Name: Feedbacks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1496038343
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496038342}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 382072983}
-  - {fileID: 927834052}
-  - {fileID: 1559777536}
-  - {fileID: 2057744633}
-  - {fileID: 1986721893}
-  m_Father: {fileID: 389019249}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521103128
 GameObject:
   m_ObjectHideFlags: 0
@@ -9478,134 +9103,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1629689756035971118, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
   m_PrefabInstance: {fileID: 1535954428}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1559777535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1559777536}
-  - component: {fileID: 1559777537}
-  m_Layer: 0
-  m_Name: Feedback MID
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1559777536
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559777535}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496038343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1559777537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559777535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76170e4cb22f714ebbb7d23a3a0a99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Tools.Runtime::MyFeedbackPlayer
-  Feedbacks:
-  - rid: 24504091481210969
-  - rid: 24504112335552512
-  - rid: 24504112335552513
-  - rid: 24504112335552514
-  - rid: 24504112335552602
-  references:
-    version: 2
-    RefIds:
-    - rid: 24504091481210969
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 1
-        Track: 1
-        TargetVolume: 0.5
-        FadeDuration: 1
-    - rid: 24504112335552512
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 2
-        Track: 1
-        TargetVolume: 0.5
-        FadeDuration: 1
-    - rid: 24504112335552513
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 3
-        Track: 1
-        TargetVolume: 0.5
-        FadeDuration: 1
-    - rid: 24504112335552514
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 4
-        Track: 1
-        TargetVolume: 0.5
-        FadeDuration: 1
-    - rid: 24504112335552602
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 5
-        Track: 1
-        TargetVolume: 0.5
-        FadeDuration: 1
 --- !u!1 &1565167597
 GameObject:
   m_ObjectHideFlags: 0
@@ -9631,7 +9128,7 @@ Transform:
   m_GameObject: {fileID: 1565167597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.5, y: 0, z: -54.5}
+  m_LocalPosition: {x: -41.5, y: 0, z: -45.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10329,6 +9826,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1629689756035971118, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
   m_PrefabInstance: {fileID: 1731758630}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1799055448 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9052620959475990508, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
+  m_PrefabInstance: {fileID: 389019248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1810533628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10681,9 +10183,9 @@ MonoBehaviour:
         z: 1.9743193
       Rotation:
         value:
-          x: -0.1821311
+          x: -0.18213113
           y: 0.6727342
-          z: 0.1758244
+          z: 0.17582442
           w: 0.69522846
     - Position:
         x: 7.4400024
@@ -10699,9 +10201,9 @@ MonoBehaviour:
         z: 2.1549437
       Rotation:
         value:
-          x: -0.09946239
+          x: -0.09946238
           y: 0.7717986
-          z: 0.11788172
+          z: 0.1178817
           w: 0.6168776
     - Position:
         x: 11.880005
@@ -11986,262 +11488,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 12, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1986721892
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1986721893}
-  - component: {fileID: 1986721894}
-  m_Layer: 0
-  m_Name: Feedback VERY CLOSE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1986721893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986721892}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496038343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1986721894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986721892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76170e4cb22f714ebbb7d23a3a0a99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Tools.Runtime::MyFeedbackPlayer
-  Feedbacks:
-  - rid: 24504091481210969
-  - rid: 24504112335552512
-  - rid: 24504112335552513
-  - rid: 24504112335552514
-  - rid: 24504112335552602
-  references:
-    version: 2
-    RefIds:
-    - rid: 24504091481210969
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 1
-        Track: 1
-        TargetVolume: 0.8
-        FadeDuration: 1
-    - rid: 24504112335552512
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 2
-        Track: 1
-        TargetVolume: 0.8
-        FadeDuration: 1
-    - rid: 24504112335552513
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 3
-        Track: 1
-        TargetVolume: 0.8
-        FadeDuration: 1
-    - rid: 24504112335552514
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 4
-        Track: 1
-        TargetVolume: 0.8
-        FadeDuration: 1
-    - rid: 24504112335552602
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 5
-        Track: 1
-        TargetVolume: 0.8
-        FadeDuration: 1
---- !u!1 &2057744632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2057744633}
-  - component: {fileID: 2057744634}
-  m_Layer: 0
-  m_Name: Feedback NEAR
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2057744633
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057744632}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1496038343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2057744634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057744632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76170e4cb22f714ebbb7d23a3a0a99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Tools.Runtime::MyFeedbackPlayer
-  Feedbacks:
-  - rid: 24504091481210969
-  - rid: 24504112335552512
-  - rid: 24504112335552513
-  - rid: 24504112335552514
-  - rid: 24504112335552602
-  references:
-    version: 2
-    RefIds:
-    - rid: 24504091481210969
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 0
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 1
-        Track: 1
-        TargetVolume: 1
-        FadeDuration: 1
-    - rid: 24504112335552512
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 2
-        Track: 1
-        TargetVolume: 0.6
-        FadeDuration: 1
-    - rid: 24504112335552513
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 3
-        Track: 1
-        TargetVolume: 0.6
-        FadeDuration: 1
-    - rid: 24504112335552514
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 4
-        Track: 1
-        TargetVolume: 0.6
-        FadeDuration: 1
-    - rid: 24504112335552602
-      type: {class: MyFeedbackMusicLayer, ns: , asm: Tools.Runtime}
-      data:
-        Active: 1
-        Label: Music Layer
-        Delay: 0
-        FeedbackColor: {r: 0, g: 1, b: 0, a: 1}
-        IsExpanded: 1
-        Duration: 1
-        Owner: {fileID: 0}
-        Clip: {fileID: 0}
-        LayerID: 5
-        Track: 1
-        TargetVolume: 0.6
-        FadeDuration: 1
 --- !u!43 &2062429307
 Mesh:
   m_ObjectHideFlags: 0
@@ -12505,6 +11751,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1629689756035971118, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
   m_PrefabInstance: {fileID: 2074475249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2089395502 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7044644038496178530, guid: e5092d8f798a0494a9f8a089e4d9fc37, type: 3}
+  m_PrefabInstance: {fileID: 389019248}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &2089757937
 Mesh:
@@ -12923,4 +12174,3 @@ SceneRoots:
   - {fileID: 263235479}
   - {fileID: 1897646707}
   - {fileID: 2092545118}
-  - {fileID: 298799674}
