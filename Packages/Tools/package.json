@@ -1,0 +1,10 @@
+{
+  "name": "com.abdoumouaad.inspectorstyle",
+  "version": "1.0.0",
+  "displayName": "Inspector Style",
+  "description": "Outil d'inspecteur personnalis�",
+  "unity": "2023.1",
+  "author": {
+    "name": "Abdou Mouaad"
+  }
+}
