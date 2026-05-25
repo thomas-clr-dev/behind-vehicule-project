@@ -2064,6 +2064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SubtitleManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3643155582215580499, guid: f727bf29fcf41e743b78e75deed48c37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6573098302327286094, guid: f727bf29fcf41e743b78e75deed48c37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2751,6 +2755,22 @@ PrefabInstance:
     - target: {fileID: 786096736273644434, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Name
       value: "\U0001F3A5CAMERAS"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856976005416479823, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856976005416479823, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856976005416479823, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856976005416479823, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8677602550566084545, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4345,6 +4365,10 @@ PrefabInstance:
     - target: {fileID: 8206043417019366820, guid: 7c93d4cb40feaa84a8bdd158cda62f51, type: 3}
       propertyPath: m_Name
       value: "\u2B1BBLACK BACKGROUND"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206043417019366820, guid: 7c93d4cb40feaa84a8bdd158cda62f51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6914,7 +6938,7 @@ Transform:
   m_GameObject: {fileID: 1565167597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.13, y: 0, z: -56.01}
+  m_LocalPosition: {x: -41.5, y: 0, z: -55.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

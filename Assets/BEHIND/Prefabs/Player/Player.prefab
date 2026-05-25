@@ -4824,6 +4824,7 @@ GameObject:
   - component: {fileID: 1106150913037743232}
   - component: {fileID: 8102372134873127148}
   - component: {fileID: -2375781440360124914}
+  - component: {fileID: 4552397670182478682}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4925,6 +4926,27 @@ MonoBehaviour:
   timer: 0
   threshold: 0
   isChased: 0
+--- !u!65 &4552397670182478682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 448
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.3982792, z: 1.4196953}
+  m_Center: {x: 0, y: 0.6991401, z: 0.20984781}
 --- !u!1 &8648307838069562327
 GameObject:
   m_ObjectHideFlags: 0
