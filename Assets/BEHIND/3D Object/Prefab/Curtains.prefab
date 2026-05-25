@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2176186538728767343}
+  - component: {fileID: 2160801827396788195}
   m_Layer: 0
   m_Name: Curtains
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 952911405855996932}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2160801827396788195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7515649450355819687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.118748, y: 14.755685, z: 3.1240387}
+  m_Center: {x: -0.012643814, y: 3.2113442, z: 0}
 --- !u!1001 &771191556698512367
 PrefabInstance:
   m_ObjectHideFlags: 0
