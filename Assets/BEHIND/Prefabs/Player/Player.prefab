@@ -4825,6 +4825,7 @@ GameObject:
   - component: {fileID: 8102372134873127148}
   - component: {fileID: -2375781440360124914}
   - component: {fileID: 4552397670182478682}
+  - component: {fileID: 6872257332996289553}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4918,7 +4919,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8483868162987937870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1e1bab2f3c6d9845aca979ac14b4d57, type: 3}
   m_Name: 
@@ -4947,6 +4948,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.3982792, z: 1.4196953}
   m_Center: {x: 0, y: 0.6991401, z: 0.20984781}
+--- !u!114 &6872257332996289553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483868162987937870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0674b103d3855f44297870bab0ad2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterButtonActivation
+  AbilityPermitted: 1
+  PreventJumpInButtonActivatedZone: 1
+  InButtonActivatedZone: 0
+  InButtonAutoActivatedZone: 0
+  ButtonActivatedZone: {fileID: 0}
+  InteractButtonName: Interact
 --- !u!1 &8648307838069562327
 GameObject:
   m_ObjectHideFlags: 0
