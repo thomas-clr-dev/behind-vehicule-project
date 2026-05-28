@@ -42,7 +42,7 @@ public class RumbleManager : MonoBehaviour
 
         if (other.name == ">Spline Infirmary>Class Chase")
         {
-            pad.SetMotorSpeeds(1f, 0);
+            //pad.SetMotorSpeeds(1f, 0);
 
             timer = 0;
             threshold = 1.5f;
