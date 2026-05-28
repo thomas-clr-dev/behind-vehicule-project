@@ -6,9 +6,17 @@ public class PauseScript : MonoBehaviour
     
     private bool estEnPause = false;
 
+    private IInputManager inputManager;
+
+
+    private void Start()
+    {
+       inputManager = GameServiceLocator.Get<IInputManager>();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (inputManager.IsPausePressed)
         {
             if (estEnPause)
             {
@@ -40,6 +48,16 @@ public class PauseScript : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit ();
-    Debug.Log("Je Quitte");
+        Debug.Log("Je Quitte");
+    }
+
+    public void ActivateEnemy()
+    {
+
+    }
+
+    public void DeactivateEnemy()
+    {
+
     }
 }
