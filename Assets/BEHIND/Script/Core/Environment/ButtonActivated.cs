@@ -510,7 +510,7 @@ public class ButtonActivated : MonoBehaviour
 
         if (ShouldUpdateState)
         {
-            _characterButtonActivation = collider.gameObject.GetComponentInParent<CharacterButtonActivation>();
+            _characterButtonActivation = collider.gameObject.GetComponent<CharacterButtonActivation>();
             if (_characterButtonActivation != null)
             {
                 Debug.Log("Found a CharacterButtonActivation component, updating its state");

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1187786831308454735}
+  - component: {fileID: 952919756995746823}
   m_Layer: 0
   m_Name: OfficeChair
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 4127743770960461373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &952919756995746823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997770480273095463}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.42804337, y: 0.81635004, z: 0.44892693}
+  m_Center: {x: 0.000579834, y: 0.4042411, z: -0.0075416565}
 --- !u!1001 &4522186229228280278
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour, ILevelManager
 {
@@ -13,7 +14,7 @@ public class LevelManager : MonoBehaviour, ILevelManager
     private WheelChairController spawnedPlayer;
     public void LoadLevel(string levelName)
     {
-       
+       SceneManager.LoadScene(levelName);   
     }
 
     private void Start()
