@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
     public GameObject menuPauseUI; 
     
-    private bool estEnPause = false;
+    private bool IsPaused = false;
 
     private IInputManager inputManager;
 
@@ -18,7 +19,7 @@ public class PauseScript : MonoBehaviour
     {
         if (inputManager.IsPausePressed)
         {
-            if (estEnPause)
+            if (IsPaused)
             {
                 ContinueGame();
             }
@@ -34,7 +35,7 @@ public class PauseScript : MonoBehaviour
         menuPauseUI.SetActive(false); 
         Debug.Log("Je Reprend");
         Time.timeScale = 1f;          
-        estEnPause = false;
+        IsPaused = false;
     }
 
     public void PauseGame()
@@ -42,7 +43,7 @@ public class PauseScript : MonoBehaviour
         menuPauseUI.SetActive(true);  
         Debug.Log("J'arrête");
         Time.timeScale = 0f;          
-        estEnPause = true;
+        IsPaused = true;
     }
 
     public void QuitGame()
@@ -53,11 +54,24 @@ public class PauseScript : MonoBehaviour
 
     public void ActivateEnemy()
     {
-
+        GameEngineEvent.Trigger(GameEngineEventTypes.ActivateEnemy);
     }
 
     public void DeactivateEnemy()
     {
-
+        GameEngineEvent.Trigger(GameEngineEventTypes.DeactivateEnemy);
     }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("StartScreen");
+        Time.timeScale = 1f;
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+    }
+
 }

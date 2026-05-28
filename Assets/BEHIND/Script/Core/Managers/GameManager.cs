@@ -16,7 +16,9 @@ public enum GameEngineEventTypes
     GameOver,
     TogglePause,
     LoadNextScene,
-    PauseNoMenu
+    PauseNoMenu,
+    ActivateEnemy,
+    DeactivateEnemy
 }
 
 public struct GameEngineEvent : IEvent

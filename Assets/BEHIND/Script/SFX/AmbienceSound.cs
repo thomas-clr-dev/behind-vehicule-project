@@ -79,7 +79,7 @@ public class AmbienceSound : MonoBehaviour, IEventListener<PlayerEvent>
                 ambSource.panStereo = Random.Range(-0.9f, 0.9f);  // Random de son de droite à gauche
             }
             StartCoroutine(AmbPlay());
-            Debug.Log("je fais du bruit");
+            //Debug.Log("je fais du bruit");
         }
         
     }

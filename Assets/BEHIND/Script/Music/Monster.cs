@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
 {
     #region SerializeField
     [Header("Chase Settings")]
@@ -54,6 +54,8 @@ public class Monster : MonoBehaviour
 
     [Tooltip("Zone de fin de la chase")]
     [SerializeField] private ChaseEndZone _endZone;
+
+    private bool _isEnabled = true;
     #endregion
 
     #region Private Fields
@@ -222,8 +224,9 @@ public class Monster : MonoBehaviour
     #region Chase Logic
     private void StartChasing()
     {
-        _isChasing = true;
+        if (!_isEnabled) return; // ← bloque si désactivé
 
+        _isChasing = true;
         SetVisibility(true);
     }
 
@@ -360,7 +363,35 @@ public class Monster : MonoBehaviour
             _rotationCoroutine = StartCoroutine(RotateToNewDirection(changeData));
         }
     }
+
+
     #endregion
+
+
+    public void OnEvent(GameEngineEvent e)
+    {
+        Debug.Log("Monster received event: " + e.EventType);
+        switch (e.EventType)
+        {
+            case GameEngineEventTypes.ActivateEnemy:
+                _isEnabled = true;
+                break;
+            case GameEngineEventTypes.DeactivateEnemy:
+                _isEnabled = false;
+                StopChasing();
+                break;
+        }
+    }
+
+    private void OnEnable()
+    {
+        this.EventStartListening<GameEngineEvent>();
+    }
+
+    private void OnDisable()
+    {
+        this.EventStopListening<GameEngineEvent>();
+    }
 }
 
 /// <summary>
