@@ -6,6 +6,8 @@ public class InputManager : MonoBehaviour, IInputManager
 
     public bool IsInteractPressed { get; set; }
 
+    public bool IsPausePressed => controls.Player.Pause.WasPressedThisFrame();
+
 
     private void Awake()
     {
