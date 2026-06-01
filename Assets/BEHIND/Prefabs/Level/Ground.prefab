@@ -5723,6 +5723,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3153414432143325246, guid: 13e6f041dfaec384ca3babfb4f8b2344, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3311951373052911793, guid: 13e6f041dfaec384ca3babfb4f8b2344, type: 3}
       propertyPath: m_Name
       value: Ground (2)
