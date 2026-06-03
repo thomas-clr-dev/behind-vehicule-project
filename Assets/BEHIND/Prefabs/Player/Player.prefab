@@ -10290,9 +10290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e1bab2f3c6d9845aca979ac14b4d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RumbleManager
-  timer: 0
-  threshold: 0
-  isChased: 0
 --- !u!65 &4552397670182478682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11290,6 +11287,10 @@ PrefabInstance:
     - target: {fileID: 373295110932846289, guid: 3a29316f87373e64eacbe3bae788b92f, type: 3}
       propertyPath: m_Name
       value: VFX_Wheel Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 373295110932846289, guid: 3a29316f87373e64eacbe3bae788b92f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4837942567577605328, guid: 3a29316f87373e64eacbe3bae788b92f, type: 3}
       propertyPath: cooldownTime
