@@ -120,7 +120,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
 
         SubscribeToDirectionZones();
 
-        SetVisibility(false);
+        //SetVisibility(false);
     }
 
     /// <summary>
@@ -227,7 +227,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
         if (!_isEnabled) return; // ← bloque si désactivé
 
         _isChasing = true;
-        SetVisibility(true);
+        //SetVisibility(true);
     }
 
     public void StopChasing()
@@ -245,7 +245,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
         _isRotating = false;
         _rotationSpeedMultiplier = 1f;
 
-        SetVisibility(false);
+        //SetVisibility(false);
 
         ResetPosition();
     }
