@@ -52,12 +52,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2838452214388941394, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838452214388941394, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838452214388941394, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838452214388941394, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00008749961
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838452214388941394, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -359.99
+      objectReference: {fileID: 0}
     - target: {fileID: 9070137017243840026, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8544534809215562912, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
