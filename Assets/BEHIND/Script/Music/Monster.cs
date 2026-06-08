@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
+public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 {
     #region SerializeField
     [Header("Chase Settings")]
@@ -254,8 +254,10 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Monster caught the player! Game Over.");
             StopChasing();
             OnGameOver?.Invoke();
+            GameEngineEvent.Trigger(GameEngineEventTypes.GameOver);
         }
     }
     #endregion
@@ -368,10 +370,10 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
     #endregion
 
 
-    public void OnEvent(GameEngineEvent e)
+    public void OnEvent(GameEngineEventTypes e)
     {
-        Debug.Log("Monster received event: " + e.EventType);
-        switch (e.EventType)
+        
+        switch (e)
         {
             case GameEngineEventTypes.ActivateEnemy:
                 _isEnabled = true;
@@ -385,12 +387,12 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
 
     private void OnEnable()
     {
-        this.EventStartListening<GameEngineEvent>();
+        this.EventStartListening<GameEngineEventTypes>();
     }
 
     private void OnDisable()
     {
-        this.EventStopListening<GameEngineEvent>();
+        this.EventStopListening<GameEngineEventTypes>();
     }
 }
 

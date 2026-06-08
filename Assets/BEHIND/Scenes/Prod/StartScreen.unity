@@ -441,6 +441,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229560737}
   m_CullTransparentMesh: 1
+--- !u!1 &347055887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 347055889}
+  - component: {fileID: 347055888}
+  m_Layer: 0
+  m_Name: MenuFocus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &347055888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347055887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae6bf02c6b853b46a4d1cefe5b6070d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuFocus
+  firstSelectedButton: {fileID: 908710702}
+--- !u!4 &347055889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347055887}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &461641477
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +499,7 @@ GameObject:
   - component: {fileID: 461641480}
   - component: {fileID: 461641479}
   - component: {fileID: 461641482}
+  - component: {fileID: 461641483}
   m_Layer: 5
   m_Name: Button_Quit
   m_TagString: Untagged
@@ -587,6 +633,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827aa579614cb274a8d0157a44986c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuitButton
+--- !u!114 &461641483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461641477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d839efcd9b089b8469af2945bba1015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  rectTransform: {fileID: 461641478}
+  image: {fileID: 461641480}
+  hoverScale: 1.1
+  pressedScale: 0.95
+  normalScale: 1
+  scaleDuration: 0.15
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 0.1
 --- !u!1 &908710702
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +668,7 @@ GameObject:
   - component: {fileID: 908710705}
   - component: {fileID: 908710704}
   - component: {fileID: 908710707}
+  - component: {fileID: 908710708}
   m_Layer: 5
   m_Name: Button_Start
   m_TagString: Untagged
@@ -735,6 +804,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelector
   scene: {fileID: 11400000, guid: 896eaf86372f37848b0fdd1c7c1020d2, type: 2}
   doNotUseLevelManager: 1
+--- !u!114 &908710708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908710702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d839efcd9b089b8469af2945bba1015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  rectTransform: {fileID: 908710703}
+  image: {fileID: 908710705}
+  hoverScale: 1.1
+  pressedScale: 0.95
+  normalScale: 1
+  scaleDuration: 0.15
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 0.1
 --- !u!1 &945216416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1306,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1411,3 +1502,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1211107625}
   - {fileID: 1848984036}
+  - {fileID: 347055889}
