@@ -3054,7 +3054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3455906399757315769, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[3].Rotation.value.z
-      value: 0.0007187899
+      value: 0.0007188778
       objectReference: {fileID: 0}
     - target: {fileID: 6895510586891566709, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_RenderPostProcessing
@@ -10420,19 +10420,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3812809
+      value: -39.83397
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10440,7 +10440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 77.835625
+      value: 64.75963
       objectReference: {fileID: 0}
     - target: {fileID: 8349892152256148397, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_ConstrainProportionsScale
