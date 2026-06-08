@@ -52,7 +52,7 @@ public class MonoBehaviourUITKEditor : Editor
         // Si vous connaissez le chemin exact (plus performant)
         // EditorStyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Path/To/Your/Style.uss");
 
-        // Ou si vous préférez chercher par nom (plus flexible)
+        // Ou si vous prï¿½fï¿½rez chercher par nom (plus flexible)
         if (EditorStyleSheet == null)
         {
             string[] guids = AssetDatabase.FindAssets("MonoBehaviourUITKEditorStyleSheet t:StyleSheet");
@@ -88,7 +88,7 @@ public class MonoBehaviourUITKEditor : Editor
         PropertiesList = new List<SerializedProperty>();
         _targetTypeName = target.GetType().Name;
 
-        _targetMonoBehaviourGameObject = (MonoBehaviour)target;
+        _targetMonoBehaviourGameObject = target as MonoBehaviour;
         if (_targetMonoBehaviourGameObject != null)
         {
             _targetMonoBehaviourIsNotNull = true;
