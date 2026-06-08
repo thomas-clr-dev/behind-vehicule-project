@@ -52,6 +52,7 @@ public abstract class MyFeedback
 
         do
         {
+            Debug.Log($"Playing feedback: {Label}");
             CustomPlay();
             if (Loop)
             {

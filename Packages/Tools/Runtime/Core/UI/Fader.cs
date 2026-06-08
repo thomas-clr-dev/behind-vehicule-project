@@ -98,6 +98,7 @@ namespace Tools
         [InspectorGroup("Opacity", true, 123)]
         public float InactiveAlpha = 0f;
         public float ActiveAlpha = 1f;
+        public Color FadeColor = Color.black;
         public ForcedInitStates ForcedInitState = ForcedInitStates.Inactive;
 
         [InspectorGroup("Timing", true, 124)]
@@ -132,6 +133,8 @@ namespace Tools
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _image = GetComponent<Image>();
+
+            _image.color = FadeColor;
 
             switch (ForcedInitState)
             {
