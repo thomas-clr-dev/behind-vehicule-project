@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f7da73af164064084c1096f63b1efd, type: 3}
   m_Name: Class Children Sentence 1
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleData
-  Text: "<i>Bah alors Camille, t'as pas r\xE9ussi le devoir ?</i>"
+  Text: "<i>Bah alors Camille, t'as pas r\xE9ussi le devoir ?<i>\n"
   Duration: 4
   AutoCalculateDuration: 1
   ReadingSpeed: 20

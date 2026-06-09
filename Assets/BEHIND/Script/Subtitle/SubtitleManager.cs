@@ -202,11 +202,11 @@ public class SubtitleManager : MonoBehaviour
         // Attend la durée spécifiée
         float duration = data.GetEffectiveDuration();
         
-        // Si un audio est présent, utilise sa durée si elle est plus longue
-        if (_voiceAudioSource != null && data.VoiceClip != null)
+       if (_voiceAudioSource != null && data.VoiceClip != null)
         {
             duration = Mathf.Max(duration, data.VoiceClip.length);
-        }
+        }      // Si un audio est présent, utilise sa durée si elle est plus longue
+   
 
         yield return new WaitForSeconds(duration);
 
@@ -270,14 +270,15 @@ public class SubtitleManager : MonoBehaviour
     private IEnumerator TypewriterEffect(string text)
     {
         if (_subtitleText == null) yield break;
+        _subtitleText.text = text;
+        _subtitleText.ForceMeshUpdate(); 
+        _subtitleText.maxVisibleCharacters = 0;
 
-        _subtitleText.text = "";
-        float delay = 1f / _typewriterSpeed;
 
-        foreach (char c in text)
+        for(int i = 0; i <= text.Length; i++)
         {
-            _subtitleText.text += c;
-            yield return new WaitForSeconds(delay);
+            _subtitleText.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(1f / _typewriterSpeed);
         }
     }
 

@@ -2518,7 +2518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[7].Rotation.value.z
-      value: -0.07349237
+      value: -0.07349236
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[8].Rotation.value.w
@@ -2538,11 +2538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[10].Rotation.value.w
-      value: 0.9986122
+      value: 0.9986123
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[10].Rotation.value.x
-      value: 0.016645024
+      value: 0.016645027
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[10].Rotation.value.y
@@ -2550,7 +2550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[10].Rotation.value.z
-      value: 0.04883877
+      value: 0.0488387
       objectReference: {fileID: 0}
     - target: {fileID: 2099041009101186723, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[13].Rotation.value.w
@@ -2594,7 +2594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3455906399757315769, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[3].Rotation.value.z
-      value: 0.0007190413
+      value: 0.0007190415
       objectReference: {fileID: 0}
     - target: {fileID: 6895510586891566709, guid: 980855594d8afa547b4bdb53760b32aa, type: 3}
       propertyPath: m_RenderPostProcessing
@@ -7272,7 +7272,7 @@ Transform:
   m_GameObject: {fileID: 1565167597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.46, y: 0, z: 88.43}
+  m_LocalPosition: {x: -42.38, y: 0, z: 45.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
