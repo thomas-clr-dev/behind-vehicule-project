@@ -60,7 +60,7 @@ public class PauseScript : MonoBehaviour
     public void DeactivateEnemy()
     {
         GameEngineEvent.Trigger(GameEngineEventTypes.DeactivateEnemy);
-    }
+    }   
 
     public void BackToMenu()
     {

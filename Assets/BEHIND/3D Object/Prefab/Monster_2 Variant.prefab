@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 231694017951472931, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 3007933666498353948, guid: 1a46492c67fe06441b157541697a95e4, type: 3}
     - target: {fileID: 584966033557746669, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.63
@@ -56,18 +52,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_2 Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
-      propertyPath: _speedNear
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
-      propertyPath: _speedVeryClose
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7078385155657402361, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
-    - {fileID: 8544534809215562912, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}

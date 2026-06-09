@@ -176,6 +176,21 @@ public class ButtonActivated : MonoBehaviour
     [Tooltip("a UnityEvent to trigger when a character is within the zone")]
     public UnityEvent OnStay;
 
+    [InspectorGroup("Feedbacks", true, 18)]
+
+    /// a feedback to play when the zone is activated
+    [Tooltip("a feedback to play when the zone is activated")]
+    public MyFeedbackPlayer ActivationFeedback;
+    /// a feedback to play when the zone is entered
+    [Tooltip("a feedback to play when the zone is entered")]
+    public MyFeedbackPlayer OnEnterFeedback;
+    /// a feedback to play when the zone is exited
+    [Tooltip("a feedback to play when the zone is exited")]
+    public MyFeedbackPlayer OnExitFeedback;
+    /// a feedback to play when a character is within the zone
+    [Tooltip("a feedback to play when a character is within the zone")]
+    public MyFeedbackPlayer OnStayFeedback;
+
     protected Animator _buttonPromptAnimator;
     protected ButtonPrompt _buttonPrompt;
     protected Collider _collider;
@@ -272,6 +287,7 @@ public class ButtonActivated : MonoBehaviour
         {
             OnExit.Invoke();
         }
+        OnExitFeedback?.Play();
     }
 
     public virtual void TriggerEnterAction(GameObject collider)
@@ -280,6 +296,8 @@ public class ButtonActivated : MonoBehaviour
         {
             OnEnter.Invoke();
         }
+        Debug.Log("Invoked OnEnter event");
+        OnEnterFeedback?.Play();
     }
 
     /// <summary>
@@ -311,7 +329,10 @@ public class ButtonActivated : MonoBehaviour
         if (_staying && (OnStay != null))
         {
             OnStay.Invoke();
+           
         }
+        if(_staying)OnStayFeedback?.Play();
+
     }
 
     /// <summary>
@@ -323,6 +344,8 @@ public class ButtonActivated : MonoBehaviour
         {
             OnActivation.Invoke();
         }
+
+        ActivationFeedback?.Play();
 
         _lastActivationTimestamp = Time.time;
 

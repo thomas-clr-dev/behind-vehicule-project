@@ -1,52 +1,29 @@
-using System;
+﻿using System;
+using System.Collections;
+using Tools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour, ILevelManager
+public class LevelManager : MonoBehaviour, ILevelManager, IEventListener<GameEngineEvent>
 {
-    [Header("Player Prefab")]
-    [Tooltip("The player prefab this level manager will instantiate on Start")]
+    [Header("Player")]
     [SerializeField] private WheelChairController playerPrefab;
-
-    [Space(10)]
     [SerializeField] private Transform initialSpawnPoint;
 
-    private WheelChairController spawnedPlayer;
-    public void LoadLevel(string levelName)
-    {
-       SceneManager.LoadScene(levelName);   
-    }
+    [Header("Intro / Outro")]
+    public float IntroFadeDuration = 1f;
+    public float OutroFadeDuration = 1f;
+    public int FaderID = 0;
+    public MyTweenType FadeCurve = new MyTweenType(MyTween.TweenType.EaseInOutCubic);
 
-    private void Start()
-    {
-        Initialization();
-    }
+    [Header("Respawn")]
+    public float RespawnDelay = 2f;
 
-    public void Initialization()
-    {
-        GameEngineEvent.Trigger(GameEngineEventTypes.SpawnCharacterStarts);
+    private WheelChairController _spawnedPlayer;
 
-        SpawnCharacter();
-
-        GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
-
-        PlayerEvent.Trigger(PlayerEventTypes.PlayerSpawn, spawnedPlayer);   
-        CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, spawnedPlayer);
-        CameraEvent.Trigger(CameraEventTypes.StartFollowing);
-    }
-
-    private void SpawnCharacter()
-    {
-        if (playerPrefab != null && initialSpawnPoint != null)
-        {
-            spawnedPlayer = Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
-        }
-        else
-        {
-            Debug.LogError("Player prefab or initial spawn point is not assigned in LevelManager.");
-        }
-
-    }
+    // -------------------------------------------------------------------------
+    // Unity
+    // -------------------------------------------------------------------------
 
     private void Awake()
     {
@@ -56,5 +33,124 @@ public class LevelManager : MonoBehaviour, ILevelManager
     private void OnDestroy()
     {
         GameServiceLocator.Unregister<ILevelManager>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(InitializationCoroutine());
+    }
+
+    private void OnEnable()
+    {
+        this.EventStartListening<GameEngineEvent>();
+    }
+
+    private void OnDisable()
+    {
+        this.EventStopListening<GameEngineEvent>(); // 👈 tu avais StartListening ici, c'est un bug
+    }
+
+    // -------------------------------------------------------------------------
+    // Initialization
+    // -------------------------------------------------------------------------
+
+    private IEnumerator InitializationCoroutine()
+    {
+        GameEngineEvent.Trigger(GameEngineEventTypes.SpawnCharacterStarts);
+        SpawnCharacter();
+        GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
+        PlayerEvent.Trigger(PlayerEventTypes.PlayerSpawn, _spawnedPlayer);
+        CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, _spawnedPlayer);
+        CameraEvent.Trigger(CameraEventTypes.StartFollowing);
+
+        // Fade in d'intro — le niveau apparaît progressivement
+        //FadeOutEvent.Trigger(IntroFadeDuration, FadeCurve, FaderID);
+
+        yield break;
+    }
+
+    private void SpawnCharacter()
+    {
+        if (playerPrefab == null || initialSpawnPoint == null)
+        {
+            Debug.LogError("[LevelManager] Player prefab or spawn point not assigned.");
+            return;
+        }
+        _spawnedPlayer = Instantiate(playerPrefab, initialSpawnPoint.position, initialSpawnPoint.rotation);
+    }
+
+    // -------------------------------------------------------------------------
+    // End Level
+    // -------------------------------------------------------------------------
+
+    /// <summary>
+    /// Joue l'outro (fade au noir) puis charge la scène spécifiée.
+    /// </summary>
+    public void EndLevel(string sceneName)
+    {
+        GameEngineEvent.Trigger(GameEngineEventTypes.LevelEnd);
+        StartCoroutine(EndLevelCoroutine(sceneName));
+    }
+
+    private IEnumerator EndLevelCoroutine(string sceneName)
+    {
+        // On désactive le joueur pendant le fade
+        //if (_spawnedPlayer != null)
+        //    _spawnedPlayer.enabled = false;
+
+        // Fade au noir
+        FadeInEvent.Trigger(OutroFadeDuration, FadeCurve, FaderID);
+        yield return new WaitForSeconds(OutroFadeDuration);
+
+        LoadLevel(sceneName);
+    }
+
+    // -------------------------------------------------------------------------
+    // Respawn
+    // -------------------------------------------------------------------------
+
+    private IEnumerator RespawnCoroutine()
+    {
+        // Fade au noir
+        FadeInEvent.Trigger(OutroFadeDuration, FadeCurve, FaderID);
+        yield return new WaitForSeconds(OutroFadeDuration);
+
+        yield return new WaitForSeconds(RespawnDelay);
+
+        // Respawn du joueur
+        if (_spawnedPlayer != null && initialSpawnPoint != null)
+            _spawnedPlayer.transform.position = initialSpawnPoint.position;
+
+        // Fade retour au jeu
+        FadeOutEvent.Trigger(OutroFadeDuration, FadeCurve, FaderID);
+
+        CameraEvent.Trigger(CameraEventTypes.StartFollowing);
+        GameEngineEvent.Trigger(GameEngineEventTypes.RespawnComplete);
+    }
+
+    // -------------------------------------------------------------------------
+    // Load
+    // -------------------------------------------------------------------------
+
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+    }
+
+    // -------------------------------------------------------------------------
+    // Events
+    // -------------------------------------------------------------------------
+
+    public void OnEvent(GameEngineEvent e)
+    {
+        switch (e.EventType)
+        {
+            case GameEngineEventTypes.GameOver:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                break;
+            case GameEngineEventTypes.RespawnStarted:
+                StartCoroutine(RespawnCoroutine());
+                break;
+        }
     }
 }

@@ -7,14 +7,22 @@ public class ChaseTriggerZone : MonoBehaviour
     public event Action OnChaseBegin;
     #endregion
 
+    public bool HasTriggered = false;
     #region Trigger Logic
     private void OnTriggerEnter(Collider other)
     {        
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") )
         {
+            if(HasTriggered == true)
+            {
+                 return;
+            }
+
+
             if (OnChaseBegin != null)
             {
                 OnChaseBegin.Invoke();
+                HasTriggered = true;
             }
         }
     }

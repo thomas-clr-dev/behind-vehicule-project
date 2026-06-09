@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;   
 using System.Collections;
+
 using UnityEngine;
 
-public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
+public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 {
     #region SerializeField
     [Header("Chase Settings")]
@@ -55,6 +57,11 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
     [Tooltip("Zone de fin de la chase")]
     [SerializeField] private ChaseEndZone _endZone;
 
+    float delay;
+    public float minDelay;
+    public float maxDelay;
+    private float lastDelay;
+
     private bool _isEnabled = true;
     #endregion
 
@@ -77,11 +84,16 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
     public bool IsChasing => _isChasing;
 
     public static event Action OnGameOver;
+
+    public List<AudioClip> Sounds;
+    public AudioSource audioSource;
     #endregion
 
     #region Initialization
     private void Start()
     {
+        delay = UnityEngine.Random.Range(minDelay, maxDelay);
+
         _initialPosition = transform.position;
         _initialRotation = transform.rotation;
 
@@ -120,7 +132,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
 
         SubscribeToDirectionZones();
 
-        SetVisibility(false);
+        //SetVisibility(false);
     }
 
     /// <summary>
@@ -137,6 +149,15 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
     }
     #endregion
 
+    IEnumerator PlaySound()
+    {
+          int r = UnityEngine.Random.Range(0, Sounds.Count);
+          audioSource.PlayOneShot(Sounds[r]);     
+          delay = UnityEngine.Random.Range(minDelay, maxDelay);
+
+          yield return new WaitForSeconds(delay); 
+          StartCoroutine(PlaySound());         
+    }
     #region Update
     private void Update()
     {
@@ -228,6 +249,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
 
         _isChasing = true;
         SetVisibility(true);
+        StartCoroutine(PlaySound());
     }
 
     public void StopChasing()
@@ -248,14 +270,18 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
         SetVisibility(false);
 
         ResetPosition();
+
+        StopCoroutine(PlaySound());
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Monster caught the player! Game Over.");
             StopChasing();
             OnGameOver?.Invoke();
+            GameEngineEvent.Trigger(GameEngineEventTypes.GameOver);
         }
     }
     #endregion
@@ -368,10 +394,10 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
     #endregion
 
 
-    public void OnEvent(GameEngineEvent e)
+    public void OnEvent(GameEngineEventTypes e)
     {
-        Debug.Log("Monster received event: " + e.EventType);
-        switch (e.EventType)
+        
+        switch (e)
         {
             case GameEngineEventTypes.ActivateEnemy:
                 _isEnabled = true;
@@ -385,12 +411,12 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEvent>
 
     private void OnEnable()
     {
-        this.EventStartListening<GameEngineEvent>();
+        this.EventStartListening<GameEngineEventTypes>();
     }
 
     private void OnDisable()
     {
-        this.EventStopListening<GameEngineEvent>();
+        this.EventStopListening<GameEngineEventTypes>();
     }
 }
 
