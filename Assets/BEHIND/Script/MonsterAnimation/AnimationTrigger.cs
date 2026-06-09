@@ -51,6 +51,7 @@ namespace Behind.Progression
                     foreach (Animator animator in animators)
                     {
                         animator.SetBool(parameterName, boolValue);
+                        Debug.Log(animator);
                     }
                     break;
                 case ParameterType.Int:
