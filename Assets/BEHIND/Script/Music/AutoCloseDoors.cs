@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -36,8 +37,7 @@ public class AutoCloseDoor : MonoBehaviour
 
     [Header("Audio (Optional)")]
     [Tooltip("Son de fermeture de porte")]
-    [SerializeField] private AudioClip _closeSound;
-
+    [SerializeField] private List<AudioClip> _closeSoundList;
     [SerializeField] private AudioSource _audioSource;
 
     [Header("Gizmos")]
@@ -50,6 +50,7 @@ public class AutoCloseDoor : MonoBehaviour
     [Header("Debug")]
     [Tooltip("Afficher les logs de debug")]
     [SerializeField] private bool _showDebugLogs = true;
+
     #endregion
 
     #region Private Fields
@@ -58,6 +59,7 @@ public class AutoCloseDoor : MonoBehaviour
     private Quaternion _targetRotation;
     private bool _isClosing = false;
     #endregion
+    
 
     #region Initialization
     private void Start()
@@ -177,9 +179,11 @@ public class AutoCloseDoor : MonoBehaviour
         }
 
         // Jouer le son
-        if (_audioSource != null && _closeSound != null)
+        if (_audioSource != null && _closeSoundList != null)
         {
-            _audioSource.PlayOneShot(_closeSound);
+            //_audioSource.PlayOneShot(_closeSound);
+            int r = Random.Range(0, _closeSoundList.Count);
+            _audioSource.PlayOneShot(_closeSoundList[r], 0.5f);
         }
 
         float elapsed = 0f;

@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;   
 using System.Collections;
+
 using UnityEngine;
 
 public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
@@ -55,6 +57,11 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     [Tooltip("Zone de fin de la chase")]
     [SerializeField] private ChaseEndZone _endZone;
 
+    float delay;
+    public float minDelay;
+    public float maxDelay;
+    private float lastDelay;
+
     private bool _isEnabled = true;
     #endregion
 
@@ -77,11 +84,16 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     public bool IsChasing => _isChasing;
 
     public static event Action OnGameOver;
+
+    public List<AudioClip> Sounds;
+    public AudioSource audioSource;
     #endregion
 
     #region Initialization
     private void Start()
     {
+        delay = UnityEngine.Random.Range(minDelay, maxDelay);
+
         _initialPosition = transform.position;
         _initialRotation = transform.rotation;
 
@@ -137,6 +149,15 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     }
     #endregion
 
+    IEnumerator PlaySound()
+    {
+          int r = UnityEngine.Random.Range(0, Sounds.Count);
+          audioSource.PlayOneShot(Sounds[r]);     
+          delay = UnityEngine.Random.Range(minDelay, maxDelay);
+
+          yield return new WaitForSeconds(delay); 
+          StartCoroutine(PlaySound());         
+    }
     #region Update
     private void Update()
     {
@@ -228,6 +249,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 
         _isChasing = true;
         SetVisibility(true);
+        StartCoroutine(PlaySound());
     }
 
     public void StopChasing()
@@ -248,6 +270,8 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
         SetVisibility(false);
 
         ResetPosition();
+
+        StopCoroutine(PlaySound());
     }
 
     private void OnTriggerEnter(Collider other)
