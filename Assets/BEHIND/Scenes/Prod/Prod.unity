@@ -1413,6 +1413,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2092545129}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2092545128}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2092545127}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2092545126}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2092545125}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2092545124}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2092545123}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[7]'
+      value: 
+      objectReference: {fileID: 2092545122}
+    - target: {fileID: 1974136514275022284, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: 'animators.Array.data[8]'
+      value: 
+      objectReference: {fileID: 2092545121}
     - target: {fileID: 5097902732735286594, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
       propertyPath: m_Name
       value: Triggers
@@ -8972,6 +9008,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a828254501e93439c635a0b88339fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DistanceFromMonsterToPlayer
+--- !u!95 &2092545121 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8785513827734585152, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545122 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6605573905801503436, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545123 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 661969016166093375, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545124 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7592168649927756965, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545125 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8099144914252386192, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545126 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3005283337733485030, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545127 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2134932198507072285, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545128 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2224662669736938626, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2092545129 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2568872759516032495, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+  m_PrefabInstance: {fileID: 2092545118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099831466
 GameObject:
   m_ObjectHideFlags: 0

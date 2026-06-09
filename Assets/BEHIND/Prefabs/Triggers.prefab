@@ -1147,8 +1147,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4600542822384970514, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1974136514275022284}
   m_SourcePrefab: {fileID: 100100000, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+--- !u!1 &8274114828948482481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4600542822384970514, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+  m_PrefabInstance: {fileID: 5551784726097724067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1974136514275022284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274114828948482481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2505e58fbe027142a2361bc3dcb566b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Behind.Progression.AnimationTrigger
+  animators:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  parameterName: ChaseCorridor
+  parameterType: 1
+  boolValue: 1
+  intValue: 0
+  floatValue: 0
 --- !u!4 &8404561757452326875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4154824268325705080, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
