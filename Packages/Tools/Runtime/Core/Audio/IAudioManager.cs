@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IAudioManager 
 {
     AudioSource PlaySound(AudioClip clip, SoundManagerPlayOptions options);
+    AudioSource FindByClip(AudioClip clip);
 
     AudioSource FindByID(int ID);
 }

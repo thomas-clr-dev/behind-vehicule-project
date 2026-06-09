@@ -21,7 +21,7 @@ public class InformationAttribute : PropertyAttribute
         this.MessageAfterProperty = messageAfterProperty;
     }
 #else
-		public InformationAttribute(string message, InformationType type, bool messageAfterProperty)
+		public MMInformationAttribute(string message, InformationType type, bool messageAfterProperty)
 		{
 
 		}

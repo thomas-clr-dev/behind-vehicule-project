@@ -43,6 +43,8 @@ public struct GameEngineEvent : IEvent
 
 public class GameManager : MonoBehaviour, IGameManager
 {
+
+
     private void Awake()
     {
         GameServiceLocator.Register<IGameManager>(this);

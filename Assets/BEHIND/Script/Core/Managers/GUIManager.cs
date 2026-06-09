@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class GUIManager : MonoBehaviour
+public class GUIManager : MonoBehaviour, IGUIManager
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetGameOverScreen()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        GameServiceLocator.Register<IGUIManager>(this, GameServiceLocator.ServiceLifecycle.SceneScoped, debugName: "GUI Manager");
+    }
+
+    private void OnDestroy()
+    {
+        GameServiceLocator.Unregister<IGUIManager>();
     }
 }
