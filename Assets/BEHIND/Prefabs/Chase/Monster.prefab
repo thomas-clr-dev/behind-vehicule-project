@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2196016491630657148, guid: 4b2cd2fdf7a7d034d9ca2a6ebd40e6bd, type: 3}
       propertyPath: _speedVeryClose
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2196016491630657148, guid: 4b2cd2fdf7a7d034d9ca2a6ebd40e6bd, type: 3}
       propertyPath: Sounds.Array.size
