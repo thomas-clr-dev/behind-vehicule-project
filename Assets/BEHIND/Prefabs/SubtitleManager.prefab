@@ -1,5 +1,145 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &73992832192469309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7966400817028826298}
+  - component: {fileID: 7193031804334046502}
+  - component: {fileID: 5711176622586210023}
+  m_Layer: 0
+  m_Name: Infirmary Corridor Chase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7966400817028826298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73992832192469309}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.1, y: 0, z: 89.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4577509581327503550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7193031804334046502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73992832192469309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 3ac3074e981e35749809f5362d6dd12c, type: 2}
+  _triggerOnce: 1
+  _autoPlayOnStart: 0
+  _showDebugLogs: 0
+--- !u!65 &5711176622586210023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73992832192469309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2986221, y: 12, z: 9.735031}
+  m_Center: {x: -0.1069603, y: 0, z: 5.609627}
+--- !u!1 &186629811706528964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 479168160743570209}
+  - component: {fileID: 8230154018464868831}
+  - component: {fileID: 5300499214838733008}
+  m_Layer: 0
+  m_Name: Roof
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &479168160743570209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186629811706528964}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 101.67, y: 0, z: -12.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4577509581327503550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8230154018464868831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186629811706528964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
+  _triggerOnce: 1
+  _autoPlayOnStart: 0
+  _showDebugLogs: 0
+--- !u!65 &5300499214838733008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186629811706528964}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 61.504837, y: 12, z: 3.9854736}
+  m_Center: {x: -1.6932602, y: 0, z: -0.28677368}
 --- !u!1 &1971915434483675900
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +152,7 @@ GameObject:
   - component: {fileID: 4399839780106329656}
   - component: {fileID: 3904295056180514086}
   m_Layer: 0
-  m_Name: Class Teacher Children Dialogue
+  m_Name: Class
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
-  _sequence: {fileID: 11400000, guid: 34624070e7efbf94bb9afb8df20f1b57, type: 2}
+  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
   _triggerOnce: 1
   _autoPlayOnStart: 0
   _showDebugLogs: 0
@@ -68,8 +208,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 16.173317, y: 12, z: 24.302708}
-  m_Center: {x: 0.38325882, y: 0, z: -3.8255138}
+  m_Size: {x: 3.2453537, y: 12, z: 6.0121613}
+  m_Center: {x: -6.080723, y: 0, z: -20.834518}
 --- !u!1 &3250318214520690827
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,10 +219,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8958998821367857698}
-  - component: {fileID: 7255925381836512557}
+  - component: {fileID: 1347501285833012856}
   - component: {fileID: 3394070390223255962}
   m_Layer: 0
-  m_Name: Dorm Awakening
+  m_Name: Dorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +243,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4577509581327503550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7255925381836512557
+--- !u!114 &1347501285833012856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,13 +252,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3250318214520690827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f49faeffc858684bb04916ee098c7b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SubtitleTriggerZone
-  _subtitleData: {fileID: 11400000, guid: 65733b6148ed0944e9357eccfcc4507b, type: 2}
-  _hideOnExit: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 924c51a573350ba45b03c2f4af9ce1c5, type: 2}
   _triggerOnce: 1
-  _delay: 0
+  _autoPlayOnStart: 0
   _showDebugLogs: 0
 --- !u!65 &3394070390223255962
 BoxCollider:
@@ -150,10 +289,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7793937254861107616}
-  - component: {fileID: 9108542967214265440}
+  - component: {fileID: 372310813804474807}
   - component: {fileID: 8051831117354304795}
   m_Layer: 0
-  m_Name: Corridor Post Infirmary
+  m_Name: Infirmary Corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,13 +307,13 @@ Transform:
   m_GameObject: {fileID: 3575102141908162692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.61, y: 0, z: 5.17}
+  m_LocalPosition: {x: -25.28, y: 0, z: 17.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4577509581327503550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9108542967214265440
+--- !u!114 &372310813804474807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,13 +322,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3575102141908162692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f49faeffc858684bb04916ee098c7b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SubtitleTriggerZone
-  _subtitleData: {fileID: 11400000, guid: 00e2b3a13c80a46428ae3d37e591699a, type: 2}
-  _hideOnExit: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 29cd6de38cc3b9d42b5266e576e121b5, type: 2}
   _triggerOnce: 1
-  _delay: 0
+  _autoPlayOnStart: 0
   _showDebugLogs: 0
 --- !u!65 &8051831117354304795
 BoxCollider:
@@ -210,8 +348,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.249872, y: 12, z: 9.250179}
-  m_Center: {x: 0, y: 0, z: 1.6250896}
+  m_Size: {x: 4.714031, y: 12, z: 1.788332}
+  m_Center: {x: 0.18288803, y: 0, z: 5.3560133}
 --- !u!1 &3643155582215580499
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8770806344949470922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -530,10 +668,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3766797476107624883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.06677779}
+  m_AnchorMax: {x: 1, y: 0.9186297}
+  m_AnchoredPosition: {x: 0, y: 2}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6500895986909760978
 CanvasRenderer:
@@ -563,10 +701,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Behind GOTY 2027
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1604a2f92de9d884885078ca0c75c026, type: 2}
+  m_sharedMaterial: {fileID: -1191523130595974514, guid: 1604a2f92de9d884885078ca0c75c026, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -590,12 +728,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
+  m_fontSize: 76.15
   m_fontSizeBase: 22
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 24
-  m_fontSizeMax: 32
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 1
+  m_fontSizeMax: 2000
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -629,7 +767,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 23.123337, z: 0, w: 21.838669}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -711,6 +849,76 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7848667116241957608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982807477281844315}
+  - component: {fileID: 653664736532973605}
+  - component: {fileID: 5160521374004608965}
+  m_Layer: 0
+  m_Name: Class Corridor Chase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &982807477281844315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848667116241957608}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 80.28, y: 0, z: 149.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4577509581327503550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653664736532973605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848667116241957608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
+  _triggerOnce: 1
+  _autoPlayOnStart: 0
+  _showDebugLogs: 0
+--- !u!65 &5160521374004608965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848667116241957608}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7870712, y: 12, z: 3.9854736}
+  m_Center: {x: -1.8300285, y: 0, z: -0.28677368}
 --- !u!1 &7857019195928509047
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +931,7 @@ GameObject:
   - component: {fileID: 1890330585741881684}
   - component: {fileID: 5701583605449816164}
   m_Layer: 0
-  m_Name: Infirmary Nurse Dialogue
+  m_Name: 'Infirmary '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
-  _sequence: {fileID: 11400000, guid: c06288d9f47262c4caaef2f49dc9b8e3, type: 2}
+  _sequence: {fileID: 11400000, guid: 6c78e03f92f076b4ab6e7c132b8ae5af, type: 2}
   _triggerOnce: 1
   _autoPlayOnStart: 0
   _showDebugLogs: 0
@@ -779,8 +987,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 15.07973, y: 12, z: 14.137432}
-  m_Center: {x: 0, y: 0, z: 0.09174538}
+  m_Size: {x: 2.9888268, y: 12, z: 6.207367}
+  m_Center: {x: -6.3881054, y: 0, z: -3.2369232}
 --- !u!1 &8076156720919425848
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +1001,7 @@ GameObject:
   - component: {fileID: 741951390641181273}
   - component: {fileID: 4575929614207400199}
   m_Layer: 0
-  m_Name: Corridor Post Informary Player Dialogue
+  m_Name: 'Infirmary Nurse '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,7 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
-  _sequence: {fileID: 11400000, guid: a1e335c592ebf91439a36152f38f6ad4, type: 2}
+  _sequence: {fileID: 11400000, guid: 3f5c9b2f1b5a6b741bb73f251a9615ec, type: 2}
   _triggerOnce: 1
   _autoPlayOnStart: 0
   _showDebugLogs: 0
@@ -849,8 +1057,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 11.585336, y: 12, z: 16.65168}
-  m_Center: {x: -2.1907382, y: 0, z: 0}
+  m_Size: {x: 3.1531506, y: 12, z: 12.258713}
+  m_Center: {x: -5.4690065, y: 0, z: 8.637856}
 --- !u!1 &8079315752511161098
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +1094,11 @@ Transform:
   - {fileID: 8270945872963450016}
   - {fileID: 6586084603295989725}
   - {fileID: 7793937254861107616}
+  - {fileID: 7966400817028826298}
   - {fileID: 6229368340575519112}
+  - {fileID: 2404254288747518299}
+  - {fileID: 982807477281844315}
+  - {fileID: 479168160743570209}
   m_Father: {fileID: 6573098302327286094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8709313846524408920
@@ -898,10 +1110,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6299587476151747021}
-  - component: {fileID: 5105044186155497108}
+  - component: {fileID: 1166259755593105882}
   - component: {fileID: 913412571435153301}
   m_Layer: 0
-  m_Name: Corridor Monster Apparition
+  m_Name: Dorm Corridor Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,7 +1134,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4577509581327503550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5105044186155497108
+--- !u!114 &1166259755593105882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -931,13 +1143,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8709313846524408920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f49faeffc858684bb04916ee098c7b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SubtitleTriggerZone
-  _subtitleData: {fileID: 11400000, guid: 8711e14bd39175342b5ee950b0cfaf11, type: 2}
-  _hideOnExit: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: a3136077c831a224f82f95e24ddb54d0, type: 2}
   _triggerOnce: 1
-  _delay: 0
+  _autoPlayOnStart: 0
   _showDebugLogs: 0
 --- !u!65 &913412571435153301
 BoxCollider:
@@ -958,8 +1169,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.249872, y: 12, z: 9.250179}
-  m_Center: {x: 0, y: 0, z: 1.6250896}
+  m_Size: {x: 8.249872, y: 12, z: 1.4717636}
+  m_Center: {x: 0, y: 0, z: -2.2641182}
 --- !u!1 &8856168614583662186
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,10 +1180,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2960237031002178100}
-  - component: {fileID: 757169055736610210}
+  - component: {fileID: 130992388358203436}
   - component: {fileID: 1584478664820311130}
   m_Layer: 0
-  m_Name: Corridor Place Discover
+  m_Name: Dorm Corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,7 +1204,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4577509581327503550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &757169055736610210
+--- !u!114 &130992388358203436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1002,13 +1213,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8856168614583662186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f49faeffc858684bb04916ee098c7b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SubtitleTriggerZone
-  _subtitleData: {fileID: 11400000, guid: e1dce54e773b4274ebb26d2a873ad833, type: 2}
-  _hideOnExit: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 3aff5e61612acfc4e8ef4c28eaaed166, type: 2}
   _triggerOnce: 1
-  _delay: 0
+  _autoPlayOnStart: 0
   _showDebugLogs: 0
 --- !u!65 &1584478664820311130
 BoxCollider:
@@ -1029,5 +1239,75 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.249872, y: 12, z: 9.250179}
-  m_Center: {x: 0, y: 0, z: 1.6250896}
+  m_Size: {x: 8.249872, y: 12, z: 2.7520561}
+  m_Center: {x: 0, y: 0, z: -1.6239719}
+--- !u!1 &8908682083025989304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2404254288747518299}
+  - component: {fileID: 8803929701957789176}
+  - component: {fileID: 8980690647743600577}
+  m_Layer: 0
+  m_Name: Class Corridor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2404254288747518299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908682083025989304}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 78, y: 0, z: 119.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4577509581327503550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8803929701957789176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908682083025989304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
+  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
+  _triggerOnce: 1
+  _autoPlayOnStart: 0
+  _showDebugLogs: 0
+--- !u!65 &8980690647743600577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908682083025989304}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7870712, y: 12, z: 1.6424866}
+  m_Center: {x: -1.8300285, y: 0, z: -1.4582672}
