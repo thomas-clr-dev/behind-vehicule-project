@@ -74,7 +74,6 @@ public class UIButton : MonoBehaviour,
     // --- MANETTE / CLAVIER ---
     public void OnSelect(BaseEventData eventData)
     {
-        Debug.Log("Selected via keyboard/gamepad");
         AnimateToHover();
     }
 
