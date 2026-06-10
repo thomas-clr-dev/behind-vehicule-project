@@ -3020,7 +3020,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14a1c33793a242f4eb63c33fe476753f, type: 3}
   - {fileID: 8300000, guid: 7cae9311a041efd4c8ca0290e5736d64, type: 3}
   - {fileID: 8300000, guid: f14cb99036d6c4a41b541e50ad501432, type: 3}
-  Growls: []
+  Growls:
+  - {fileID: 8300000, guid: 1d1b99cc376a5c8419ac7c8ac02ef8a8, type: 3}
+  - {fileID: 8300000, guid: 2a57f9798a2372a4cb6836e29bd73a22, type: 3}
+  - {fileID: 8300000, guid: fb34a62618337694d976fe5ea35387ea, type: 3}
 --- !u!82 &5845332211333672668
 AudioSource:
   m_ObjectHideFlags: 0
