@@ -38,6 +38,6 @@ public class MenuFocus : MonoBehaviour
     private void SetFocus()
     {
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(firstSelectedButton);
+        if(firstSelectedButton != null )EventSystem.current.SetSelectedGameObject(firstSelectedButton);
     }
 }
