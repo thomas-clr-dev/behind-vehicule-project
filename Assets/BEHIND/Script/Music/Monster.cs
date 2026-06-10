@@ -149,7 +149,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     }
     #endregion
 
-    IEnumerator PlaySound()
+    /*IEnumerator PlaySound()
     {
           int r = UnityEngine.Random.Range(0, Sounds.Count);
           audioSource.PlayOneShot(Sounds[r]);     
@@ -157,7 +157,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 
           yield return new WaitForSeconds(delay); 
           StartCoroutine(PlaySound());         
-    }
+    }*/
     #region Update
     private void Update()
     {
@@ -249,7 +249,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 
         _isChasing = true;
         SetVisibility(true);
-        StartCoroutine(PlaySound());
+        /*StartCoroutine(PlaySound());*/
     }
 
     public void StopChasing()
@@ -271,7 +271,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 
         ResetPosition();
 
-        StopCoroutine(PlaySound());
+        /*StopCoroutine(PlaySound());*/
     }
 
     private void OnTriggerEnter(Collider other)
