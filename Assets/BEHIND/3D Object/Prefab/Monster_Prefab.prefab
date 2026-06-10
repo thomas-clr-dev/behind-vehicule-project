@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2020994559212303310}
   - component: {fileID: 231694017951472931}
   - component: {fileID: 9182256633390055720}
+  - component: {fileID: 3280295059643404256}
   m_Layer: 0
   m_Name: Monster_Prefab
   m_TagString: Untagged
@@ -183,6 +184,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &3280295059643404256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920115947563929088}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4, y: 3.25, z: 1.96}
+  m_Center: {x: 0.4, y: 0.57, z: 0}
 --- !u!1 &5288410938299871973
 GameObject:
   m_ObjectHideFlags: 0
