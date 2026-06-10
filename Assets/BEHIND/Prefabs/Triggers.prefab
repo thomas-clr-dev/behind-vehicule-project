@@ -1265,6 +1265,30 @@ PrefabInstance:
       propertyPath: cameraToActivate
       value: 
       objectReference: {fileID: 11400000, guid: 09588f5f748f08a46a487ddc07f4c5b1, type: 2}
+    - target: {fileID: 8628406792740116498, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628406792740116498, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628406792740116498, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628406792740116498, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628406792740116498, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628406792740116498, guid: 1b22bc05fc943ec4b9b0181812f15de0, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

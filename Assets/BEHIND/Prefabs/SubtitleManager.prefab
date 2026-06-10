@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
-  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
+  _sequence: {fileID: 11400000, guid: ac9c0dca6aa0a1043a6cc58836b6d221, type: 2}
   _triggerOnce: 1
   _autoPlayOnStart: 0
   _showDebugLogs: 0
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
-  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
+  _sequence: {fileID: 11400000, guid: 2f8fe888eb37c154aa55abc3210a7d3b, type: 2}
   _triggerOnce: 1
   _autoPlayOnStart: 0
   _showDebugLogs: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011f88d1f4bdaa6499eb26a2a8a6470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleSequenceTrigger
-  _sequence: {fileID: 11400000, guid: 7672d465971dbeb479b0ff1f5e17f151, type: 2}
+  _sequence: {fileID: 11400000, guid: 37f0c0ac36ce63e48b6c6577480fcb8e, type: 2}
   _triggerOnce: 1
   _autoPlayOnStart: 0
   _showDebugLogs: 0
