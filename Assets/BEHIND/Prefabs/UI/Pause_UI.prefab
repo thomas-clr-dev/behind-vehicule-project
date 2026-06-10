@@ -264,7 +264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 926.2871, y: -827.5}
+  m_AnchoredPosition: {x: 0, y: -625}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6728310185240139948
@@ -361,6 +361,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1609816793722302991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8005183144287278008}
+  - component: {fileID: 2483185651964052666}
+  m_Layer: 0
+  m_Name: MenuFocus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8005183144287278008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609816793722302991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 225, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1332403191171024687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2483185651964052666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609816793722302991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae6bf02c6b853b46a4d1cefe5b6070d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuFocus
+  firstSelectedButton: {fileID: 6208005809941102704}
 --- !u!1 &1672380328370222083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,6 +1554,7 @@ GameObject:
   - component: {fileID: 6956863566377038589}
   - component: {fileID: 995145760468077796}
   - component: {fileID: 5561166751109295536}
+  - component: {fileID: 1353438651178375595}
   m_Layer: 5
   m_Name: Button-Quit
   m_TagString: Untagged
@@ -1630,6 +1676,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1353438651178375595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700545874472489392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d839efcd9b089b8469af2945bba1015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  rectTransform: {fileID: 1399707492839079841}
+  image: {fileID: 995145760468077796}
+  hoverScale: 1.1
+  pressedScale: 0.95
+  normalScale: 1
+  scaleDuration: 0.15
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 0.1
 --- !u!1 &5213823127925708882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2232,7 @@ GameObject:
   - component: {fileID: 3425267498702184805}
   - component: {fileID: 8506033400989752960}
   - component: {fileID: 6453565671301506836}
+  - component: {fileID: 2651964882114716396}
   m_Layer: 5
   m_Name: Button-Reprendre
   m_TagString: Untagged
@@ -2285,6 +2354,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2651964882114716396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208005809941102704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d839efcd9b089b8469af2945bba1015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  rectTransform: {fileID: 3361388314188875464}
+  image: {fileID: 8506033400989752960}
+  hoverScale: 1.1
+  pressedScale: 0.95
+  normalScale: 1
+  scaleDuration: 0.15
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 0.1
 --- !u!1 &6380100802951817705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,6 +2889,7 @@ RectTransform:
   m_Children:
   - {fileID: 3361388314188875464}
   - {fileID: 1399707492839079841}
+  - {fileID: 8005183144287278008}
   m_Father: {fileID: 5671742115512814939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2824,7 +2916,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 50
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0

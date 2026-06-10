@@ -14,39 +14,50 @@ public class CreditScript : MonoBehaviour
     void Start()
     {
         screens = new CanvasGroup[transform.childCount];
-        for (int i=0;i<transform.childCount;i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             screens[i] = transform.GetChild(i).GetComponent<CanvasGroup>();
         }
-        foreach (CanvasGroup group in screens) group.alpha = 0;
+        foreach (CanvasGroup group in screens)
+        {
+            group.alpha = 0;
+            group.interactable = false;      // <-- ajout
+            group.blocksRaycasts = false;    // <-- ajout
+        }
         StartCoroutine(ShowScreen(screens[0]));
     }
 
-
-
     IEnumerator ShowScreen(CanvasGroup screen)
     {
-        while (screen.alpha <1f)
+        screen.interactable = true;       // <-- active quand le fade commence
+        screen.blocksRaycasts = true;
+
+        while (screen.alpha < 1f)
         {
             screen.alpha += Time.deltaTime / fadeInDuration;
             yield return null;
         }
-        float chrono = 0;
-        
-        if (currentScreen>transform.childCount-2) yield break;
 
-        while (chrono<persistanceDuration)
+        float chrono = 0;
+        if (currentScreen > transform.childCount - 2) yield break;
+
+        while (chrono < persistanceDuration)
         {
             chrono += Time.deltaTime;
             yield return null;
         }
-        while (screen.alpha>0)
+
+        while (screen.alpha > 0)
         {
-            screen.alpha -= Time.deltaTime / fadeInDuration;
+            screen.alpha -= Time.deltaTime / fadeOutDuration; // fadeOutDuration ici, pas fadeInDuration
             yield return null;
         }
+
+        screen.interactable = false;      // <-- désactive après le fade out
+        screen.blocksRaycasts = false;
+
         currentScreen++;
-        if (currentScreen<screens.Length) StartCoroutine(ShowScreen(screens[currentScreen]));
+        if (currentScreen < screens.Length) StartCoroutine(ShowScreen(screens[currentScreen]));
     }
 
 } // SCRIPT END
