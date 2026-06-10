@@ -32,7 +32,6 @@ Transform:
   m_Children:
   - {fileID: 1674450980126807082}
   - {fileID: 5671742115512814939}
-  - {fileID: 8005183144287278008}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6548582160412991000
@@ -388,11 +387,11 @@ Transform:
   m_GameObject: {fileID: 1609816793722302991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 225, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5980063196827136214}
+  m_Father: {fileID: 1332403191171024687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2483185651964052666
 MonoBehaviour:
@@ -1689,8 +1688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d839efcd9b089b8469af2945bba1015d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButton
-  rectTransform: {fileID: 0}
-  image: {fileID: 0}
+  rectTransform: {fileID: 1399707492839079841}
+  image: {fileID: 995145760468077796}
   hoverScale: 1.1
   pressedScale: 0.95
   normalScale: 1
@@ -2367,8 +2366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d839efcd9b089b8469af2945bba1015d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButton
-  rectTransform: {fileID: 0}
-  image: {fileID: 0}
+  rectTransform: {fileID: 3361388314188875464}
+  image: {fileID: 8506033400989752960}
   hoverScale: 1.1
   pressedScale: 0.95
   normalScale: 1
@@ -2890,6 +2889,7 @@ RectTransform:
   m_Children:
   - {fileID: 3361388314188875464}
   - {fileID: 1399707492839079841}
+  - {fileID: 8005183144287278008}
   m_Father: {fileID: 5671742115512814939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2916,7 +2916,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 50
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0

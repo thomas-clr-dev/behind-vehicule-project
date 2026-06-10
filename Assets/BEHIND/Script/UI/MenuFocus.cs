@@ -1,29 +1,51 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class MenuFocus : MonoBehaviour
 {
     [SerializeField] private GameObject firstSelectedButton;
+    private System.IDisposable buttonPressListener;
 
     void OnEnable()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
-        SetFocus();
+        buttonPressListener = InputSystem.onAnyButtonPress.Call(OnAnyButtonPress);
+        StartCoroutine(SetFocusNextFrame());
     }
 
     void OnDisable()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
+        buttonPressListener?.Dispose();
     }
 
     void Update()
     {
-        // SÈcuritÈ : si le focus est perdu, le restaurer
-        if (EventSystem.current.currentSelectedGameObject == null)
+        if (EventSystem.current == null) return;
+        if (EventSystem.current.currentSelectedGameObject != null) return;
+
+        // D√©tecte le mouvement de n'importe quel stick/dpad
+        foreach (var gamepad in Gamepad.all)
         {
-            SetFocus();
+            if (gamepad.leftStick.ReadValue().magnitude > 0.5f ||
+                gamepad.rightStick.ReadValue().magnitude > 0.5f ||
+                gamepad.dpad.ReadValue().magnitude > 0.5f)
+            {
+                StartCoroutine(SetFocusNextFrame());
+                return;
+            }
         }
+    }
+
+    private void OnAnyButtonPress(InputControl control)
+    {
+        if (EventSystem.current == null) return;
+        if (EventSystem.current.currentSelectedGameObject != null) return;
+
+        bool isMouse = control.device is Mouse;
+        if (!isMouse) StartCoroutine(SetFocusNextFrame());
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -31,13 +53,17 @@ public class MenuFocus : MonoBehaviour
         if (change == InputDeviceChange.Reconnected ||
             change == InputDeviceChange.Added)
         {
-            SetFocus();
+            StartCoroutine(SetFocusNextFrame());
         }
     }
 
-    private void SetFocus()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        if(firstSelectedButton != null )EventSystem.current.SetSelectedGameObject(firstSelectedButton);
-    }
+   private System.Collections.IEnumerator SetFocusNextFrame()
+{
+    yield return null;
+    yield return null; // deuxi√®me frame pour le menu pause
+    if (EventSystem.current == null || firstSelectedButton == null) yield break;
+
+    EventSystem.current.SetSelectedGameObject(null);
+    EventSystem.current.SetSelectedGameObject(firstSelectedButton);
+}
 }
