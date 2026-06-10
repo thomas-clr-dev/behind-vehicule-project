@@ -22,7 +22,7 @@ public class Monster_Animation_SFX : MonoBehaviour
         audioSource.PlayOneShot(Screams[r]);
 
         int rr = UnityEngine.Random.Range(0, Growls.Count);
-        audioSource.PlayOneShot(Growls[r]);
+        audioSource.PlayOneShot(Growls[rr]);
     }
 
     
