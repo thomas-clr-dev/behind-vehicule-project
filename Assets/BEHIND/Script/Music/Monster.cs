@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 {
@@ -58,6 +59,10 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     [SerializeField] private ChaseEndZone _endZone;
 
     [SerializeField] private bool DisapearOnEnd;
+
+    [SerializeField] private bool resetPositionOnEnd = false;
+
+    public UnityEvent OnTargetReached;
 
 
     float delay;
@@ -261,6 +266,29 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
         /*StartCoroutine(PlaySound());*/
     }
 
+
+    public void GoToPosition(Transform target)
+    {
+        if (!_isEnabled) return; 
+        _isChasing = true;
+        SetVisibility(true);
+        StartCoroutine(MoveToTarget(target));
+    }
+
+    private IEnumerator MoveToTarget(Transform target)
+    {
+        Vector2 targetPosition = new Vector2(target.position.x, target.position.z);
+        while (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), targetPosition) > 0.1f)
+        {
+            Vector2 currentPosition = new Vector2(transform.position.x, transform.position.z);
+            Vector2 direction = (targetPosition - currentPosition).normalized;
+            transform.position += new Vector3(direction.x, 0, direction.y) * _chaseSpeed * Time.deltaTime;
+            yield return null;
+        }
+        OnTargetReached?.Invoke();
+        StopChasing();
+    }
+
     public void StopChasing()
     {
         _isChasing = false;
@@ -278,7 +306,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 
         SetVisibility(DisapearOnEnd);
 
-        ResetPosition();
+        if(resetPositionOnEnd)ResetPosition();
 
         /*StopCoroutine(PlaySound());*/
     }

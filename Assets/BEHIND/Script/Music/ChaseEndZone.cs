@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChaseEndZone : MonoBehaviour
 {
     #region Events
     public event Action OnChaseEnd;
+
+    public UnityEvent Event;
     #endregion
 
     #region Trigger Logic
@@ -15,6 +18,7 @@ public class ChaseEndZone : MonoBehaviour
             if (OnChaseEnd != null)
             {
                 OnChaseEnd.Invoke();
+                Event?.Invoke();
             }
         }
     }
