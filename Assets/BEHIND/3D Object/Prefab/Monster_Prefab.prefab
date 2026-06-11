@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 4030587088963588790}
   m_Layer: 0
   m_Name: PivotHead
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 6227186419757264991}
   m_Layer: 0
   m_Name: PivotHand
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,6 +336,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ab83fb3c887490446b1e1cad2e26e1e1, type: 3}
       propertyPath: m_Name
       value: Monster_hand-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab83fb3c887490446b1e1cad2e26e1e1, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 7070681979285536985, guid: ab83fb3c887490446b1e1cad2e26e1e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -436,6 +440,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 20e8b9b7e77893849b4421935578b165, type: 3}
       propertyPath: m_Name
       value: Monster_hand-7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 20e8b9b7e77893849b4421935578b165, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 4200487263282944762, guid: 20e8b9b7e77893849b4421935578b165, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -549,6 +557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_hand-8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69979ffaf92b44e4d9f11a43207cae2f, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     - target: {fileID: 4899832456998738178, guid: 69979ffaf92b44e4d9f11a43207cae2f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -657,6 +669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_hand-4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4994879ae3d8534ba8487078be22654, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e4994879ae3d8534ba8487078be22654, type: 3}
       propertyPath: m_Controller
       value: 
@@ -757,6 +773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_hand-5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9bb1472c591563148a8fe56e41ba2346, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     - target: {fileID: 3787797082832738026, guid: 9bb1472c591563148a8fe56e41ba2346, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -825,6 +845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_Head
       objectReference: {fileID: 0}
+    - target: {fileID: 1508792497338357696, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.45
@@ -880,6 +904,18 @@ PrefabInstance:
     - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772409991628242362, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156753729494050460, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153394637159205667, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -952,6 +988,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: da54f2bf4371177408a3d6e038532a30, type: 3}
       propertyPath: m_Name
       value: Monster_hand-6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: da54f2bf4371177408a3d6e038532a30, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: da54f2bf4371177408a3d6e038532a30, type: 3}
       propertyPath: m_Controller
@@ -1056,6 +1096,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 594c089ec5dd5444eb24077ec603d14c, type: 3}
       propertyPath: m_Name
       value: Monster_hand-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 594c089ec5dd5444eb24077ec603d14c, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 4488867371018944477, guid: 594c089ec5dd5444eb24077ec603d14c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1164,6 +1208,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 936b784377fb5b540863214f7c2b036d, type: 3}
       propertyPath: m_Name
       value: Monster_hand-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 936b784377fb5b540863214f7c2b036d, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 2993154490137309027, guid: 936b784377fb5b540863214f7c2b036d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
