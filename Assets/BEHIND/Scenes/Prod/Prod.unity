@@ -1453,6 +1453,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6706995045369233, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: boolValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706995045369233, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: parameterType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706995045369233, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
       propertyPath: 'animators.Array.data[0]'
       value: 
       objectReference: {fileID: 2092545132}
@@ -1626,7 +1634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3737839380315757810, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
       propertyPath: parameterName
-      value: CorridorChase
+      value: ChaseCorridor
       objectReference: {fileID: 0}
     - target: {fileID: 3737839380315757810, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
       propertyPath: parameterType
@@ -12452,6 +12460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 13952222776522514, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 9bb1472c591563148a8fe56e41ba2346, type: 3}
     - target: {fileID: 106559745338673881, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.853
@@ -12620,6 +12632,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 4.81
       objectReference: {fileID: 0}
+    - target: {fileID: 3192122659629257522, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: e4994879ae3d8534ba8487078be22654, type: 3}
     - target: {fileID: 3651627241102006423, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: VelocityModule.enabled
       value: 0
@@ -12632,10 +12648,22 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.minScalar
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4116009607998934695, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 20e8b9b7e77893849b4421935578b165, type: 3}
+    - target: {fileID: 5566379462984531717, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: da54f2bf4371177408a3d6e038532a30, type: 3}
     - target: {fileID: 6387661073985985216, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 6555215245870757891, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 69979ffaf92b44e4d9f11a43207cae2f, type: 3}
     - target: {fileID: 6607665966259788764, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_Range
       value: 1.7454689
@@ -12676,6 +12704,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -89.994
       objectReference: {fileID: 0}
+    - target: {fileID: 8393371230258453901, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 594c089ec5dd5444eb24077ec603d14c, type: 3}
     - target: {fileID: 8505105239039323101, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_Enabled
       value: 0
