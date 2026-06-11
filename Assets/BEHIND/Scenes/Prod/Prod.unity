@@ -2363,7 +2363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734143030133166481, guid: f727bf29fcf41e743b78e75deed48c37, type: 3}
       propertyPath: m_fontSize
-      value: 41.95
+      value: 36.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12088,21 +12088,101 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 596403114}
     - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedFar
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedMid
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedNear
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceFar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceMid
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: DisapearOnEnd
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceNear
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedVeryFar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedVeryClose
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceVeryFar
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: _chaseTriggerZone
       value: 
       objectReference: {fileID: 769454192}
+    - target: {fileID: 1428639675677971418, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceVeryClose
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: _endZone
       value: 
       objectReference: {fileID: 1837969196}
     - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedFar
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedMid
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedNear
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceFar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceMid
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceNear
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedVeryFar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _speedVeryClose
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceVeryFar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: _chaseTriggerZone
       value: 
       objectReference: {fileID: 2044158643}
+    - target: {fileID: 1542667435868211962, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
+      propertyPath: _distanceVeryClose
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6387661073985985216, guid: 4c42f54d5990f994c8040e3db6261c15, type: 3}
       propertyPath: m_Name
       value: Monster
