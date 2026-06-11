@@ -163,6 +163,10 @@ public class AutoCloseDoor : MonoBehaviour
     private IEnumerator CloseDoorAfterDelay()
     {
         yield return new WaitForSeconds(_closeDelay);
+
+        int r = Random.Range(0, _closeSoundList.Count);
+        _audioSource.PlayOneShot(_closeSoundList[r], 1f);
+
         StartCoroutine(CloseDoor());
     }
 
@@ -182,8 +186,7 @@ public class AutoCloseDoor : MonoBehaviour
         if (_audioSource != null && _closeSoundList != null)
         {
             //_audioSource.PlayOneShot(_closeSound);
-            int r = Random.Range(0, _closeSoundList.Count);
-            _audioSource.PlayOneShot(_closeSoundList[r], 0.5f);
+
         }
 
         float elapsed = 0f;
@@ -210,6 +213,7 @@ public class AutoCloseDoor : MonoBehaviour
         if (_showDebugLogs)
         {
             Debug.Log($"🚪 AutoCloseDoor '{gameObject.name}' - Fermeture terminée");
+
         }
     }
     #endregion
@@ -340,6 +344,8 @@ public class AutoCloseDoor : MonoBehaviour
             Gizmos.DrawSphere(corner, cornerSize);
         }
     }
+
+    
 
     /// <summary>
     /// Dessine une flèche indiquant la direction de rotation

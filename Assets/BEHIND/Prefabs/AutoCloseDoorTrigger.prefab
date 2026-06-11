@@ -99,9 +99,9 @@ MonoBehaviour:
   _closeOnce: 1
   _closeDelay: 0.5
   _closeSoundList:
-  - {fileID: 8300000, guid: 333ca843d6bebe949ab24c1bae8ccd29, type: 3}
-  - {fileID: 8300000, guid: 662f2736ff6094147ad7ce2be9485afb, type: 3}
-  - {fileID: 8300000, guid: b22b7fbb58fe6304a818cb04ed89f33e, type: 3}
+  - {fileID: 8300000, guid: 5b40430c01fbe6f47a6bb282b73a51c0, type: 3}
+  - {fileID: 8300000, guid: a5384ba60bcd565489a263e2b84ee025, type: 3}
+  - {fileID: 8300000, guid: 69be514e21f6364419859cffb13e57cb, type: 3}
   _audioSource: {fileID: 0}
   _showGizmos: 1
   _arrowSize: 1
