@@ -263,10 +263,10 @@ MonoBehaviour:
         z: 7.2774115
       Rotation:
         value:
-          x: -0.00035120655
+          x: -0.000351219
           y: 0.9999188
           z: 0.012715168
-          w: -0.0008625626
+          w: -0.0008625625
     - Position:
         x: -0.8
         y: -0.75
@@ -1053,10 +1053,10 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: -0.039194442
-          y: 7.281612e-12
-          z: -0.0040432625
-          w: 0.9992234
+          x: -0.03919444
+          y: 7.281613e-12
+          z: -0.00404326
+          w: 0.99922353
     m_MetaData:
     - Mode: 2
       Tension: 0.5
@@ -1690,23 +1690,23 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 2.83
+        x: -7.46
         y: 0.11000013
         z: 1.4500046
       TangentIn:
         x: 0
         y: 0
-        z: -3.3207183
+        z: -7.6992693
       TangentOut:
         x: 0
         y: 0
-        z: 3.3207183
+        z: 7.6992693
       Rotation:
         value:
-          x: 0.03017782
-          y: 0.7316345
-          z: -0.022260062
-          w: 0.680665
+          x: 0.015543883
+          y: 0.7182052
+          z: -0.007694267
+          w: 0.69561523
     - Position:
         x: 14.509998
         y: -0.55999994
@@ -1714,17 +1714,17 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -4.8221993
+        z: -6.408593
       TangentOut:
         x: 0
         y: 0
-        z: 4.8221993
+        z: 6.408593
       Rotation:
         value:
-          x: 0.09197265
-          y: 0.7342606
-          z: 0.061255597
-          w: 0.6698135
+          x: 0.08820035
+          y: 0.7266606
+          z: 0.065100305
+          w: 0.6781938
     - Position:
         x: 30.490002
         y: -0.9499998
@@ -1732,17 +1732,17 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -5.0310187
+        z: -4.602516
       TangentOut:
         x: 0
         y: 0
-        z: 5.0310187
+        z: 4.602516
       Rotation:
         value:
-          x: -0.11887266
-          y: 0.69799304
-          z: -0.14115354
-          w: 0.6919181
+          x: -0.11783185
+          y: 0.69825786
+          z: -0.14218773
+          w: 0.69161713
     - Position:
         x: 44.37
         y: -1.7099998
@@ -1750,17 +1750,17 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -4.9750648
+        z: -5.096941
       TangentOut:
         x: 0
         y: 0
-        z: 4.9750648
+        z: 5.096941
       Rotation:
         value:
-          x: 0.025896339
-          y: 0.67889583
-          z: -0.021561572
-          w: 0.73346084
+          x: 0.025327696
+          y: 0.6795936
+          z: -0.020992542
+          w: 0.7328508
     - Position:
         x: 61.31
         y: -2.8599997
@@ -1877,7 +1877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8363545483268824821}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18553025, y: -0.5412512, z: 0.07436178, w: 0.8167595}
+  m_LocalRotation: {x: 0.18553023, y: -0.5412512, z: 0.07436178, w: 0.8167595}
   m_LocalPosition: {x: -37.334, y: 4.099308, z: -58.127}
   m_LocalScale: {x: 1.5, y: 1.5000001, z: 1.5000004}
   m_ConstrainProportionsScale: 0
@@ -2520,15 +2520,15 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 4f27eba33c872fa4084ebbd9be22aab9, type: 2}
     - target: {fileID: 2326412221301230016, guid: ce82debd0bec3da4a9c17b5c1954117a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.86804
+      value: 28.61938
       objectReference: {fileID: 0}
     - target: {fileID: 2326412221301230016, guid: ce82debd0bec3da4a9c17b5c1954117a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.684311
+      value: 3.9672132
       objectReference: {fileID: 0}
     - target: {fileID: 2326412221301230016, guid: ce82debd0bec3da4a9c17b5c1954117a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 95.2521
+      value: 95.70805
       objectReference: {fileID: 0}
     - target: {fileID: 2326412221301230016, guid: ce82debd0bec3da4a9c17b5c1954117a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2613,7 +2613,7 @@ MonoBehaviour:
     - rid: 837611879815708740
       type: {class: SplineAutoDolly/NearestPointToTarget, ns: Unity.Cinemachine, asm: Unity.Cinemachine}
       data:
-        PositionOffset: 5
+        PositionOffset: 4
         SearchResolution: 6
         SearchIteration: 6
 --- !u!114 &8972673722780390514
