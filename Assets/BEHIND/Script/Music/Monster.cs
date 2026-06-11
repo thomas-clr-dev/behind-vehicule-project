@@ -132,7 +132,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
 
         SubscribeToDirectionZones();
 
-        //SetVisibility(false);
+        SetVisibility(false);
     }
 
     /// <summary>
