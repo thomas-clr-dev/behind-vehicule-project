@@ -52,6 +52,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: _speedFar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: _speedMid
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: _speedNear
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: _speedVeryFar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020994559212303310, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
+      propertyPath: _speedVeryClose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2838452214388941394, guid: 9b6cc40c3bf7dc74daedea65e099881d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.19

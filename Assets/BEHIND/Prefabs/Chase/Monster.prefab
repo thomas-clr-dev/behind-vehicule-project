@@ -2970,6 +2970,10 @@ PrefabInstance:
       value: Monster_1
       objectReference: {fileID: 0}
     - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
+      propertyPath: _endZone
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
       propertyPath: maxDelay
       value: 5
       objectReference: {fileID: 0}
@@ -2978,28 +2982,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
-      propertyPath: _speedFar
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
-      propertyPath: _speedMid
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
-      propertyPath: _speedNear
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
-      propertyPath: _speedVeryFar
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
-      propertyPath: _speedVeryClose
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
       propertyPath: Sounds.Array.size
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
+      propertyPath: _chaseTriggerZone
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2726000668660679021, guid: c21de4d8e3c254c4ea597e6e2889d473, type: 3}
       propertyPath: 'Sounds.Array.data[0]'

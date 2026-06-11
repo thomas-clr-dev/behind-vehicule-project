@@ -57,6 +57,9 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     [Tooltip("Zone de fin de la chase")]
     [SerializeField] private ChaseEndZone _endZone;
 
+    [SerializeField] private bool DisapearOnEnd;
+
+
     float delay;
     public float minDelay;
     public float maxDelay;
@@ -267,7 +270,7 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
         _isRotating = false;
         _rotationSpeedMultiplier = 1f;
 
-        SetVisibility(false);
+        SetVisibility(DisapearOnEnd);
 
         ResetPosition();
 

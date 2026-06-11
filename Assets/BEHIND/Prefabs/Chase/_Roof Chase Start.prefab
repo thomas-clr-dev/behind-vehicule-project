@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1244019649003604705}
   - component: {fileID: 8876115400679102835}
   - component: {fileID: 7980363089843162758}
+  - component: {fileID: 2963917454070953136}
   m_Layer: 0
   m_Name: _Roof Chase Start
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbd0adc7e3248c4ebdd0845d1477dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseTriggerZone
+  HasTriggered: 0
 --- !u!65 &7980363089843162758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66,3 +68,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.86, y: 12, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2963917454070953136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053633367389989067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2505e58fbe027142a2361bc3dcb566b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Behind.Progression.AnimationTrigger
+  triggerTag: 
+  animators: []
+  parameterName: 
+  parameterType: 0
+  boolValue: 0
+  intValue: 0
+  floatValue: 0
