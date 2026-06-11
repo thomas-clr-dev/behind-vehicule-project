@@ -206,6 +206,12 @@ public class Monster : MonoBehaviour, IEventListener<GameEngineEventTypes>
     {
         if (_distanceCalculator == null) return;
 
+        if (_isRotating)
+        {
+            _currentSpeed = 0f;
+            return;
+        }
+
         float distance = _distanceCalculator.Distance;
         float targetSpeed = _speedVeryFar;
         MonsterSpeedState newState = MonsterSpeedState.VeryFar;
