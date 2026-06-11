@@ -1453,6 +1453,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6706995045369233, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: boolValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706995045369233, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: parameterType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706995045369233, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
       propertyPath: 'animators.Array.data[0]'
       value: 
       objectReference: {fileID: 2092545132}
@@ -1568,6 +1576,10 @@ PrefabInstance:
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1540252051}
+    - target: {fileID: 3737839380315757810, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
+      propertyPath: parameterName
+      value: ChaseCorridor
+      objectReference: {fileID: 0}
     - target: {fileID: 3737839380315757810, guid: 9fd96830afa19214f97c6e4b57794db0, type: 3}
       propertyPath: 'animators.Array.data[0]'
       value: 
