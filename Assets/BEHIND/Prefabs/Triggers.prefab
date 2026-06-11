@@ -37,8 +37,69 @@ Transform:
   - {fileID: 7018156492833017552}
   - {fileID: 572726788054821710}
   - {fileID: 8665735619422164311}
+  - {fileID: 7045649938794771859}
   m_Father: {fileID: 1384921284650114771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4377832841121732834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7045649938794771859}
+  - component: {fileID: 6706995045369233}
+  m_Layer: 0
+  m_Name: Trigger Animation End Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7045649938794771859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4377832841121732834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 99.46, y: 0, z: 6.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1074791685938478672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6706995045369233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4377832841121732834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2505e58fbe027142a2361bc3dcb566b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Behind.Progression.AnimationTrigger
+  triggerTag: Monster
+  animators:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  parameterName: DoorEnd
+  parameterType: 0
+  boolValue: 0
+  intValue: 0
+  floatValue: 0
 --- !u!1 &4634622329619821098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2505e58fbe027142a2361bc3dcb566b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Behind.Progression.AnimationTrigger
+  triggerTag: 
   animators:
   - {fileID: 0}
   - {fileID: 0}

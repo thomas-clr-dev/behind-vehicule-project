@@ -11,6 +11,8 @@ namespace Behind.Progression
             Int,
             Float
         }
+        [Header("tag")]
+        [SerializeField] private string triggerTag;
 
         [Header("References")]
         [SerializeField] private Animator[] animators;
@@ -26,7 +28,7 @@ namespace Behind.Progression
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag($"{triggerTag}"))
             {
                 if (animators.Length > 0)
                 {
