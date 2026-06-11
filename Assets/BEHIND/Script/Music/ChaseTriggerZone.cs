@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChaseTriggerZone : MonoBehaviour
 {
     #region Events
     public event Action OnChaseBegin;
+    public UnityEvent OnChaseBeginUnityEvent;
     #endregion
 
     public bool HasTriggered = false;
@@ -22,6 +24,7 @@ public class ChaseTriggerZone : MonoBehaviour
             if (OnChaseBegin != null)
             {
                 OnChaseBegin.Invoke();
+                OnChaseBeginUnityEvent?.Invoke();
                 HasTriggered = true;
             }
         }

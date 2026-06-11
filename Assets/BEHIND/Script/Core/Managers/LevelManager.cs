@@ -117,6 +117,14 @@ public class LevelManager : MonoBehaviour, ILevelManager, IEventListener<GameEng
 
         yield return new WaitForSeconds(RespawnDelay);
 
+        if(GameServiceLocator.Get<IGameManager>().GetCurrentCheckpoint() != null)
+        {
+            CheckPoint point = GameServiceLocator.Get<IGameManager>().GetCurrentCheckpoint();
+
+            initialSpawnPoint = GameServiceLocator.Get<IGameManager>().GetCurrentCheckpoint().transform;
+            point.SelectCheckPoint();
+        }
+           
         // Respawn du joueur
         if (_spawnedPlayer != null && initialSpawnPoint != null)
             _spawnedPlayer.transform.position = initialSpawnPoint.position;

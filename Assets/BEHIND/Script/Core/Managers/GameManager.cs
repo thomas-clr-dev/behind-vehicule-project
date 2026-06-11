@@ -44,7 +44,7 @@ public struct GameEngineEvent : IEvent
 public class GameManager : MonoBehaviour, IGameManager
 {
 
-
+    private CheckPoint currentCheckpoint;
     private void Awake()
     {
         GameServiceLocator.Register<IGameManager>(this);
@@ -53,5 +53,15 @@ public class GameManager : MonoBehaviour, IGameManager
     private void OnDestroy()
     {
         GameServiceLocator.Unregister<IGameManager>();
+    }
+
+    public void SetCheckpoint(CheckPoint checkpoint)
+    {
+        currentCheckpoint = checkpoint;
+    }
+
+    public CheckPoint GetCurrentCheckpoint()
+    {
+        return currentCheckpoint;
     }
 }
