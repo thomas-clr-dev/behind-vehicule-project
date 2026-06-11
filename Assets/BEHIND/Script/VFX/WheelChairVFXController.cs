@@ -72,11 +72,6 @@ public class WheelVFX : MonoBehaviour, IEventListener<WheelStateDataEvent>
             vfxAlreadyPlayed = true;
             lastPlayedTime = Time.time; 
 
-            /*if (wheelList != null && wheelList.Count > 0)
-            {
-                int r = Random.Range(0, wheelList.Count);
-                audioWheel.PlayOneShot(wheelList[r], 0.5f);
-            }*/
         }
         else if (Mathf.Abs(normalizedTorque) < (torqueThreshold - 0.2f)) 
         {
