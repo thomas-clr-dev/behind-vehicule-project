@@ -11322,6 +11322,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheel_Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 6873582330359736034, guid: 7d9745daf5cea1d4883c93907f901231, type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 8988013635968895805}
+    - target: {fileID: 6873582330359736034, guid: 7d9745daf5cea1d4883c93907f901231, type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 4459576251435091014}
+    - target: {fileID: 6873582330359736034, guid: 7d9745daf5cea1d4883c93907f901231, type: 3}
+      propertyPath: vfxPrefab
+      value: 
+      objectReference: {fileID: 2126442951462991844, guid: 8b33302face44b048b2750f3f39ddabc, type: 3}
     - target: {fileID: 9172903930512575831, guid: 7d9745daf5cea1d4883c93907f901231, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
