@@ -64,6 +64,7 @@ MonoBehaviour:
   _distanceCalculator: {fileID: 231694017951472931}
   _chaseTriggerZone: {fileID: 0}
   _endZone: {fileID: 0}
+  DisapearOnEnd: 0
   minDelay: 0
   maxDelay: 0
   Sounds: []
@@ -230,7 +231,7 @@ Transform:
   m_GameObject: {fileID: 5288410938299871973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.95, z: 0}
+  m_LocalPosition: {x: 0, y: 0.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -825,6 +826,18 @@ PrefabInstance:
       value: Monster_Head
       objectReference: {fileID: 0}
     - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -864,8 +877,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3453346695429357074, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5472942803482891356, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
+    - {fileID: 6540984527225386054, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 197928aff8e75044daba0371e7d75bda, type: 3}
