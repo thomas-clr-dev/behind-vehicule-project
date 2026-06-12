@@ -24,10 +24,12 @@ public class ChaseTriggerZone : MonoBehaviour
             if (OnChaseBegin != null)
             {
                 OnChaseBegin.Invoke();
-                OnChaseBeginUnityEvent?.Invoke();
+                
                 HasTriggered = true;
             }
         }
+
+        OnChaseBeginUnityEvent?.Invoke();
     }
     #endregion
 

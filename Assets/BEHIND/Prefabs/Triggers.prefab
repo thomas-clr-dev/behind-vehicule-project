@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 2532815687282775955}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.24, y: 0, z: 2.22}
+  m_LocalPosition: {x: -0.24, y: 0, z: 4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,8 +129,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   parameterName: DoorEnd
-  parameterType: 0
-  boolValue: 0
+  parameterType: 1
+  boolValue: 1
   intValue: 0
   floatValue: 0
 --- !u!65 &1823654101228014721
@@ -242,7 +242,7 @@ Transform:
   m_GameObject: {fileID: 5027368091992115802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.06, y: 0, z: 86.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,16 +260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b0f53d18613e440a1c79737e2af916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
+  CheckpointID: 1
   OnCheckPointSelected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: CinemachineCameraController, Assembly-CSharp
+        m_MethodName: SetPriority
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -369,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 5775577988072833957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.7, y: 0, z: 86.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -387,16 +388,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b0f53d18613e440a1c79737e2af916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
+  CheckpointID: 0
   OnCheckPointSelected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: CinemachineCameraController, Assembly-CSharp
+        m_MethodName: SetPriority
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -834,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963917454070953136, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
       propertyPath: parameterName
-      value: CorridorChase
+      value: ChaseCorridor
       objectReference: {fileID: 0}
     - target: {fileID: 2963917454070953136, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
       propertyPath: parameterType
@@ -843,6 +845,34 @@ PrefabInstance:
     - target: {fileID: 2963917454070953136, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
       propertyPath: animators.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5113476857036978821}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCheckPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CheckPoint, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876115400679102835, guid: 61449547c101fa04db22ee634efdbfd7, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1122,7 +1152,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3255723464969014760, guid: 5b389fc7993d19848a7f06ff8d036f7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 99.75
+      value: 100.31
       objectReference: {fileID: 0}
     - target: {fileID: 3255723464969014760, guid: 5b389fc7993d19848a7f06ff8d036f7d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1459,6 +1489,34 @@ PrefabInstance:
     - target: {fileID: 4600542822384970514, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
       propertyPath: m_Name
       value: '>Class Chase Start'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2179169779389491095}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCheckPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CheckPoint, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185601613221001335, guid: 09e4d61a37f71bd4c927ab5572c6e531, type: 3}
+      propertyPath: OnChaseBeginUnityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

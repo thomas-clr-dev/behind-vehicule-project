@@ -58,13 +58,36 @@ public class LevelManager : MonoBehaviour, ILevelManager, IEventListener<GameEng
     {
         GameEngineEvent.Trigger(GameEngineEventTypes.SpawnCharacterStarts);
         SpawnCharacter();
+        yield return null;
+
+        int id = GameServiceLocator.Get<IGameManager>().GetCheckpointID();
+        if (id != -1)
+        {
+            foreach (var cp in FindObjectsByType<CheckPoint>(FindObjectsSortMode.None))
+            {
+                if (cp.CheckpointID != id) continue;
+
+                var wheels = _spawnedPlayer.GetComponentsInChildren<WheelCollider>();
+                foreach (var w in wheels) w.enabled = false;
+
+                _spawnedPlayer.GetComponent<Rigidbody>().position = cp.transform.position;
+                _spawnedPlayer.transform.position = cp.transform.position;
+
+                yield return new WaitForFixedUpdate();
+
+                foreach (var w in wheels) w.enabled = true;
+                cp.SelectCheckPoint();
+                break;
+            }
+        }
+
         GameEngineEvent.Trigger(GameEngineEventTypes.LevelStart);
         PlayerEvent.Trigger(PlayerEventTypes.PlayerSpawn, _spawnedPlayer);
         CameraEvent.Trigger(CameraEventTypes.SetTargetCharacter, _spawnedPlayer);
         CameraEvent.Trigger(CameraEventTypes.StartFollowing);
 
-        // Fade in d'intro — le niveau apparaît progressivement
-        //FadeOutEvent.Trigger(IntroFadeDuration, FadeCurve, FaderID);
+        if (id != -1)
+            FadeOutEvent.Trigger(IntroFadeDuration, FadeCurve, FaderID);
 
         yield break;
     }
@@ -111,29 +134,12 @@ public class LevelManager : MonoBehaviour, ILevelManager, IEventListener<GameEng
 
     private IEnumerator RespawnCoroutine()
     {
-        // Fade au noir
         FadeInEvent.Trigger(OutroFadeDuration, FadeCurve, FaderID);
         yield return new WaitForSeconds(OutroFadeDuration);
 
         yield return new WaitForSeconds(RespawnDelay);
 
-        if(GameServiceLocator.Get<IGameManager>().GetCurrentCheckpoint() != null)
-        {
-            CheckPoint point = GameServiceLocator.Get<IGameManager>().GetCurrentCheckpoint();
-
-            initialSpawnPoint = GameServiceLocator.Get<IGameManager>().GetCurrentCheckpoint().transform;
-            point.SelectCheckPoint();
-        }
-           
-        // Respawn du joueur
-        if (_spawnedPlayer != null && initialSpawnPoint != null)
-            _spawnedPlayer.transform.position = initialSpawnPoint.position;
-
-        // Fade retour au jeu
-        FadeOutEvent.Trigger(OutroFadeDuration, FadeCurve, FaderID);
-
-        CameraEvent.Trigger(CameraEventTypes.StartFollowing);
-        GameEngineEvent.Trigger(GameEngineEventTypes.RespawnComplete);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // -------------------------------------------------------------------------

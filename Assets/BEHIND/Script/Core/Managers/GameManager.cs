@@ -25,6 +25,9 @@ public struct GameEngineEvent : IEvent
 {
     public GameEngineEventTypes EventType;
     public object Payload;
+
+
+
     public GameEngineEvent(GameEngineEventTypes eventType, object payload = null)
     {
         EventType = eventType;
@@ -43,25 +46,27 @@ public struct GameEngineEvent : IEvent
 
 public class GameManager : MonoBehaviour, IGameManager
 {
+    private int checkpointID = -1;
+    private static GameManager _instance;
 
-    private CheckPoint currentCheckpoint;
     private void Awake()
     {
-        GameServiceLocator.Register<IGameManager>(this);
+        if (_instance != null) { Destroy(gameObject); return; }
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+        GameServiceLocator.Register<IGameManager>(this, GameServiceLocator.ServiceLifecycle.Persistent);
     }
 
     private void OnDestroy()
     {
-        GameServiceLocator.Unregister<IGameManager>();
+        if (_instance == this)
+            GameServiceLocator.Unregister<IGameManager>();
     }
 
     public void SetCheckpoint(CheckPoint checkpoint)
     {
-        currentCheckpoint = checkpoint;
+        checkpointID = checkpoint.CheckpointID;
     }
 
-    public CheckPoint GetCurrentCheckpoint()
-    {
-        return currentCheckpoint;
-    }
+    public int GetCheckpointID() => checkpointID;
 }

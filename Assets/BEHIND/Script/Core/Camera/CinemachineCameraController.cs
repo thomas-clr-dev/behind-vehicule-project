@@ -71,4 +71,9 @@ public class CinemachineCameraController : MonoBehaviour, IEventListener<CameraE
     {
         this.EventStopListening<CameraEvent>();
     }
+
+    public void SetPriority()
+    {
+      virtualCamera.Priority = 20;
+    }
 }

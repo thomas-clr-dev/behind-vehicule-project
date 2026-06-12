@@ -84,7 +84,7 @@ public class AutoCloseDoor : MonoBehaviour
 
         if (_showDebugLogs)
         {
-            Debug.Log($"🚪 AutoCloseDoor '{gameObject.name}' - Initialisée. Angle: {_closedAngle}°, Axe: {_rotationAxis}, Direction: {(_rotationDirection > 0 ? "+" : "-")}");
+            //Debug.Log($"🚪 AutoCloseDoor '{gameObject.name}' - Initialisée. Angle: {_closedAngle}°, Axe: {_rotationAxis}, Direction: {(_rotationDirection > 0 ? "+" : "-")}");
         }
     }
 
