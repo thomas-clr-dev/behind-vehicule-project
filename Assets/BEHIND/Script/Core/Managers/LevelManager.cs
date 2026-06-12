@@ -111,6 +111,7 @@ public class LevelManager : MonoBehaviour, ILevelManager, IEventListener<GameEng
     /// </summary>
     public void EndLevel(string sceneName)
     {
+        GameServiceLocator.Get<IGameManager>().ResetGame();
         GameEngineEvent.Trigger(GameEngineEventTypes.LevelEnd);
         StartCoroutine(EndLevelCoroutine(sceneName));
     }

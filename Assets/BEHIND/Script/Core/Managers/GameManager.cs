@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour, IGameManager
 {
     private int checkpointID = -1;
     private static GameManager _instance;
+    private bool hasSeenTutorial = false;
 
     private void Awake()
     {
@@ -69,4 +70,17 @@ public class GameManager : MonoBehaviour, IGameManager
     }
 
     public int GetCheckpointID() => checkpointID;
+
+    public void ResetGame()
+    {
+        checkpointID = -1;
+        hasSeenTutorial = false;
+    }
+
+    public void HasSeenTutorial(bool seen)
+    {
+        hasSeenTutorial = seen;
+    }
+
+    public bool GetHasSeenTutorial() => hasSeenTutorial;
 }
